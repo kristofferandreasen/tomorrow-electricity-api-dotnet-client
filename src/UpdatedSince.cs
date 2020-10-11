@@ -6,7 +6,7 @@ using Newtonsoft.Json.Converters;
 
 namespace Zones
 {
-    public partial class UpdatedSince
+    public class UpdatedSince
     {
         [JsonProperty("zone")]
         public string Zone { get; set; }
@@ -24,7 +24,7 @@ namespace Zones
         public bool LimitReached { get; set; }
     }
 
-    public partial class Update
+    public class Update
     {
         [JsonProperty("updated_at")]
         public DateTime UpdatedAt { get; set; }

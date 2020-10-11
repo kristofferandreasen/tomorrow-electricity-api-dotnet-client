@@ -6,21 +6,18 @@ using Newtonsoft.Json.Converters;
 
 namespace Zones
 {
-    public class RecentCarbonIntensityHistory
-    {
-        [JsonProperty("zone")]
-        public string Zone { get; set; }
-
-        [JsonProperty("history")]
-        public IEnumerable<History> History { get; set; }
-    }
-
-    public class History
+    public class PastCarbonIntensityHistory
     {
         [JsonProperty("carbonIntensity")]
         public int CarbonIntensity { get; set; }
 
         [JsonProperty("datetime")]
         public DateTime Datetime { get; set; }
+
+        [JsonProperty("updatedAt")]
+        public DateTime UpdatedAt { get; set; }
+
+        [JsonProperty("zone")]
+        public string Zone { get; set; }
     }
 }

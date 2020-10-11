@@ -6,7 +6,7 @@ using Newtonsoft.Json.Converters;
 
 namespace Zones
 {
-    public partial class ForecastedMarginalPowerConsumption
+    public class ForecastedMarginalPowerConsumption
     {
         [JsonProperty("zone")]
         public string Zone { get; set; }
@@ -18,7 +18,7 @@ namespace Zones
         public DateTime UpdatedAt { get; set; }
     }
 
-    public partial class Forecast
+    public class Forecast
     {
         [JsonProperty("marginalPowerConsumptionBreakdown")]
         public MarginalPowerConsumptionBreakdown MarginalPowerConsumptionBreakdown { get; set; }
@@ -27,7 +27,7 @@ namespace Zones
         public DateTimeOffset Datetime { get; set; }
     }
 
-    public partial class MarginalPowerConsumptionBreakdown
+    public class MarginalPowerConsumptionBreakdown
     {
         [JsonProperty("biomass")]
         public double Biomass { get; set; }
