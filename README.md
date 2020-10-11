@@ -2,11 +2,11 @@
   <img 
     src="https://github.com/kristofferandreasen/wayback-machine-dotnet-client/blob/master/nuget-images/logo-small.png?raw=true"  alt="Wayback Machine C# .NET Core SDK/Client"
   />
-  <h1>💾 Wayback Machine C# .NET Rest Client 💾</h1>
+  <h1>⚡ Tomorrow Electricity Map API C# .NET Rest Client ⚡</h1>
 </div>
 <div align="center">
-  This API wrapper is built to make it easier to use the Wayback Machine API from Internet Archive.
-  It provides a simple interface to get snapshots from websites back in time.
+  This API wrapper is built to make it easier to use the ELectricity Map API from Tomorrow.
+  It provides a simple interface to understand and optimize the carbon footprint of electricity.
 </div>
 
 <br />
