@@ -16,7 +16,7 @@ namespace Helpers
         /// </summary>
         /// <param name="url"></param>
         /// <returns></returns>
-        public static string ConstructRequest(string area, string action)
+        public static string ConstructRequest(string area, string? action)
         => string.Concat(ApiConstants.BaseUrl, ApiConstants.Version3, area, action);
 
         /// <summary>
