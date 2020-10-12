@@ -13,5 +13,6 @@
         public const string History = "history";
         public const string Past = "past";
         public const string Forecast = "forecast";
+        public const string ZoneParameter = "?zone=";
     }
 }

@@ -41,7 +41,7 @@ namespace ElectricityMap.DotNet.Client
 
         public async Task<ForecastedCarbonIntensity> GetForecastedCarbonIntensityAsync(string zone, double? longitude, double? latitude)
         {
-            string requestUrl = RequestUrlHelpers.ConstructRequest(ApiConstants.CarbonIntensity, ApiConstants.Forecast);
+            string requestUrl = RequestUrlHelpers.ConstructRequest(ApiConstants.CarbonIntensity, ApiConstants.Forecast, ApiConstants.ZoneParameter, zone);
             HttpResponseMessage response = await httpClient.GetAsync(requestUrl);
 
             response.EnsureSuccessStatusCode();
