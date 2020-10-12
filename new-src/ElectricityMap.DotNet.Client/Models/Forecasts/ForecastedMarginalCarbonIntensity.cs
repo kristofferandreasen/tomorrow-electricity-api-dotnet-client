@@ -1,10 +1,8 @@
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
-namespace Zones
+namespace ElectricityMap.DotNet.Client.Models.Forecasts
 {
     public class ForecastedMarginalCarbonIntensity
     {
@@ -12,13 +10,13 @@ namespace Zones
         public string Zone { get; set; }
 
         [JsonProperty("forecast")]
-        public IEnumerable<Forecast> Forecast { get; set; }
+        public IEnumerable<MarginalForecast> Forecast { get; set; }
 
         [JsonProperty("updatedAt")]
         public DateTime UpdatedAt { get; set; }
     }
 
-    public class Forecast
+    public class MarginalForecast
     {
         [JsonProperty("marginalCarbonIntensity")]
         public int MarginalCarbonIntensity { get; set; }

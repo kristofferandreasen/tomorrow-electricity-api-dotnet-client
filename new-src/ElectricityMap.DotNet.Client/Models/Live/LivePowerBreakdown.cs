@@ -1,10 +1,8 @@
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
-namespace Zones
+namespace ElectricityMap.DotNet.Client.Models.Live
 {
     public class LivePowerBreakdown
     {
@@ -15,13 +13,13 @@ namespace Zones
         public DateTime Datetime { get; set; }
 
         [JsonProperty("powerProductionBreakdown")]
-        public List<string, int?> PowerProductionBreakdown { get; set; }
+        public Dictionary<string, int?> PowerProductionBreakdown { get; set; }
 
         [JsonProperty("powerProductionTotal")]
         public int PowerProductionTotal { get; set; }
 
         [JsonProperty("powerConsumptionBreakdown")]
-        public List<string, int?> PowerConsumptionBreakdown { get; set; }
+        public Dictionary<string, int?> PowerConsumptionBreakdown { get; set; }
 
         [JsonProperty("powerConsumptionTotal")]
         public int PowerConsumptionTotal { get; set; }
@@ -50,6 +48,6 @@ namespace Zones
 
     public class PowerZoneBreakdown
     {
-        public List<string, int?> Zones { get; set; }
+        public Dictionary<string, int?> Zones { get; set; }
     }
 }

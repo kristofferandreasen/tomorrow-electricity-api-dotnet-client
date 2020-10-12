@@ -1,10 +1,8 @@
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
-namespace Zones
+namespace ElectricityMap.DotNet.Client.Models.Recent
 {
     public class RecentPowerBreakdownHistory
     {
@@ -12,10 +10,10 @@ namespace Zones
         public string Zone { get; set; }
 
         [JsonProperty("history")]
-        public IEnumerable<History> History { get; set; }
+        public IEnumerable<PowerBreakdownHistory> History { get; set; }
     }
 
-    public class History
+    public class PowerBreakdownHistory
     {
         [JsonProperty("datetime")]
         public DateTime Datetime { get; set; }
@@ -30,7 +28,7 @@ namespace Zones
         public int PowerConsumptionTotal { get; set; }
 
         [JsonProperty("powerImportBreakdown")]
-        public PowerPortBreakdown PowerImportBreakdown { get; set; }
+        public Dictionary<string, int?> PowerImportBreakdown { get; set; }
 
         [JsonProperty("powerImportTotal")]
         public int PowerImportTotal { get; set; }

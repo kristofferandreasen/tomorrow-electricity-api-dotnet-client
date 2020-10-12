@@ -1,10 +1,8 @@
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
-namespace Zones
+namespace ElectricityMap.DotNet.Client.Models.Forecasts
 {
     public class ForecastedPowerConsumptionBreakdown
     {
@@ -12,13 +10,13 @@ namespace Zones
         public string Zone { get; set; }
 
         [JsonProperty("forecast")]
-        public IEnumerable<Forecast> Forecast { get; set; }
+        public IEnumerable<PowerConsumptionForecast> Forecast { get; set; }
 
         [JsonProperty("updatedAt")]
         public DateTime UpdatedAt { get; set; }
     }
 
-    public class Forecast
+    public class PowerConsumptionForecast
     {
         [JsonProperty("powerConsumptionBreakdown")]
         public PowerConsumptionBreakdown PowerConsumptionBreakdown { get; set; }

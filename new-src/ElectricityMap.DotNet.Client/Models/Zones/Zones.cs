@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿using Newtonsoft.Json;
 
-namespace Zones
+namespace ElectricityMap.DotNet.Client.Models.Zones
 {
     public class Zones
     {
@@ -819,7 +815,7 @@ namespace Zones
     public class Names
     {
         [JsonProperty("countryName")]
-        public string? CountryName { get; set; }
+        public string CountryName { get; set; }
 
         [JsonProperty("zoneName")]
         public string ZoneName { get; set; }

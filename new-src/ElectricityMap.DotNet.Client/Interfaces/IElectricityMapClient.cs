@@ -1,8 +1,8 @@
+﻿using ElectricityMap.DotNet.Client.Models;
 using System;
 using System.Threading.Tasks;
-using WaybackMachine.DotNet.Client.Models;
 
-namespace ElectricityMap
+namespace ElectricityMap.DotNet.Client.Interfaces
 {
     public interface IElectricityMapClient
     {
