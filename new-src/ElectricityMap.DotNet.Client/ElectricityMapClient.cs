@@ -39,57 +39,65 @@ namespace ElectricityMap.DotNet.Client
             return zones;
         }
 
-        public Task<ForecastedCarbonIntensity> GetForecastedCarbonIntensityAsync(string zone, double? longitude, double? latitude)
+        public async Task<ForecastedCarbonIntensity> GetForecastedCarbonIntensityAsync(string zone, double? longitude, double? latitude)
+        {
+            string requestUrl = RequestUrlHelpers.ConstructRequest(ApiConstants.CarbonIntensity, ApiConstants.Forecast);
+            HttpResponseMessage response = await httpClient.GetAsync(requestUrl);
+
+            response.EnsureSuccessStatusCode();
+
+            string responseString = await response.Content.ReadAsStringAsync();
+            ForecastedCarbonIntensity carbonIntensity = JsonConvert.DeserializeObject<ForecastedCarbonIntensity>(responseString);
+
+            return carbonIntensity;
+        }
+
+        public async Task<ForecastedMarginalCarbonIntensity> GetForecastedMarginalCarbonIntensityAsync(string zone, double? longitude, double? latitude)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ForecastedMarginalCarbonIntensity> GetForecastedMarginalCarbonIntensityAsync(string zone, double? longitude, double? latitude)
+        public async Task<ForecastedMarginalPowerConsumptionBreakdown> GetForecastedMarginalPowerConsumptionBreakdownAsync(string zone, double? longitude, double? latitude)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ForecastedMarginalPowerConsumptionBreakdown> GetForecastedMarginalPowerConsumptionBreakdownAsync(string zone, double? longitude, double? latitude)
+        public async Task<ForecastedPowerConsumptionBreakdown> GetForecastedPowerConsumptionBreakdownAsync(string zone, double? longitude, double? latitude)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ForecastedPowerConsumptionBreakdown> GetForecastedPowerConsumptionBreakdownAsync(string zone, double? longitude, double? latitude)
+        public async Task<LiveCarbonIntensity> GetLiveCarbonIntensityAsync(string zone, double? longitude, double? latitude)
         {
             throw new NotImplementedException();
         }
 
-        public Task<LiveCarbonIntensity> GetLiveCarbonIntensityAsync(string zone, double? longitude, double? latitude)
+        public async Task<LivePowerBreakdown> GetLivePowerBreakdownAsync(string zone, double? longitude, double? latitude)
         {
             throw new NotImplementedException();
         }
 
-        public Task<LivePowerBreakdown> GetLivePowerBreakdownAsync(string zone, double? longitude, double? latitude)
+        public async Task<PastCarbonIntensityHistory> GetPastCarbonIntensityHistoryAsync(string zone, double? longitude, double? latitude, DateTime datetime)
         {
             throw new NotImplementedException();
         }
 
-        public Task<PastCarbonIntensityHistory> GetPastCarbonIntensityHistoryAsync(string zone, double? longitude, double? latitude, DateTime datetime)
+        public async Task<PastPowerBreakdownHistory> GetPastPowerBreakdownHistoryAsync(string zone, double? longitude, double? latitude, DateTime datetime)
         {
             throw new NotImplementedException();
         }
 
-        public Task<PastPowerBreakdownHistory> GetPastPowerBreakdownHistoryAsync(string zone, double? longitude, double? latitude, DateTime datetime)
+        public async Task<RecentCarbonIntensityHistory> GetRecentCarbonIntensityHistoryAsync(string zone, double? longitude, double? latitude)
         {
             throw new NotImplementedException();
         }
 
-        public Task<RecentCarbonIntensityHistory> GetRecentCarbonIntensityHistoryAsync(string zone, double? longitude, double? latitude)
+        public async Task<RecentPowerBreakdownHistory> GetRecentPowerBreakdownHistoryAsync(string zone, double? longitude, double? latitude)
         {
             throw new NotImplementedException();
         }
 
-        public Task<RecentPowerBreakdownHistory> GetRecentPowerBreakdownHistoryAsync(string zone, double? longitude, double? latitude)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<UpdatedSince> GetUpdateInfoAsync(UpdatedSinceRequest updatedSinceRequest)
+        public async Task<UpdatedSince> GetUpdateInfoAsync(UpdatedSinceRequest updatedSinceRequest)
         {
             throw new NotImplementedException();
         }
