@@ -83,18 +83,7 @@ namespace ElectricityMap.DotNet.Client.Helpers
             if (!string.IsNullOrEmpty(updatedSinceRequest.Zone))
             {
                 queryUrl = string.Concat(initialUrl, ApiConstants.ZoneParameter, updatedSinceRequest.Zone);
-
-                if (updatedSinceRequest.Start != null)
-                    queryUrl = queryUrl + "&start=" + updatedSinceRequest.Start;
-
-                if (updatedSinceRequest.End != null)
-                    queryUrl = queryUrl + "&end=" + updatedSinceRequest.End;
-
-                if (updatedSinceRequest.Limit != null)
-                    queryUrl = queryUrl + "&limit=" + updatedSinceRequest.Limit;
-
-                if (updatedSinceRequest.Threshold != null)
-                    queryUrl = queryUrl + "&threshold=" + updatedSinceRequest.Threshold;
+                queryUrl = BuildQueryString(updatedSinceRequest, queryUrl);
 
                 return queryUrl;
             }
@@ -102,23 +91,36 @@ namespace ElectricityMap.DotNet.Client.Helpers
             if (updatedSinceRequest.Latitude != null && updatedSinceRequest.Longitude != null)
             {
                 queryUrl = string.Concat(initialUrl, ApiConstants.LatitudeParameter, updatedSinceRequest.Latitude, ApiConstants.LongitudeParameter, updatedSinceRequest.Longitude);
-
-                if (updatedSinceRequest.Start != null)
-                    queryUrl = queryUrl + "&start=" + updatedSinceRequest.Start;
-
-                if (updatedSinceRequest.End != null)
-                    queryUrl = queryUrl + "&end=" + updatedSinceRequest.End;
-
-                if (updatedSinceRequest.Limit != null)
-                    queryUrl = queryUrl + "&limit=" + updatedSinceRequest.Limit;
-
-                if (updatedSinceRequest.Threshold != null)
-                    queryUrl = queryUrl + "&threshold=" + updatedSinceRequest.Threshold;
+                queryUrl = BuildQueryString(updatedSinceRequest, queryUrl);
 
                 return queryUrl;
             }
 
             throw new Exception("Zone or Latitude/Longitude must be passed as parameters.");
+        }
+
+        /// <summary>
+        /// Build the query string parameters
+        /// for the updated since request.
+        /// </summary>
+        /// <param name="updatedSinceRequest"></param>
+        /// <param name="queryUrl"></param>
+        /// <returns></returns>
+        private string BuildQueryString(UpdatedSinceRequest updatedSinceRequest, string queryUrl) 
+        {
+            if (updatedSinceRequest.Start != null)
+                queryUrl = queryUrl + "&start=" + updatedSinceRequest.Start;
+
+            if (updatedSinceRequest.End != null)
+                queryUrl = queryUrl + "&end=" + updatedSinceRequest.End;
+
+            if (updatedSinceRequest.Limit != null)
+                queryUrl = queryUrl + "&limit=" + updatedSinceRequest.Limit;
+
+            if (updatedSinceRequest.Threshold != null)
+                queryUrl = queryUrl + "&threshold=" + updatedSinceRequest.Threshold;
+
+            return queryUrl;
         }
     }
 }

@@ -1,6 +1,6 @@
 <div align="center">
   <img 
-    src="https://github.com/kristofferandreasen/wayback-machine-dotnet-client/blob/master/nuget-images/logo-small.png?raw=true"  alt="Wayback Machine C# .NET Core SDK/Client"
+    src="https://github.com/kristofferandreasen/tomorrow-electricity-api-dotnet-client/blob/master/images/logo-small.png?raw=true"  alt="Wayback Machine C# .NET Core SDK/Client"
   />
   <h1>⚡ Tomorrow Electricity Map API C# .NET Rest Client ⚡</h1>
 </div>
@@ -12,20 +12,20 @@
 <br />
 
 <div align="center">
-  <a href="https://www.nuget.org/packages/WaybackMachine.DotNet.Client/">
-    <img src="https://img.shields.io/nuget/v/WaybackMachine.DotNet.Client"
+  <a href="https://www.nuget.org/packages/ElectricityMap.DotNet.Client/">
+    <img src="https://img.shields.io/nuget/v/ElectricityMap.DotNet.Client"
       alt="NuGet Package" />
   </a>
-  <a href="https://github.com/kristofferandreasen/wayback-machine-dotnet-client/actions">
-    <img src="https://github.com/kristofferandreasen/wayback-machine-dotnet-client/workflows/build/badge.svg"
+  <a href="https://github.com/kristofferandreasen/tomorrow-electricity-api-dotnet-client/actions">
+    <img src="https://github.com/kristofferandreasen/tomorrow-electricity-api-dotnet-client/workflows/build/badge.svg"
       alt="Build status" />
   </a>
   <a href="https://sonarcloud.io/dashboard?id=kristofferandreasen_wayback-machine-csharp-sdk">
     <img src="https://sonarcloud.io/api/project_badges/measure?project=kristofferandreasen_wayback-machine-csharp-sdk&metric=alert_status"
       alt="Sonar Gate" />
   </a>
-  <a href="https://github.com/kristofferandreasen/wayback-machine-dotnet-client/issues">
-    <img src="https://img.shields.io/github/issues/kristofferandreasen/wayback-machine-dotnet-client"
+  <a href="https://github.com/kristofferandreasen/tomorrow-electricity-api-dotnet-client/issues">
+    <img src="https://img.shields.io/github/issues/kristofferandreasen/tomorrow-electricity-api-dotnet-client"
       alt="GitHub Issues" />
   </a>
   <a href="https://opensource.org/licenses/MIT">
@@ -36,22 +36,22 @@
 
 <div align="center">
   <h3>
-    <a href="https://www.nuget.org/packages/WaybackMachine.DotNet.Client/">
+    <a href="https://www.nuget.org/packages/ElectricityMap.DotNet.Client/">
       NuGet Package Download
     </a>
     <span> | </span>
-    <a href="https://github.com/kristofferandreasen/wayback-machine-dotnet-client#contributing">
+    <a href="https://github.com/kristofferandreasen/tomorrow-electricity-api-dotnet-client#contributing">
       Contributing
     </a>
     <span> | </span>
-    <a href="https://archive.org/help/wayback_api.php">
-      Wayback Machine API Documentation
+    <a href="http://static.electricitymap.org/api/docs/index.html">
+      Electricity Map API Documentation
     </a>
   </h3>
 </div>
 
 <div align="center">
-  <sub>A simple C# .NET Core rest client for the Wayback Machine API. Built with ❤︎ by
+  <sub>A C# .NET Core REST client for the ElectricityMap API. Built with ❤︎ by
   <a href="https://github.com/kristofferandreasen">Kristoffer Andreasen</a>
 </div>
 
@@ -63,13 +63,13 @@ You can use on of the following ways are install it through Visual Studio.
 ### Install with Package Manager
 
 ```
-Install-Package WaybackMachine.DotNet.Client
+Install-Package ElectricityMap.DotNet.Client
 ```
 
 ### Install with .NET CLI
 
 ```
-dotnet add package WaybackMachine.DotNet.Client
+dotnet add package ElectricityMap.DotNet.Client
 ```
 
 ## Using the package
@@ -81,7 +81,7 @@ In the following sections you can see the easiest ways to use the library.
 
 * Register the WaybackMachine.DotNet.Client interface in the startup file
 * Inject the service in the class where you want to use it
-* [See full example in Example folder](https://github.com/kristofferandreasen/wayback-machine-dotnet-client/tree/master/examples/RazorPages.Example)
+* [See full example in Example folder](https://github.com/kristofferandreasen/tomorrow-electricity-api-dotnet-client/tree/master/examples/RazorPages.Example)
 
 ```
 public void ConfigureServices(IServiceCollection services)
@@ -127,7 +127,7 @@ The pattern for using dependency injection in an Azure Function is similar to a 
 * Create a startup.cs file to enable dependency injection
 * Register the WaybackMachine.DotNet.Client interface in the startup file
 * Inject the service in the class where you want to use it
-* [See full example in Example folder](https://github.com/kristofferandreasen/wayback-machine-dotnet-client/tree/master/examples/AzureFunction.Example)
+* [See full example in Example folder](https://github.com/kristofferandreasen/tomorrow-electricity-api-dotnet-client/tree/master/examples/AzureFunction.Example)
 
 #### Startup.cs file
 
@@ -212,7 +212,7 @@ In order to see the banner again, you will need to open the localhost link in in
 ## Contributing
 
 Your contributions are always welcome!
-Please have a look at the [contribution guidelines](https://github.com/kristofferandreasen/wayback-machine-dotnet-client/blob/master/CONTRIBUTING.md) first 🎉
+Please have a look at the [contribution guidelines](https://github.com/kristofferandreasen/tomorrow-electricity-api-dotnet-client/blob/master/CONTRIBUTING.md) first 🎉
 
 ## License
 
