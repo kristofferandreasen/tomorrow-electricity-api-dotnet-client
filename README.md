@@ -1,7 +1,4 @@
 <div align="center">
-  <img 
-    src="https://github.com/kristofferandreasen/tomorrow-electricity-api-dotnet-client/blob/master/images/logo-small.png?raw=true"  alt="Wayback Machine C# .NET Core SDK/Client"
-  />
   <h1>⚡ Tomorrow Electricity Map API C# .NET Rest Client ⚡</h1>
 </div>
 <div align="center">
