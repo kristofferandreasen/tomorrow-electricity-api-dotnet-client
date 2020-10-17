@@ -1,6 +1,6 @@
 ﻿namespace ElectricityMap.DotNet.Client.Constants
 {
-    public static class ZonesConstants
+    public static class ZoneConstants
     {
         public const string Andorra = "AD";
         public const string UnitedArabEmirates = "AE";
