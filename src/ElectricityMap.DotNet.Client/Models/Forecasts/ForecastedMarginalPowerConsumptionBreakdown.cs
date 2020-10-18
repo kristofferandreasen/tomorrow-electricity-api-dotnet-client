@@ -22,7 +22,7 @@ namespace ElectricityMap.DotNet.Client.Models.Forecasts
         public MarginalPowerConsumptionBreakdown MarginalPowerConsumptionBreakdown { get; set; }
 
         [JsonProperty("datetime")]
-        public DateTimeOffset Datetime { get; set; }
+        public DateTime Datetime { get; set; }
     }
 
     public class MarginalPowerConsumptionBreakdown
