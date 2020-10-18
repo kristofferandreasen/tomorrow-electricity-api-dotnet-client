@@ -168,5 +168,26 @@
         public const string El_Salvador = "SV";
         public const string Turkey = "TR";
         public const string Taiwan = "TW";
+        public const string Ukraine = "UA";
+        public const string Ukraine_Crimea = "UA-CR";
+        public const string United_States_Alaska = "US-AK";
+        public const string United_States_Alabama = "US-AL";
+        public const string United_States_BPA = "US-BPA";
+        public const string United_States_California = "US-CA";
+        public const string United_States_Northern_California_Balancing_Authority = "US-CAL-BANC";
+        public const string United_States_California_Independent_System_Operator = "US-CAL-CISO";
+        public const string United_States_California_Imperial_Irrigation_District = "US-CAL-IID";
+        public const string United_States_California_Los_Angeles_Department_of_Water_and_Power = "US-CAL-LDWP";
+        public const string United_States_California_Turlock_Irrigation_District = "US-CAL-TIDC";
+        public const string United_States_Carolinas_Duke_Energy_Progress_East = "US-CAR-CPLE";
+        public const string United_States_Carolinas_Duke_Energy_Progress_West = "US-CAR-CPLW";
+        public const string United_States_Carolinas_Duke_Energy = "US-CAR-DUK";
+        public const string United_States_South_Carolina_Public_Service_Authority = "US-CAR-SC";
+        public const string United_States_South_Carolina_Electric_and_Gas_Company = "US-CAR-SCEG";
+        public const string United_States_Carolinas_Alcoa_Power = "US-CAR-YAD";
+        public const string United_States_Central_Southwestern_Power = "US-CENT-SPA";
+        public const string United_States_Central_Southwest_Power_Pool = "US-CENT-SWPP";
+        public const string United_States_DUK = "US-DUK";
+        public const string United_States_Florida_Municipal_Power_pool = "US-FLA-FMPP";
     }
 }
