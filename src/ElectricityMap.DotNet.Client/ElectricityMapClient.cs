@@ -19,6 +19,12 @@ namespace ElectricityMap.DotNet.Client
     {
         public readonly HttpClient httpClient = new HttpClient();
 
+        public ElectricityMapClient()
+        {
+            httpClient.BaseAddress = new Uri(ApiConstants.BaseUrl);
+            httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
+        }
+
         public ElectricityMapClient(string apiKey)
         {
             httpClient.BaseAddress = new Uri(ApiConstants.BaseUrl);

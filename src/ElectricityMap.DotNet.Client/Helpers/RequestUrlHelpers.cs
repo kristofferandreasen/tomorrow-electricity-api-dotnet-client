@@ -109,10 +109,13 @@ namespace ElectricityMap.DotNet.Client.Helpers
         private static string BuildQueryString(UpdatedSinceRequest updatedSinceRequest, string queryUrl) 
         {
             if (updatedSinceRequest.Start != null)
-                queryUrl = queryUrl + "&start=" + updatedSinceRequest.Start;
+                queryUrl = queryUrl + "&since=" + updatedSinceRequest.Since.ToString("o");
+
+            if (updatedSinceRequest.Start != null)
+                queryUrl = queryUrl + "&start=" + updatedSinceRequest.Start?.ToString("o");
 
             if (updatedSinceRequest.End != null)
-                queryUrl = queryUrl + "&end=" + updatedSinceRequest.End;
+                queryUrl = queryUrl + "&end=" + updatedSinceRequest.End?.ToString("o");
 
             if (updatedSinceRequest.Limit != null)
                 queryUrl = queryUrl + "&limit=" + updatedSinceRequest.Limit;
