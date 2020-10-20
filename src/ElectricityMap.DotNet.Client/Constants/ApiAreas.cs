@@ -2,7 +2,7 @@
 {
     public static class ApiAreas
     {
-        public const string Zones = "zones";
+        public const string Zones = "zones/";
         public const string CarbonIntensity = "carbon-intensity/";
         public const string MarginalCarbonIntensity = "marginal-carbon-intensity/";
         public const string PowerConsumptionBreakdown = "power-consumption-breakdown/";

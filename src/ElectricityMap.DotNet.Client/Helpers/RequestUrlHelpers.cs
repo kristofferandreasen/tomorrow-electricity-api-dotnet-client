@@ -106,7 +106,7 @@ namespace ElectricityMap.DotNet.Client.Helpers
         /// <param name="updatedSinceRequest"></param>
         /// <param name="queryUrl"></param>
         /// <returns></returns>
-        private string BuildQueryString(UpdatedSinceRequest updatedSinceRequest, string queryUrl) 
+        private static string BuildQueryString(UpdatedSinceRequest updatedSinceRequest, string queryUrl) 
         {
             if (updatedSinceRequest.Start != null)
                 queryUrl = queryUrl + "&start=" + updatedSinceRequest.Start;
