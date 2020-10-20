@@ -98,5 +98,59 @@ namespace ElectricityMap.DotNet.Client.Helpers
 
             Assert.Equal(expectedUrl, requestUrl);
         }
+
+        [Fact]
+        public void Constructed_url_with_updated_since_data_without_lat_long_is_correct()
+        {
+            var updatedSinceRequest = new UpdatedSinceRequest
+            {
+                Zone = ZoneConstants.Denmark,
+                Since = DateTime.Now.AddDays(-5),
+                Start = DateTime.Now.AddDays(-2),
+                End = DateTime.Now.AddDays(-1),
+                Limit = 100,
+                Threshold = "P1D"
+            };
+
+            var expectedUrl = $"https://api.electricitymap.org/v3/updated-since/?zone=DK&since={updatedSinceRequest.Since:o}&start={updatedSinceRequest.Start:o}&end={updatedSinceRequest.End:o}&limit={updatedSinceRequest.Limit}&threshold={updatedSinceRequest.Threshold}";
+            var requestUrl = RequestUrlHelpers.ConstructRequest(updatedSinceRequest);
+
+            Assert.Equal(expectedUrl, requestUrl);
+        }
+
+        [Fact]
+        public void Constructed_url_with_updated_since_data_with_lat_long_is_correct()
+        {
+            var updatedSinceRequest = new UpdatedSinceRequest
+            {
+                Latitude = 55.9553455,
+                Longitude = 9.9264833,
+                Since = DateTime.Now.AddDays(-5),
+                Start = DateTime.Now.AddDays(-2),
+                End = DateTime.Now.AddDays(-1),
+                Limit = 100,
+                Threshold = "P1D"
+            };
+
+            var expectedUrl = $"https://api.electricitymap.org/v3/updated-since/?lat={updatedSinceRequest.Latitude}&lon={updatedSinceRequest.Longitude}&since={updatedSinceRequest.Since:o}&start={updatedSinceRequest.Start:o}&end={updatedSinceRequest.End:o}&limit={updatedSinceRequest.Limit}&threshold={updatedSinceRequest.Threshold}";
+            var requestUrl = RequestUrlHelpers.ConstructRequest(updatedSinceRequest);
+
+            Assert.Equal(expectedUrl, requestUrl);
+        }
+
+        [Fact]
+        public void Constructed_url_with_updated_since_data_returns_exception_without_zone_or_coor()
+        {
+            var updatedSinceRequest = new UpdatedSinceRequest
+            {
+                Since = DateTime.Now.AddDays(-5),
+                Start = DateTime.Now.AddDays(-2),
+                End = DateTime.Now.AddDays(-1),
+                Limit = 100,
+                Threshold = "P1D"
+            };
+
+            Assert.Throws<Exception>(() => RequestUrlHelpers.ConstructRequest(updatedSinceRequest));
+        }
     }
 }
