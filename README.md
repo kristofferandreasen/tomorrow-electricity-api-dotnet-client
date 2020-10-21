@@ -71,9 +71,12 @@ dotnet add package ElectricityMap.DotNet.Client
 
 ## Available Methods
 
+There is one method available for each of the endpoints provided by the Electricity Map API.
+The following table will show you all of them and the parameters needed.
+
 | Method  | Description  | Parameters  | Returns  |
 |---|---|---|---|
-| GetAvailableZonesAsync  | Get the available zones for your API Key.  | -  |   |
+| GetAvailableZonesAsync  | Get the available zones for your API Key.  | -  | `Dictionary<string, ZoneData>`  |
 | GetLiveCarbonIntensityAsync  |   |   |   |
 | GetLivePowerBreakdownAsync  |   |   |   |
 | GetRecentCarbonIntensityHistoryAsync  |   |   |   |
@@ -85,23 +88,6 @@ dotnet add package ElectricityMap.DotNet.Client
 | GetForecastedMarginalCarbonIntensityAsync  |   |   |   |
 | GetForecastedMarginalPowerConsumptionBreakdownAsync  |   |   |   |
 | GetUpdateInfoAsync  |   |   |   |
-
-There is one method available for each of the endpoints provided by the Electricity Map API.
-The following table will show you all of them and the parameters needed.
-| Method  | Description  | Parameters  | Returns  |
-|---|---|---|
-|   |   | -  | Dictionary<string, ZoneData> |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
 
 ## Using the package
 
