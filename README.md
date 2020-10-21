@@ -77,10 +77,10 @@ The following table will show you all of them and the parameters needed.
 | Method  | Description  |
 |:---|:---|
 | GetAvailableZonesAsync  | Get the available zones for your API Key.  |
-| GetLiveCarbonIntensityAsync  |   |
-| GetLivePowerBreakdownAsync  |   |
-| GetRecentCarbonIntensityHistoryAsync  |   |
-| GetRecentPowerBreakdownHistoryAsync  |   |
+| GetLiveCarbonIntensityAsync  | Data on the live carbon intensity.  |
+| GetLivePowerBreakdownAsync  | Live breakdown of the power usage.  |
+| GetRecentCarbonIntensityHistoryAsync  | Get data for recent carbon intensity measurements.  |
+| GetRecentPowerBreakdownHistoryAsync  | Get data for recent power breakdown measurements.  |
 | GetPastCarbonIntensityHistoryAsync  |   |
 | GetPastPowerBreakdownHistoryAsync  |   |
 | GetForecastedCarbonIntensityAsync  |   |
