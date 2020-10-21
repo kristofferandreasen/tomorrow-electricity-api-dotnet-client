@@ -1,26 +1,17 @@
 ﻿using ElectricityMap.DotNet.Client.Constants;
 using ElectricityMap.DotNet.Client.Models.Live;
-using ElectricityMap.DotNet.Client.Models.Zones;
-using System.Collections.Generic;
+using ElectricityMap.DotNet.Client.Models.Recent;
 using Xunit;
 
-namespace ElectricityMap.DotNet.Client.Test
+namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests
 {
-    public class ElectricityMapClientTests
+    public class CarbonIntensityTests
     {
         private readonly ElectricityMapClient _electricityMapClient;
 
-        public ElectricityMapClientTests()
+        public CarbonIntensityTests()
         {
             _electricityMapClient = new ElectricityMapClient("YourApiKey");
-        }
-
-        [Fact]
-        public async void Zones_are_available()
-        {
-            Dictionary<string, ZoneData> zones = await _electricityMapClient.GetAvailableZonesAsync();
-
-            Assert.NotNull(zones);
         }
 
         [Fact]
@@ -42,19 +33,19 @@ namespace ElectricityMap.DotNet.Client.Test
         }
 
         [Fact]
-        public async void Power_breakdown_live_zone()
+        public async void Carbon_intensity_recent_zone()
         {
-            LivePowerBreakdown data = await _electricityMapClient.GetLivePowerBreakdownAsync(ZoneConstants.Denmark_West_Denmark);
+            RecentCarbonIntensityHistory data = await _electricityMapClient.GetRecentCarbonIntensityHistoryAsync(ZoneConstants.Denmark_West_Denmark);
 
             Assert.NotNull(data);
         }
 
         [Fact]
-        public async void Power_breakdown_live_lat_long()
+        public async void Carbon_intensity_recent_lat_long()
         {
             double latitude = 55.6590875d;
             double longitude = 12.5492117d;
-            LivePowerBreakdown data = await _electricityMapClient.GetLivePowerBreakdownAsync(latitude, longitude);
+            RecentCarbonIntensityHistory data = await _electricityMapClient.GetRecentCarbonIntensityHistoryAsync(latitude, longitude);
 
             Assert.NotNull(data);
         }
