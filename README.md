@@ -71,6 +71,12 @@ dotnet add package ElectricityMap.DotNet.Client
 
 ## Available Methods
 
+| Method  | Description  | Parameters  | Returns  |
+|---|---|---|---|
+|   |   |   |   |
+|   |   |   |   |
+|   |   |   |   |
+
 There is one method available for each of the endpoints provided by the Electricity Map API.
 The following table will show you all of them and the parameters needed.
 | Method  | Description  | Parameters  | Returns  |
