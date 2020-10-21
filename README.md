@@ -74,20 +74,20 @@ dotnet add package ElectricityMap.DotNet.Client
 There is one method available for each of the endpoints provided by the Electricity Map API.
 The following table will show you all of them and the parameters needed.
 
-| Method  | Description  | Parameters  | Returns  |
+| Method  | Description  |
 |---|---|---|---|
-| GetAvailableZonesAsync  | Get the available zones for your API Key.  | -  | `Dictionary<string, ZoneData>`  |
-| GetLiveCarbonIntensityAsync  |   |   |   |
-| GetLivePowerBreakdownAsync  |   |   |   |
-| GetRecentCarbonIntensityHistoryAsync  |   |   |   |
-| GetRecentPowerBreakdownHistoryAsync  |   |   |   |
-| GetPastCarbonIntensityHistoryAsync  |   |   |   |
-| GetPastPowerBreakdownHistoryAsync  |   |   |   |
-| GetForecastedCarbonIntensityAsync  |   |   |   |
-| GetForecastedPowerConsumptionBreakdownAsync  |   |   |   |
-| GetForecastedMarginalCarbonIntensityAsync  |   |   |   |
-| GetForecastedMarginalPowerConsumptionBreakdownAsync  |   |   |   |
-| GetUpdateInfoAsync  |   |   |   |
+| GetAvailableZonesAsync  | Get the available zones for your API Key.  |
+| GetLiveCarbonIntensityAsync  |   |
+| GetLivePowerBreakdownAsync  |   |
+| GetRecentCarbonIntensityHistoryAsync  |   |
+| GetRecentPowerBreakdownHistoryAsync  |   |
+| GetPastCarbonIntensityHistoryAsync  |   |
+| GetPastPowerBreakdownHistoryAsync  |   |
+| GetForecastedCarbonIntensityAsync  |   |
+| GetForecastedPowerConsumptionBreakdownAsync  |   |
+| GetForecastedMarginalCarbonIntensityAsync  |   |
+| GetForecastedMarginalPowerConsumptionBreakdownAsync  |   |
+| GetUpdateInfoAsync  |   |
 
 ## Using the package
 
