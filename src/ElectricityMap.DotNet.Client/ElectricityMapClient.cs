@@ -10,6 +10,8 @@ using ElectricityMap.DotNet.Client.Models.Updates;
 using ElectricityMap.DotNet.Client.Models.Zones;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -19,20 +21,14 @@ namespace ElectricityMap.DotNet.Client
     {
         public readonly HttpClient httpClient = new HttpClient();
 
-        public ElectricityMapClient()
-        {
-            httpClient.BaseAddress = new Uri(ApiConstants.BaseUrl);
-            httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
-        }
-
         public ElectricityMapClient(string apiKey)
         {
             httpClient.BaseAddress = new Uri(ApiConstants.BaseUrl);
             httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
-            httpClient.DefaultRequestHeaders.Add("auth-token", apiKey);
+            httpClient.DefaultRequestHeaders.Add(ApiConstants.AuthHeader, apiKey);
         }
 
-        public async Task<Zones> GetZonesAsync()
+        public async Task<Dictionary<string, ZoneData>> GetAvailableZonesAsync()
         {
             string requestUrl = RequestUrlHelpers.ConstructRequest(ApiAreas.Zones);
             HttpResponseMessage response = await httpClient.GetAsync(requestUrl);
@@ -40,9 +36,10 @@ namespace ElectricityMap.DotNet.Client
             response.EnsureSuccessStatusCode();
 
             string responseString = await response.Content.ReadAsStringAsync();
-            Zones data = JsonConvert.DeserializeObject<Zones>(responseString);
 
-            return data;
+            Dictionary<string, ZoneData> zones = JsonConvert.DeserializeObject<Dictionary<string, ZoneData>>(responseString);
+
+            return zones;
         }
 
         public async Task<LiveCarbonIntensity> GetLiveCarbonIntensityAsync(string zone)

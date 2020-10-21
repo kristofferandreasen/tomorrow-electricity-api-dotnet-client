@@ -6,13 +6,14 @@ using ElectricityMap.DotNet.Client.Models.Recent;
 using ElectricityMap.DotNet.Client.Models.Updates;
 using ElectricityMap.DotNet.Client.Models.Zones;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ElectricityMap.DotNet.Client.Interfaces
 {
     public interface IElectricityMapClient
     {
-        Task<Zones> GetZonesAsync();
+        Task<Dictionary<string, ZoneData>> GetAvailableZonesAsync();
         Task<LiveCarbonIntensity> GetLiveCarbonIntensityAsync(string zone);
         Task<LiveCarbonIntensity> GetLiveCarbonIntensityAsync(double latitude, double longitude);
         Task<LivePowerBreakdown> GetLivePowerBreakdownAsync(string zone);

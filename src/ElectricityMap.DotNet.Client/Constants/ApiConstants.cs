@@ -3,6 +3,7 @@
     public static class ApiConstants
     {
         public const string BaseUrl = "https://api.electricitymap.org";
+        public const string AuthHeader = "auth-token";
         public const string Version3 = "/v3/";
         public const string ZoneParameter = "?zone=";
         public const string DateParameter = "&datetime=";
