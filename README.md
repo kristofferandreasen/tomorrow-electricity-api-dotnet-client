@@ -73,7 +73,7 @@ dotnet add package ElectricityMap.DotNet.Client
 
 | Method  | Description  | Parameters  | Returns  |
 |---|---|---|---|
-| GetAvailableZonesAsync  | Get the available zones for your API Key  |   |   |
+| GetAvailableZonesAsync  | Get the available zones for your API Key.  | -  |   |
 | GetLiveCarbonIntensityAsync  |   |   |   |
 | GetLivePowerBreakdownAsync  |   |   |   |
 | GetRecentCarbonIntensityHistoryAsync  |   |   |   |
