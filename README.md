@@ -75,7 +75,7 @@ There is one method available for each of the endpoints provided by the Electric
 The following table will show you all of them and the parameters needed.
 
 | Method  | Description  |
-|---|---|---|---|
+|---|---|
 | GetAvailableZonesAsync  | Get the available zones for your API Key.  |
 | GetLiveCarbonIntensityAsync  |   |
 | GetLivePowerBreakdownAsync  |   |
