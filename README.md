@@ -73,17 +73,17 @@ dotnet add package ElectricityMap.DotNet.Client
 
 | Method  | Description  | Parameters  | Returns  |
 |---|---|---|---|
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
+| GetAvailableZonesAsync  |   |   |   |
+| GetLiveCarbonIntensityAsync  |   |   |   |
+| GetLivePowerBreakdownAsync  |   |   |   |
 
 There is one method available for each of the endpoints provided by the Electricity Map API.
 The following table will show you all of them and the parameters needed.
 | Method  | Description  | Parameters  | Returns  |
 |---|---|---|
-| GetAvailableZonesAsync  | Get the available zones for your API Key  | -  | Dictionary<string, ZoneData> |
-| GetLiveCarbonIntensityAsync  |   |   |   |
-| GetLivePowerBreakdownAsync  |   |   |   |
+|   | Get the available zones for your API Key  | -  | Dictionary<string, ZoneData> |
+|   |   |   |   |
+|   |   |   |   |
 | GetRecentCarbonIntensityHistoryAsync  |   |   |   |
 | GetRecentPowerBreakdownHistoryAsync  |   |   |   |
 | GetPastCarbonIntensityHistoryAsync  |   |   |   |
