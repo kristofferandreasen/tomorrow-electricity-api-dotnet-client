@@ -142,7 +142,7 @@ namespace RazorPages.Example.Pages
 The pattern for using dependency injection in an Azure Function is similar to a web application.
 
 * Create a startup.cs file to enable dependency injection
-* Register the WaybackMachine.DotNet.Client interface in the startup file
+* Register the ElectricityMapClient interface in the startup file
 * Inject the service in the class where you want to use it
 * [See full example in Example folder](https://github.com/kristofferandreasen/tomorrow-electricity-api-dotnet-client/tree/master/examples/AzureFunction.Example)
 
