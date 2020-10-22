@@ -4,20 +4,19 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using WaybackMachine.DotNet.Client.Interfaces;
 
 namespace AzureFunction.Example
 {
-    public class GetSnapshotFunction
+    public class GetCarbonIntensityFunction
     {
-        private readonly IWaybackMachineService _waybackMachineService;
+        private readonly IElectricityMapClient _electricityMapClient;
 
-        public GetSnapshotFunction(IWaybackMachineService waybackMachineService)
+        public GetCarbonIntensityFunction(IElectricityMapClient electricityMapClient)
         {
-            _waybackMachineService = waybackMachineService;
+            _electricityMapClient = electricityMapClient;
         }
 
-        [FunctionName(nameof(GetSnapshotFunction))]
+        [FunctionName(nameof(GetCarbonIntensityFunction))]
         public  async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
             ILogger log)
@@ -26,7 +25,7 @@ namespace AzureFunction.Example
 
             string url = req.Query["url"];
 
-            var snapshot = await _waybackMachineService.GetMostRecentSnapshotAsync(url);
+            var snapshot = await _electricityMapClient.GetMostRecentSnapshotAsync(url);
 
             return snapshot != null
                 ? (ActionResult)new OkObjectResult(snapshot)

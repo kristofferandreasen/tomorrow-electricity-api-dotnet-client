@@ -17,8 +17,8 @@
     <img src="https://github.com/kristofferandreasen/tomorrow-electricity-api-dotnet-client/workflows/build/badge.svg"
       alt="Build status" />
   </a>
-  <a href="https://sonarcloud.io/dashboard?id=kristofferandreasen_wayback-machine-csharp-sdk">
-    <img src="https://sonarcloud.io/api/project_badges/measure?project=kristofferandreasen_wayback-machine-csharp-sdk&metric=alert_status"
+  <a href="https://sonarcloud.io/dashboard?id=kristofferandreasen_tomorrow-electricity-api-dotnet-client">
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=kristofferandreasen_tomorrow-electricity-api-dotnet-client&metric=alert_status"
       alt="Sonar Gate" />
   </a>
   <a href="https://github.com/kristofferandreasen/tomorrow-electricity-api-dotnet-client/issues">
@@ -96,7 +96,7 @@ In the following sections you can see the easiest ways to use the library.
 
 ### Dependency Injection: .NET Core Web Application
 
-* Register the WaybackMachine.DotNet.Client interface in the startup file
+* Register the ElectricityMapClient interface in the startup file
 * Inject the service in the class where you want to use it
 * [See full example in Example folder](https://github.com/kristofferandreasen/tomorrow-electricity-api-dotnet-client/tree/master/examples/RazorPages.Example)
 
@@ -105,7 +105,7 @@ public void ConfigureServices(IServiceCollection services)
 {
     services.AddRazorPages();
 
-    // Register the wayback machine client
+    // Register the electricity map client
     services.AddSingleton<IElectricityMapClient, ElectricityMapClient>();
 }
 ```
@@ -159,7 +159,7 @@ namespace Azure.Function.Example
             builder.Services.AddHttpClient();
             builder.Services.AddLogging();
 
-            // Register the wayback machine client
+            // Register the electricity map client
             builder.Services.AddSingleton<IElectricityMapClient, ElectricityMapClient>();
         }
     }
@@ -186,7 +186,7 @@ public class GetSnapshotFunction
 
         string zone = req.Query["zone"];
 
-        var carbonIntensity = await _waybackMachineService.GetMostRecentSnapshotAsync(zone);
+        var carbonIntensity = await _electricityMapClient.GetLiveCarbonIntensityAsync(zone);
 
         return carbonIntensity != null
             ? (ActionResult)new OkObjectResult(carbonIntensity)

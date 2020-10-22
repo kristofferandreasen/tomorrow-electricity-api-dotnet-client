@@ -8,8 +8,6 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using WaybackMachine.DotNet.Client;
-using WaybackMachine.DotNet.Client.Interfaces;
 
 namespace RazorPages.Example
 {
@@ -27,8 +25,8 @@ namespace RazorPages.Example
         {
             services.AddRazorPages();
 
-            // Register the wayback machine client for dependency injection
-            services.AddSingleton<IWaybackMachineService, WaybackMachineService>();
+            // Register the electricity map client for dependency injection
+            services.AddSingleton<IElectricityMapClient, ElectricityMapClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

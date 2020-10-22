@@ -5,30 +5,28 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using WaybackMachine.DotNet.Client.Interfaces;
-using WaybackMachine.DotNet.Client.Models;
 
 namespace RazorPages.Example.Pages
 {
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private readonly IWaybackMachineService _waybackMachineService;
+        private readonly IElectricityMapClient _electricityMapClient;
 
         public IndexModel(
             ILogger<IndexModel> logger,
-            IWaybackMachineService waybackMachineService
+            IElectricityMapClient electricityMapClient
         )
         {
             _logger = logger;
-            _waybackMachineService = waybackMachineService;
+            _electricityMapClient = electricityMapClient;
         }
 
-        public Snapshot Snapshot { get; set; }
+        public LiveCarbonIntensity CarbonIntensity { get; set; }
 
         public async Task OnGet()
         {
-            Snapshot = await _waybackMachineService.GetMostRecentSnapshotAsync("google.com");
+            CarbonIntensity = await _electricityMapClient.GetMostRecentSnapshotAsync("google.com");
         }
     }
 }

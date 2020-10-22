@@ -7,7 +7,7 @@ Before sending a Pull Request, consider making an issue in the repository and as
 ## Development
 
 You need to clone the repository and restore packages.
-Navigate to the **src/WaybackMachine.DotNet.Client** folder and run the following command.
+Navigate to the **src/ElectricityMap.DotNet.Client** folder and run the following command.
 
 ```
 dotnet restore
