@@ -81,13 +81,13 @@ The following table will show you all of them and the parameters needed.
 | GetLivePowerBreakdownAsync  | Live breakdown of the power usage.  |
 | GetRecentCarbonIntensityHistoryAsync  | Get data for recent carbon intensity measurements.  |
 | GetRecentPowerBreakdownHistoryAsync  | Get data for recent power breakdown measurements.  |
-| GetPastCarbonIntensityHistoryAsync  |   |
-| GetPastPowerBreakdownHistoryAsync  |   |
-| GetForecastedCarbonIntensityAsync  |   |
-| GetForecastedPowerConsumptionBreakdownAsync  |   |
-| GetForecastedMarginalCarbonIntensityAsync  |   |
-| GetForecastedMarginalPowerConsumptionBreakdownAsync  |   |
-| GetUpdateInfoAsync  |   |
+| GetPastCarbonIntensityHistoryAsync  | Get data for past carbon intensity measurements.  |
+| GetPastPowerBreakdownHistoryAsync  | Get data for past power breakdown measurements.  |
+| GetForecastedCarbonIntensityAsync  | Get data for forecasted carbon intensity measurements.  |
+| GetForecastedPowerConsumptionBreakdownAsync  | Get data for forecasted power breakdown measurements.  |
+| GetForecastedMarginalCarbonIntensityAsync  | Get data for forecasted marginal carbon intensity measurements.  |
+| GetForecastedMarginalPowerConsumptionBreakdownAsync  | Get data for forecasted marginal power breakdown measurements.  |
+| GetUpdateInfoAsync  | Get data for API update history.  |
 
 ## Using the package
 
