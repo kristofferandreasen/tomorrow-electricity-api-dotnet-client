@@ -8,6 +8,41 @@ namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests
     public class CarbonIntensityTests
     {
         private readonly ElectricityMapClient _electricityMapClient;
+        private readonly IElectricityClient electricityClient;
+
+        private void SetupMocks() 
+        {
+            // 1. Create moq object
+            var serviceMoq = new Moq<IElectricityClient>();
+
+            // 2. Setup the returnables
+            serviceMoq
+                .Setup(o => o.GetLiveCarbonIntensityAsync(It.IsAny<string>()))
+                .Returns(
+                    new LiveCarbonIntensity {
+                    Zone = "DK-DK1",
+                    CarbonIntensity = 100,
+                    Datetime = DateTime.Now,
+                    UpdatedAt = DateTime.Now
+                });
+
+            // 3. Assign to Object when needed
+            electricityClient = serviceMoq.Object;
+        }
+
+        [Fact]
+        public async void Get_carbon_intensity_live_zone()
+        {
+            //Arrange the resources
+            SetupMocks();
+            string zone = "DK-DK1";
+
+            //Act on the functionality
+            LiveCarbonIntensity response = electricityClient.GetLiveCarbonIntensityAsync(zone);
+
+            //Assert the result against the expected
+            Assert.NotNull(response);
+        }
 
         public CarbonIntensityTests()
         {
