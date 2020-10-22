@@ -26,7 +26,7 @@ namespace RazorPages.Example.Pages
 
         public async Task OnGet()
         {
-            CarbonIntensity = await _electricityMapClient.GetMostRecentSnapshotAsync("google.com");
+            CarbonIntensity = await _electricityMapClient.GetLiveCarbonIntensityAsync(ZoneConstants.Denmark_East_Denmark);
         }
     }
 }

@@ -132,7 +132,7 @@ namespace RazorPages.Example.Pages
 
         public async Task OnGet()
         {
-            CarbonIntensity = await _electricityMapClient.GetLiveCarbonIntensityAsync(ZoneConstants.DK-DK1);
+            CarbonIntensity = await _electricityMapClient.GetLiveCarbonIntensityAsync(ZoneConstants.Denmark_East_Denmark);
         }
     }
 }
@@ -166,19 +166,19 @@ namespace Azure.Function.Example
     }
 }
 ```
-#### GetSnapshotFunction.cs file
+#### GetCarbonIntensity.cs file
 
 ```
-public class GetSnapshotFunction
+public class GetCarbonIntensityFunction
 {
     private readonly IElectricityMapClient _electricityMapClient;
 
-    public GetSnapshotFunction(IElectricityMapClient electricityMapClient)
+    public GetCarbonIntensityFunction(IElectricityMapClient electricityMapClient)
     {
         _electricityMapClient = electricityMapClient;
     }
 
-    [FunctionName(nameof(GetSnapshotFunction))]
+    [FunctionName(nameof(GetCarbonIntensityFunction))]
     public  async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
         ILogger log)

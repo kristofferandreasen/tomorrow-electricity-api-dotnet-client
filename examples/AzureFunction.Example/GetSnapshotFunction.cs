@@ -23,13 +23,13 @@ namespace AzureFunction.Example
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
-            string url = req.Query["url"];
+            string zone = req.Query["zone"];
 
-            var snapshot = await _electricityMapClient.GetMostRecentSnapshotAsync(url);
+            var carbonIntensity = await _electricityMapClient.GetLiveCarbonIntensityAsync(zone);
 
-            return snapshot != null
-                ? (ActionResult)new OkObjectResult(snapshot)
-                : new BadRequestObjectResult("Please pass a url on the query string or in the request body");
+            return carbonIntensity != null
+                ? (ActionResult)new OkObjectResult(carbonIntensity)
+                : new BadRequestObjectResult("Please pass a zone on the query string or in the request body");
         }
     }
 }
