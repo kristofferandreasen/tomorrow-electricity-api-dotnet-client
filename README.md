@@ -106,7 +106,7 @@ public void ConfigureServices(IServiceCollection services)
     services.AddRazorPages();
 
     // Register the wayback machine client
-    services.AddSingleton<IWaybackMachineService, WaybackMachineService>();
+    services.AddSingleton<IElectricityMapClient, ElectricityMapClient>();
 }
 ```
 
@@ -116,22 +116,22 @@ namespace RazorPages.Example.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private readonly IWaybackMachineService _waybackMachineService;
+        private readonly IElectricityMapClient _electricityMapClient;
 
         public IndexModel(
             ILogger<IndexModel> logger,
-            IWaybackMachineService waybackMachineService
+            IElectricityMapClient electricityMapClient
         )
         {
             _logger = logger;
-            _waybackMachineService = waybackMachineService;
+            _electricityMapClient = electricityMapClient;
         }
 
-        public Snapshot Snapshot { get; set; }
+        public LiveCarbonIntentsity CarbonIntensity { get; set; }
 
         public async Task OnGet()
         {
-            Snapshot = await _waybackMachineService.GetMostRecentSnapshotAsync("google.com");
+            CarbonIntensity = await _electricityMapClient.GetLiveCarbonIntensityAsync(ZoneConstants.DK-DK1);
         }
     }
 }
@@ -160,7 +160,7 @@ namespace Azure.Function.Example
             builder.Services.AddLogging();
 
             // Register the wayback machine client
-            builder.Services.AddSingleton<IWaybackMachineService, WaybackMachineService>();
+            builder.Services.AddSingleton<IElectricityMapClient, ElectricityMapClient>();
         }
     }
 }
@@ -170,11 +170,11 @@ namespace Azure.Function.Example
 ```
 public class GetSnapshotFunction
 {
-    private readonly IWaybackMachineService _waybackMachineService;
+    private readonly IElectricityMapClient _electricityMapClient;
 
-    public GetSnapshotFunction(IWaybackMachineService waybackMachineService)
+    public GetSnapshotFunction(IElectricityMapClient electricityMapClient)
     {
-        _waybackMachineService = waybackMachineService;
+        _electricityMapClient = electricityMapClient;
     }
 
     [FunctionName(nameof(GetSnapshotFunction))]
@@ -184,12 +184,12 @@ public class GetSnapshotFunction
     {
         log.LogInformation("C# HTTP trigger function processed a request.");
 
-        string url = req.Query["url"];
+        string zone = req.Query["zone"];
 
-        var snapshot = await _waybackMachineService.GetMostRecentSnapshotAsync(url);
+        var carbonIntensity = await _waybackMachineService.GetMostRecentSnapshotAsync(zone);
 
-        return snapshot != null
-            ? (ActionResult)new OkObjectResult(snapshot)
+        return carbonIntensity != null
+            ? (ActionResult)new OkObjectResult(carbonIntensity)
             : new BadRequestObjectResult("Please pass a url on the query string or in the request body");
     }
 }
