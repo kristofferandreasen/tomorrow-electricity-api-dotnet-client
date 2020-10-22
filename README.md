@@ -72,7 +72,8 @@ dotnet add package ElectricityMap.DotNet.Client
 ## Available Methods
 
 There is one method available for each of the endpoints provided by the Electricity Map API.
-The following table will show you all of them and the parameters needed.
+The following table will show you all of them. Check the full API docs for more information on the endpoints.
+Most of the endpoints take a zone or latitude/longitude as parameters. You can find all the available zones in the ZoneConstants class. Be aware API keys are typically limited to specific zones.
 
 | Method  | Description  |
 |:---|:---|
