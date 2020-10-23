@@ -4,7 +4,7 @@ using Moq;
 using System;
 using System.Collections.Generic;
 
-namespace ElectricityMap.DotNet.Client.Test
+namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
 {
     public class PowerBreakdownTestFactory
     {

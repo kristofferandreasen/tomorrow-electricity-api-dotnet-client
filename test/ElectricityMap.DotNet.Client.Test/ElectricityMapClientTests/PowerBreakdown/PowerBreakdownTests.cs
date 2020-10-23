@@ -2,7 +2,7 @@
 using ElectricityMap.DotNet.Client.Models.Live;
 using Xunit;
 
-namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests
+namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
 {
     public class PowerBreakdownTests
     {

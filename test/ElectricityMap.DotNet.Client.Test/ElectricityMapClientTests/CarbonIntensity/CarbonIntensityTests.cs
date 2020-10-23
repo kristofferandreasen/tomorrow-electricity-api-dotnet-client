@@ -6,7 +6,7 @@ using ElectricityMap.DotNet.Client.Models.Recent;
 using System;
 using Xunit;
 
-namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests
+namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
 {
     public class CarbonIntensityTests
     {

@@ -5,6 +5,9 @@ namespace ElectricityMap.DotNet.Client.Models.History
 {
     public class PastCarbonIntensityHistory
     {
+        [JsonProperty("zone")]
+        public string Zone { get; set; }
+
         [JsonProperty("carbonIntensity")]
         public int CarbonIntensity { get; set; }
 
@@ -13,8 +16,5 @@ namespace ElectricityMap.DotNet.Client.Models.History
 
         [JsonProperty("updatedAt")]
         public DateTime UpdatedAt { get; set; }
-
-        [JsonProperty("zone")]
-        public string Zone { get; set; }
     }
 }
