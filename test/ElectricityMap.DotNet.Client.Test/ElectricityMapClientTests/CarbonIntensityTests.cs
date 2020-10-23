@@ -1,6 +1,9 @@
 ﻿using ElectricityMap.DotNet.Client.Constants;
+using ElectricityMap.DotNet.Client.Interfaces;
 using ElectricityMap.DotNet.Client.Models.Live;
 using ElectricityMap.DotNet.Client.Models.Recent;
+using Moq;
+using System;
 using Xunit;
 
 namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests
@@ -8,17 +11,17 @@ namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests
     public class CarbonIntensityTests
     {
         private readonly ElectricityMapClient _electricityMapClient;
-        private readonly IElectricityClient electricityClient;
+        private IElectricityMapClient electricityClient;
 
         private void SetupMocks() 
         {
             // 1. Create moq object
-            var serviceMoq = new Moq<IElectricityClient>();
+            var serviceMoq = new Mock<IElectricityMapClient>();
 
             // 2. Setup the returnables
             serviceMoq
                 .Setup(o => o.GetLiveCarbonIntensityAsync(It.IsAny<string>()))
-                .Returns(
+                .ReturnsAsync(
                     new LiveCarbonIntensity {
                     Zone = "DK-DK1",
                     CarbonIntensity = 100,
@@ -38,7 +41,7 @@ namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests
             string zone = "DK-DK1";
 
             //Act on the functionality
-            LiveCarbonIntensity response = electricityClient.GetLiveCarbonIntensityAsync(zone);
+            LiveCarbonIntensity response = await electricityClient.GetLiveCarbonIntensityAsync(zone);
 
             //Assert the result against the expected
             Assert.NotNull(response);
