@@ -15,10 +15,8 @@ namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests
 
         private void SetupMocks() 
         {
-            // 1. Create moq object
             var serviceMoq = new Mock<IElectricityMapClient>();
 
-            // 2. Setup the returnables
             serviceMoq
                 .Setup(o => o.GetLiveCarbonIntensityAsync(It.IsAny<string>()))
                 .ReturnsAsync(
@@ -29,21 +27,17 @@ namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests
                     UpdatedAt = DateTime.Now
                 });
 
-            // 3. Assign to Object when needed
             electricityClient = serviceMoq.Object;
         }
 
         [Fact]
         public async void Get_carbon_intensity_live_zone()
         {
-            //Arrange the resources
             SetupMocks();
             string zone = "DK-DK1";
 
-            //Act on the functionality
             LiveCarbonIntensity response = await electricityClient.GetLiveCarbonIntensityAsync(zone);
 
-            //Assert the result against the expected
             Assert.NotNull(response);
         }
 
