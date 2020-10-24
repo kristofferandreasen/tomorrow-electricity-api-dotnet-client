@@ -306,5 +306,97 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
 
             return serviceMoq.Object;
         }
+
+        public IElectricityMapClient SetupMarginalForecastPowerBreakdownMocksWithZone()
+        {
+            var serviceMoq = new Mock<IElectricityMapClient>();
+
+            var marginalPowerConsumptionBreakdown = new MarginalPowerConsumptionBreakdown
+            {
+                Biomass = 100d,
+                Coal = 100d,
+                Gas = 100d,
+                HydroDischarge = 100d,
+                Geothermal = 100d,
+                Hydro = 100d,
+                HydroCharge = 100d,
+                Nuclear = 100d,
+                Oil = 100d,
+                Solar = 100d,
+                Wind = 100d,
+                Unknown = 100d
+            };
+
+            var marginalPowerForecast1 = new MarginalPowerForecast
+            {
+                Datetime = DateTime.Now,
+                MarginalPowerConsumptionBreakdown = marginalPowerConsumptionBreakdown
+            };
+
+            var marginalPowerForecast2 = new MarginalPowerForecast
+            {
+                Datetime = DateTime.Now,
+                MarginalPowerConsumptionBreakdown = marginalPowerConsumptionBreakdown
+            };
+
+            var forecastMarginalPowerConsumption = new ForecastedMarginalPowerConsumptionBreakdown
+            {
+                Zone = "DK-DK1",
+                UpdatedAt = DateTime.Now,
+                Forecast = new List<MarginalPowerForecast>() { marginalPowerForecast1, marginalPowerForecast2 }
+            };
+
+            serviceMoq
+                .Setup(o => o.GetForecastedMarginalPowerConsumptionBreakdownAsync(It.IsAny<string>()))
+                .ReturnsAsync(forecastMarginalPowerConsumption);
+
+            return serviceMoq.Object;
+        }
+
+        public IElectricityMapClient SetupMarginalForecastPowerBreakdownMocksWithLatLong()
+        {
+            var serviceMoq = new Mock<IElectricityMapClient>();
+
+            var marginalPowerConsumptionBreakdown = new MarginalPowerConsumptionBreakdown
+            {
+                Biomass = 100d,
+                Coal = 100d,
+                Gas = 100d,
+                HydroDischarge = 100d,
+                Geothermal = 100d,
+                Hydro = 100d,
+                HydroCharge = 100d,
+                Nuclear = 100d,
+                Oil = 100d,
+                Solar = 100d,
+                Wind = 100d,
+                Unknown = 100d
+            };
+
+            var marginalPowerForecast1 = new MarginalPowerForecast
+            {
+                Datetime = DateTime.Now,
+                MarginalPowerConsumptionBreakdown = marginalPowerConsumptionBreakdown
+            };
+
+            var marginalPowerForecast2 = new MarginalPowerForecast
+            {
+                Datetime = DateTime.Now,
+                MarginalPowerConsumptionBreakdown = marginalPowerConsumptionBreakdown
+            };
+
+            var forecastMarginalPowerConsumption = new ForecastedMarginalPowerConsumptionBreakdown
+            {
+                Zone = "DK-DK1",
+                UpdatedAt = DateTime.Now,
+                Forecast = new List<MarginalPowerForecast>() { marginalPowerForecast1, marginalPowerForecast2 }
+            };
+
+            serviceMoq
+                .Setup(o => o.GetForecastedMarginalPowerConsumptionBreakdownAsync(It.IsAny<double>(), It.IsAny<double>()))
+                .ReturnsAsync(forecastMarginalPowerConsumption);
+
+            return serviceMoq.Object;
+        }
     }
 }

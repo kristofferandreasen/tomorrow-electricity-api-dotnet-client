@@ -119,5 +119,32 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
 
             Assert.NotNull(response);
         }
+
+        [Fact]
+        public async void Get_power_breakdown_marginal_forecast_zone()
+        {
+            var testFactory = new PowerBreakdownTestFactory();
+            IElectricityMapClient electricityClientZone = testFactory.SetupMarginalForecastPowerBreakdownMocksWithZone();
+
+            string zone = "DK-DK1";
+
+            ForecastedMarginalPowerConsumptionBreakdown response = await electricityClientZone.GetForecastedMarginalPowerConsumptionBreakdownAsync(zone);
+
+            Assert.NotNull(response);
+        }
+
+        [Fact]
+        public async void Get_power_breakdown_marginal_forecast_lat_long()
+        {
+            var testFactory = new PowerBreakdownTestFactory();
+            IElectricityMapClient electricityClientZone = testFactory.SetupMarginalForecastPowerBreakdownMocksWithLatLong();
+
+            double latitude = 55.6590875d;
+            double longitude = 12.5492117d;
+
+            ForecastedMarginalPowerConsumptionBreakdown response = await electricityClientZone.GetForecastedMarginalPowerConsumptionBreakdownAsync(latitude, longitude);
+
+            Assert.NotNull(response);
+        }
     }
 }
