@@ -206,9 +206,9 @@ namespace ElectricityMap.DotNet.Client
             response.EnsureSuccessStatusCode();
 
             string responseString = await response.Content.ReadAsStringAsync();
-            ForecastedCarbonIntensity carbonIntensity = JsonConvert.DeserializeObject<ForecastedCarbonIntensity>(responseString);
+            ForecastedCarbonIntensity data = JsonConvert.DeserializeObject<ForecastedCarbonIntensity>(responseString);
 
-            return carbonIntensity;
+            return data;
         }
 
         public async Task<ForecastedCarbonIntensity> GetForecastedCarbonIntensityAsync(double latitude, double longitude)
@@ -219,9 +219,9 @@ namespace ElectricityMap.DotNet.Client
             response.EnsureSuccessStatusCode();
 
             string responseString = await response.Content.ReadAsStringAsync();
-            ForecastedCarbonIntensity carbonIntensity = JsonConvert.DeserializeObject<ForecastedCarbonIntensity>(responseString);
+            ForecastedCarbonIntensity data = JsonConvert.DeserializeObject<ForecastedCarbonIntensity>(responseString);
 
-            return carbonIntensity;
+            return data;
         }
 
         public async Task<ForecastedPowerConsumptionBreakdown> GetForecastedPowerConsumptionBreakdownAsync(string zone)
@@ -232,9 +232,9 @@ namespace ElectricityMap.DotNet.Client
             response.EnsureSuccessStatusCode();
 
             string responseString = await response.Content.ReadAsStringAsync();
-            ForecastedPowerConsumptionBreakdown carbonIntensity = JsonConvert.DeserializeObject<ForecastedPowerConsumptionBreakdown>(responseString);
+            ForecastedPowerConsumptionBreakdown data = JsonConvert.DeserializeObject<ForecastedPowerConsumptionBreakdown>(responseString);
 
-            return carbonIntensity;
+            return data;
         }
 
         public async Task<ForecastedPowerConsumptionBreakdown> GetForecastedPowerConsumptionBreakdownAsync(double latitude, double longitude)
@@ -245,9 +245,9 @@ namespace ElectricityMap.DotNet.Client
             response.EnsureSuccessStatusCode();
 
             string responseString = await response.Content.ReadAsStringAsync();
-            ForecastedPowerConsumptionBreakdown carbonIntensity = JsonConvert.DeserializeObject<ForecastedPowerConsumptionBreakdown>(responseString);
+            ForecastedPowerConsumptionBreakdown data = JsonConvert.DeserializeObject<ForecastedPowerConsumptionBreakdown>(responseString);
 
-            return carbonIntensity;
+            return data;
         }
 
         public async Task<ForecastedMarginalCarbonIntensity> GetForecastedMarginalCarbonIntensityAsync(string zone)
@@ -258,9 +258,9 @@ namespace ElectricityMap.DotNet.Client
             response.EnsureSuccessStatusCode();
 
             string responseString = await response.Content.ReadAsStringAsync();
-            ForecastedMarginalCarbonIntensity carbonIntensity = JsonConvert.DeserializeObject<ForecastedMarginalCarbonIntensity>(responseString);
+            ForecastedMarginalCarbonIntensity data = JsonConvert.DeserializeObject<ForecastedMarginalCarbonIntensity>(responseString);
 
-            return carbonIntensity;
+            return data;
         }
 
         public async Task<ForecastedMarginalCarbonIntensity> GetForecastedMarginalCarbonIntensityAsync(double latitude, double longitude)
@@ -271,9 +271,9 @@ namespace ElectricityMap.DotNet.Client
             response.EnsureSuccessStatusCode();
 
             string responseString = await response.Content.ReadAsStringAsync();
-            ForecastedMarginalCarbonIntensity carbonIntensity = JsonConvert.DeserializeObject<ForecastedMarginalCarbonIntensity>(responseString);
+            ForecastedMarginalCarbonIntensity data = JsonConvert.DeserializeObject<ForecastedMarginalCarbonIntensity>(responseString);
 
-            return carbonIntensity;
+            return data;
         }
 
         public async Task<ForecastedMarginalPowerConsumptionBreakdown> GetForecastedMarginalPowerConsumptionBreakdownAsync(string zone)
@@ -284,9 +284,9 @@ namespace ElectricityMap.DotNet.Client
             response.EnsureSuccessStatusCode();
 
             string responseString = await response.Content.ReadAsStringAsync();
-            ForecastedMarginalPowerConsumptionBreakdown carbonIntensity = JsonConvert.DeserializeObject<ForecastedMarginalPowerConsumptionBreakdown>(responseString);
+            ForecastedMarginalPowerConsumptionBreakdown data = JsonConvert.DeserializeObject<ForecastedMarginalPowerConsumptionBreakdown>(responseString);
 
-            return carbonIntensity;
+            return data;
         }
 
         public async Task<ForecastedMarginalPowerConsumptionBreakdown> GetForecastedMarginalPowerConsumptionBreakdownAsync(double latitude, double longitude)
@@ -297,9 +297,9 @@ namespace ElectricityMap.DotNet.Client
             response.EnsureSuccessStatusCode();
 
             string responseString = await response.Content.ReadAsStringAsync();
-            ForecastedMarginalPowerConsumptionBreakdown carbonIntensity = JsonConvert.DeserializeObject<ForecastedMarginalPowerConsumptionBreakdown>(responseString);
+            ForecastedMarginalPowerConsumptionBreakdown data = JsonConvert.DeserializeObject<ForecastedMarginalPowerConsumptionBreakdown>(responseString);
 
-            return carbonIntensity;
+            return data;
         }
 
         public async Task<UpdatedSince> GetUpdateInfoAsync(UpdatedSinceRequest updatedSinceRequest)
