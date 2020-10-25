@@ -76,17 +76,11 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
         public IElectricityMapClient SetupPastCarbonIntensityMocksWithLatitudeLongitude()
         {
             var serviceMoq = new Mock<IElectricityMapClient>();
+            var data = dataFactory.GetPastCarbonIntensityData();
 
             serviceMoq
                 .Setup(o => o.GetPastCarbonIntensityHistoryAsync(It.IsAny<double>(), It.IsAny<double>(), It.IsAny<DateTime>()))
-                .ReturnsAsync(
-                    new PastCarbonIntensityHistory
-                    {
-                        Zone = "DK-DK1",
-                        CarbonIntensity = 100,
-                        Datetime = DateTime.Now,
-                        UpdatedAt = DateTime.Now
-                    });
+                .ReturnsAsync(data);
 
             return serviceMoq.Object;
         }
