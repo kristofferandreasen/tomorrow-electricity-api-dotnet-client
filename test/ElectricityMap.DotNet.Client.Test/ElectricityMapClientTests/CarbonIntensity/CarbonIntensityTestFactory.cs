@@ -88,32 +88,11 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
         public IElectricityMapClient SetupForecastedCarbonIntensityMocksWithZone()
         {
             var serviceMoq = new Mock<IElectricityMapClient>();
-
-            var forecast = new List<Forecast>();
-            var forecast1 = new Forecast
-            {
-                CarbonIntensity = 100,
-                Datetime = DateTime.Now
-            };
-
-            var forecast2 = new Forecast
-            {
-                CarbonIntensity = 200,
-                Datetime = DateTime.Now.AddHours(-2)
-            };
-
-            forecast.Add(forecast1);
-            forecast.Add(forecast2);
+            var data = dataFactory.GetForecastedCarbonIntensityData();
 
             serviceMoq
                 .Setup(o => o.GetForecastedCarbonIntensityAsync(It.IsAny<string>()))
-                .ReturnsAsync(
-                    new ForecastedCarbonIntensity
-                    {
-                        Zone = "DK-DK1",
-                        Forecast = forecast,
-                        UpdatedAt = DateTime.Now
-                    });
+                .ReturnsAsync(data);
 
             return serviceMoq.Object;
         }
@@ -121,32 +100,11 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
         public IElectricityMapClient SetupForecastedCarbonIntensityMocksWithLatitudeLongitude()
         {
             var serviceMoq = new Mock<IElectricityMapClient>();
-
-            var forecast = new List<Forecast>();
-            var forecast1 = new Forecast
-            {
-                CarbonIntensity = 100,
-                Datetime = DateTime.Now
-            };
-
-            var forecast2 = new Forecast
-            {
-                CarbonIntensity = 200,
-                Datetime = DateTime.Now.AddHours(-2)
-            };
-
-            forecast.Add(forecast1);
-            forecast.Add(forecast2);
+            var data = dataFactory.GetForecastedCarbonIntensityData();
 
             serviceMoq
                 .Setup(o => o.GetForecastedCarbonIntensityAsync(It.IsAny<double>(), It.IsAny<double>()))
-                .ReturnsAsync(
-                    new ForecastedCarbonIntensity
-                    {
-                        Zone = "DK-DK1",
-                        Forecast = forecast,
-                        UpdatedAt = DateTime.Now
-                    });
+                .ReturnsAsync(data);
 
             return serviceMoq.Object;
         }
@@ -154,32 +112,11 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
         public IElectricityMapClient SetupForecastedMarginalCarbonIntensityMocksWithZone()
         {
             var serviceMoq = new Mock<IElectricityMapClient>();
-
-            var forecast = new List<MarginalForecast>();
-            var forecast1 = new MarginalForecast
-            {
-                MarginalCarbonIntensity = 100,
-                Datetime = DateTime.Now
-            };
-
-            var forecast2 = new MarginalForecast
-            {
-                MarginalCarbonIntensity = 200,
-                Datetime = DateTime.Now.AddHours(-2)
-            };
-
-            forecast.Add(forecast1);
-            forecast.Add(forecast2);
+            var data = dataFactory.GetForecastedMarginalCarbonIntensityData();
 
             serviceMoq
                 .Setup(o => o.GetForecastedMarginalCarbonIntensityAsync(It.IsAny<string>()))
-                .ReturnsAsync(
-                    new ForecastedMarginalCarbonIntensity
-                    {
-                        Zone = "DK-DK1",
-                        Forecast = forecast,
-                        UpdatedAt = DateTime.Now
-                    });
+                .ReturnsAsync(data);
 
             return serviceMoq.Object;
         }
@@ -187,32 +124,11 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
         public IElectricityMapClient SetupForecastedMarginalCarbonIntensityMocksWithLatitudeLongitude()
         {
             var serviceMoq = new Mock<IElectricityMapClient>();
-
-            var forecast = new List<MarginalForecast>();
-            var forecast1 = new MarginalForecast
-            {
-                MarginalCarbonIntensity = 100,
-                Datetime = DateTime.Now
-            };
-
-            var forecast2 = new MarginalForecast
-            {
-                MarginalCarbonIntensity = 200,
-                Datetime = DateTime.Now.AddHours(-2)
-            };
-
-            forecast.Add(forecast1);
-            forecast.Add(forecast2);
+            var data = dataFactory.GetForecastedMarginalCarbonIntensityData();
 
             serviceMoq
                 .Setup(o => o.GetForecastedMarginalCarbonIntensityAsync(It.IsAny<double>(), It.IsAny<double>()))
-                .ReturnsAsync(
-                    new ForecastedMarginalCarbonIntensity
-                    {
-                        Zone = "DK-DK1",
-                        Forecast = forecast,
-                        UpdatedAt = DateTime.Now
-                    });
+                .ReturnsAsync(data);
 
             return serviceMoq.Object;
         }

@@ -59,5 +59,57 @@ namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests.CarbonInte
 
             return carbonIntensity;
         }
+
+        public ForecastedCarbonIntensity GetForecastedCarbonIntensityData()
+        {
+            var forecast1 = new Forecast
+            {
+                CarbonIntensity = 100,
+                Datetime = DateTime.Now
+            };
+
+            var forecast2 = new Forecast
+            {
+                CarbonIntensity = 200,
+                Datetime = DateTime.Now.AddHours(-2)
+            };
+
+            var forecast = new List<Forecast>() { forecast1, forecast2 };
+
+            var carbonIntensity = new ForecastedCarbonIntensity
+            {
+                Zone = "DK-DK1",
+                Forecast = forecast,
+                UpdatedAt = DateTime.Now
+            };
+
+            return carbonIntensity;
+        }
+
+        public ForecastedMarginalCarbonIntensity GetForecastedMarginalCarbonIntensityData()
+        {
+            var forecast1 = new MarginalForecast
+            {
+                MarginalCarbonIntensity = 100,
+                Datetime = DateTime.Now
+            };
+
+            var forecast2 = new MarginalForecast
+            {
+                MarginalCarbonIntensity = 200,
+                Datetime = DateTime.Now.AddHours(-2)
+            };
+
+            var forecast = new List<MarginalForecast>() { forecast1, forecast2 };
+
+            var carbonIntensity = new ForecastedMarginalCarbonIntensity
+            {
+                Zone = "DK-DK1",
+                Forecast = forecast,
+                UpdatedAt = DateTime.Now
+            };
+
+            return carbonIntensity;
+        }
     }
 }
