@@ -14,7 +14,9 @@ namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests.Updates
 
             var updateRequest = new UpdatedSinceRequest 
             {
-                Threshold = "PT0H0M0S"
+                Zone = "DK-DK1",
+                Threshold = "PT0H0M0S",
+                Since = DateTime.Now.AddYears(-2)
             };
 
             UpdatedSince response = await electricityClient.GetUpdateInfoAsync(updateRequest);
