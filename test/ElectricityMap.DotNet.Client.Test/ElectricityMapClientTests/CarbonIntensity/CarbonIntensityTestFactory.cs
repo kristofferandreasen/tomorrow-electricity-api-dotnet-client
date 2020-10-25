@@ -1,8 +1,8 @@
 using ElectricityMap.DotNet.Client.Interfaces;
 using ElectricityMap.DotNet.Client.Models.Forecasts;
 using ElectricityMap.DotNet.Client.Models.History;
-using ElectricityMap.DotNet.Client.Models.Live;
 using ElectricityMap.DotNet.Client.Models.Recent;
+using ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests.CarbonIntensity;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -11,19 +11,16 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
 {
     public class CarbonIntensityTestFactory
     {
+        private CarbonIntensityDataFactory dataFactory = new CarbonIntensityDataFactory();
+
         public IElectricityMapClient SetupLiveCarbonIntensityMocksWithZone() 
         {
             var serviceMoq = new Mock<IElectricityMapClient>();
+            var data = dataFactory.GetLiveCarbonIntensityData();
 
             serviceMoq
                 .Setup(o => o.GetLiveCarbonIntensityAsync(It.IsAny<string>()))
-                .ReturnsAsync(
-                    new LiveCarbonIntensity {
-                    Zone = "DK-DK1",
-                    CarbonIntensity = 100,
-                    Datetime = DateTime.Now,
-                    UpdatedAt = DateTime.Now
-                });
+                .ReturnsAsync(data);
 
             return serviceMoq.Object;
         }
@@ -31,16 +28,11 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
         public IElectricityMapClient SetupLiveCarbonIntensityMocksWithLatitudeLongitude() 
         {
             var serviceMoq = new Mock<IElectricityMapClient>();
+            var data = dataFactory.GetLiveCarbonIntensityData();
 
             serviceMoq
                 .Setup(o => o.GetLiveCarbonIntensityAsync(It.IsAny<double>(), It.IsAny<double>()))
-                .ReturnsAsync(
-                    new LiveCarbonIntensity {
-                    Zone = "DK-DK1",
-                    CarbonIntensity = 100,
-                    Datetime = DateTime.Now,
-                    UpdatedAt = DateTime.Now
-                });
+                .ReturnsAsync(data);
 
             return serviceMoq.Object;
         }
@@ -48,32 +40,11 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
         public IElectricityMapClient SetupRecentCarbonIntensityMocksWithZone()
         {
             var serviceMoq = new Mock<IElectricityMapClient>();
-
-            var history = new List<History>();
-            var history1 = new History
-            {
-                CarbonIntensity = 100,
-                Datetime = DateTime.Now
-            };
-
-            var history2 = new History
-            {
-                CarbonIntensity = 200,
-                Datetime = DateTime.Now.AddHours(-2)
-            };
-
-            history.Add(history1);
-            history.Add(history2);
-
-            var recentCarbonIntensityHistory = new RecentCarbonIntensityHistory
-            {
-                Zone = "DK-DK1",
-                History = history
-            };
+            var data = dataFactory.GetRecentCarbonIntensityData();
 
             serviceMoq
                 .Setup(o => o.GetRecentCarbonIntensityHistoryAsync(It.IsAny<string>()))
-                .ReturnsAsync(recentCarbonIntensityHistory);
+                .ReturnsAsync(data);
 
             return serviceMoq.Object;
         }
@@ -81,32 +52,11 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
         public IElectricityMapClient SetupRecentCarbonIntensityMocksWithLatitudeLongitude()
         {
             var serviceMoq = new Mock<IElectricityMapClient>();
-
-            var history = new List<History>();
-            var history1 = new History
-            {
-                CarbonIntensity = 100,
-                Datetime = DateTime.Now
-            };
-
-            var history2 = new History
-            {
-                CarbonIntensity = 200,
-                Datetime = DateTime.Now.AddHours(-2)
-            };
-
-            history.Add(history1);
-            history.Add(history2);
-
-            var recentCarbonIntensityHistory = new RecentCarbonIntensityHistory
-            {
-                Zone = "DK-DK1",
-                History = history
-            };
+            var data = dataFactory.GetRecentCarbonIntensityData();
 
             serviceMoq
                 .Setup(o => o.GetRecentCarbonIntensityHistoryAsync(It.IsAny<double>(), It.IsAny<double>()))
-                .ReturnsAsync(recentCarbonIntensityHistory);
+                .ReturnsAsync(data);
 
             return serviceMoq.Object;
         }
@@ -114,17 +64,11 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
         public IElectricityMapClient SetupPastCarbonIntensityMocksWithZone()
         {
             var serviceMoq = new Mock<IElectricityMapClient>();
+            var data = dataFactory.GetPastCarbonIntensityData();
 
             serviceMoq
                 .Setup(o => o.GetPastCarbonIntensityHistoryAsync(It.IsAny<string>(), It.IsAny<DateTime>()))
-                .ReturnsAsync(
-                    new PastCarbonIntensityHistory
-                    {
-                        Zone = "DK-DK1",
-                        CarbonIntensity = 100,
-                        Datetime = DateTime.Now,
-                        UpdatedAt = DateTime.Now
-                    });
+                .ReturnsAsync(data);
 
             return serviceMoq.Object;
         }

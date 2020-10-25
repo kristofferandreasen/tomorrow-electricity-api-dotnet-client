@@ -1,0 +1,63 @@
+﻿using ElectricityMap.DotNet.Client.Models.History;
+using ElectricityMap.DotNet.Client.Models.Live;
+using ElectricityMap.DotNet.Client.Models.Recent;
+using Microsoft.Win32.SafeHandles;
+using System;
+using System.Collections.Generic;
+
+namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests.CarbonIntensity
+{
+    public class CarbonIntensityDataFactory
+    {
+        public LiveCarbonIntensity GetLiveCarbonIntensityData()
+        {
+            var liveCarbonIntensity = new LiveCarbonIntensity
+            {
+                Zone = "DK-DK1",
+                CarbonIntensity = 100,
+                Datetime = DateTime.Now,
+                UpdatedAt = DateTime.Now
+            };
+
+            return liveCarbonIntensity;
+        }
+
+        public RecentCarbonIntensityHistory GetRecentCarbonIntensityData()
+        {
+            var history1 = new History
+            {
+                CarbonIntensity = 100,
+                Datetime = DateTime.Now
+            };
+
+            var history2 = new History
+            {
+                CarbonIntensity = 200,
+                Datetime = DateTime.Now.AddHours(-2)
+            };
+
+            var history = new List<History>() { history1, history2 };
+
+            var recentCarbonIntensityHistory = new RecentCarbonIntensityHistory
+            {
+                Zone = "DK-DK1",
+                History = history
+            };
+
+            return recentCarbonIntensityHistory;
+        }
+
+        public PastCarbonIntensityHistory GetPastCarbonIntensityData()
+        {
+            var carbonIntensity = new PastCarbonIntensityHistory
+            {
+                Zone = "DK-DK1",
+                CarbonIntensity = 100,
+                Datetime = DateTime.Now,
+                UpdatedAt = DateTime.Now
+            };
+
+            return carbonIntensity;
+        }
+    }
+}
