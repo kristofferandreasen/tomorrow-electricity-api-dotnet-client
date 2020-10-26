@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
 	<TargetFramework>netcoreapp3.1</TargetFramework>
@@ -7,7 +7,7 @@
 	<PackageId>ElectricityMap.DotNet.Client</PackageId>
 	<PackageTags>ElectricityMap;C#;Client;DotNet;Core;Rest;API;SDK;Tomorrow</PackageTags>
 	<PackageIcon>logo.png</PackageIcon>
-	<PackageIconUrl>https://github.com/kristofferandreasen/wayback-machine-dotnet-client/blob/master/nuget-images/logo-small.png?raw=true</PackageIconUrl>
+	<PackageIconUrl>https://github.com/kristofferandreasen/tomorrow-electricity-api-dotnet-client/blob/master/images/logo-small.png?raw=true</PackageIconUrl>
 	<Description>
 		This C# .NET client makes it easier to consume the ElectricityMap Rest API for getting data about electricity.
 		- Documentation - https://github.com/kristofferandreasen/tomorrow-electricity-api-dotnet-client
