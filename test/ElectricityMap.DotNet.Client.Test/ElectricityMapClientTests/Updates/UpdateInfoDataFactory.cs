@@ -1,12 +1,12 @@
+using ElectricityMap.DotNet.Client.Models.Updates;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests.Updates
 {
     public class UpdateInfoDataFactory
     {
-        public IElectricityMapClient GetUpdateInfoDate()
+        public UpdatedSince GetUpdateInfoData()
         {
             var update1 = new Update
             {

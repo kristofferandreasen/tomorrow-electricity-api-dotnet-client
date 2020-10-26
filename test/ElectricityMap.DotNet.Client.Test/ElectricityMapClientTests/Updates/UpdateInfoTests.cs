@@ -1,6 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using ElectricityMap.DotNet.Client.Interfaces;
+using ElectricityMap.DotNet.Client.Models;
+using ElectricityMap.DotNet.Client.Models.Updates;
+using System;
+using Xunit;
 
 namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests.Updates
 {

@@ -1,7 +1,7 @@
+using ElectricityMap.DotNet.Client.Models.Forecasts;
 using ElectricityMap.DotNet.Client.Models.History;
 using ElectricityMap.DotNet.Client.Models.Live;
 using ElectricityMap.DotNet.Client.Models.Recent;
-using Microsoft.Win32.SafeHandles;
 using System;
 using System.Collections.Generic;
 

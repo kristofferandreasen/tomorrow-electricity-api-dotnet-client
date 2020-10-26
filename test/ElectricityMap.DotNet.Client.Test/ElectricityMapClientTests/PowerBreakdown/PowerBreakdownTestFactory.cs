@@ -1,11 +1,7 @@
 ﻿using ElectricityMap.DotNet.Client.Interfaces;
-using ElectricityMap.DotNet.Client.Models.Forecasts;
-using ElectricityMap.DotNet.Client.Models.History;
-using ElectricityMap.DotNet.Client.Models.Live;
-using ElectricityMap.DotNet.Client.Models.Recent;
+using ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests.PowerBreakdown;
 using Moq;
 using System;
-using System.Collections.Generic;
 
 namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
 {
