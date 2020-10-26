@@ -1,5 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using ElectricityMap.DotNet.Client.Interfaces;
+using ElectricityMap.DotNet.Client;
 
 [assembly: FunctionsStartup(typeof(AzureFunction.Example.Startup))]
 
