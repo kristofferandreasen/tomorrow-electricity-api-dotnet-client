@@ -2,7 +2,7 @@
 
   <PropertyGroup>
 	<TargetFramework>netcoreapp3.1</TargetFramework>
-	<Version>0.1.0</Version>
+	<Version>0.1.1</Version>
 	<authors>Kristoffer Andreasen</authors>
 	<PackageId>ElectricityMap.DotNet.Client</PackageId>
 	<PackageTags>ElectricityMap;C#;Client;DotNet;Core;Rest;API;SDK;Tomorrow</PackageTags>
