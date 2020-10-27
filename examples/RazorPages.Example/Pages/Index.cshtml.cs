@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using ElectricityMap.DotNet.Client.Constants;
 using ElectricityMap.DotNet.Client.Interfaces;
+using ElectricityMap.DotNet.Client.Models;
 using ElectricityMap.DotNet.Client.Models.Live;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -25,7 +27,7 @@ namespace RazorPages.Example.Pages
 
         public async Task OnGet()
         {
-            var data = await _electricityMapClient.GetForecastedMarginalPowerConsumptionBreakdownAsync(ZoneConstants.Denmark_East_Denmark);
+            var data = await _electricityMapClient.GetLiveCarbonIntensityAsync(ZoneConstants.Denmark_East_Denmark);
         }
     }
 }
