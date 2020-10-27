@@ -5,6 +5,11 @@ using System.Threading.Tasks;
 
 namespace ElectricityMap.DotNet.Client.Http
 {
+    /// <summary>
+    /// Simplifies the requests for all
+    /// endpoints in the API to make one way of
+    /// handling requests and responses.
+    /// </summary>
     internal sealed class ElectricityMapApiRequestor
     {
         private readonly HttpClient _client;
