@@ -28,7 +28,7 @@ namespace ElectricityMap.DotNet.Client
         public ElectricityMapClient(string apiKey)
         {
             if (string.IsNullOrEmpty(apiKey))
-                throw new FormatException("You must pass a valid API key to access the Electricity Map.");
+                throw new ArgumentNullException(apiKey, "You must pass a valid API key to access the Electricity Map.");
 
             httpClient.BaseAddress = new Uri(ApiConstants.BaseUrl);
             httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
