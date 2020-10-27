@@ -19,7 +19,7 @@ namespace ElectricityMap.DotNet.Client
     {
         private readonly ElectricityMapHttpFacade _httpFacade;
 
-        internal ElectricityMapClient(string apiKey)
+        public ElectricityMapClient(string apiKey)
         {
             _httpFacade = new ElectricityMapHttpFacade(apiKey);
         }

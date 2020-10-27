@@ -2,15 +2,13 @@
 
   <PropertyGroup>
 	<TargetFramework>netcoreapp3.1</TargetFramework>
-	<Version>0.1.1</Version>
+	<Version>0.1.2</Version>
 	<authors>Kristoffer Andreasen</authors>
 	<PackageId>ElectricityMap.DotNet.Client</PackageId>
 	<PackageTags>ElectricityMap;C#;Client;DotNet;Core;Rest;API;SDK;Tomorrow</PackageTags>
 	<PackageIconUrl>https://github.com/kristofferandreasen/tomorrow-electricity-api-dotnet-client/blob/master/images/logo-small.png?raw=true</PackageIconUrl>
 	<Description>
-		This C# .NET client makes it easier to consume the ElectricityMap Rest API for getting data about electricity.
-		- Documentation - https://github.com/kristofferandreasen/tomorrow-electricity-api-dotnet-client
-		- ElectricityMap API Docs - http://static.electricitymap.org/api/docs/index.html
+		This C# .NET client makes it easier to consume the ElectricityMap Rest API for getting data about electricity consumption in various countries.
 	</Description>
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	<ProjectGuid>{7496CD11-D6EE-449C-A447-FCEC65E84E5D}</ProjectGuid>

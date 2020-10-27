@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ElectricityMap.DotNet.Client" Version="0.1.0" />
+    <PackageReference Include="ElectricityMap.DotNet.Client" Version="0.1.1" />
   </ItemGroup>
 
 </Project>
