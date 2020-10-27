@@ -4,6 +4,13 @@ using System.Collections.Generic;
 
 namespace ElectricityMap.DotNet.Client.Models.Live
 {
+    /// <summary>
+    /// The last known data about the origin of electricity in an area.
+    /// "powerProduction" (in MW) represents the electricity produced in the zone, broken down by production type.
+    /// "powerConsumption" (in MW) represents the electricity consumed in the zone, after taking into account imports and exports, and broken down by production type.
+    /// "powerExport" and "Power import" (in MW) represent the physical electricity flows at the zone border.
+    /// "renewablePercentage" and "fossilFreePercentage" refers to the % of the power consumption breakdown coming from renewables or fossil-free power plants (renewables and nuclear).
+    /// </summary>
     public class LivePowerBreakdown
     {
         [JsonProperty("zone")]

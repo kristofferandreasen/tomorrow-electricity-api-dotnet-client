@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace ElectricityMap.DotNet.Client.Models.History
 {
+    /// <summary>
+    /// Past power breakdown of an area.
+    /// </summary>
     public class PastPowerBreakdownHistory
     {
         [JsonProperty("zone")]

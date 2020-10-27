@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace ElectricityMap.DotNet.Client.Models.Updates
 {
+    /// <summary>
+    /// A list of timestamps where data has been updated since a specified date for a specified zone. 
+    /// </summary>
     public class UpdatedSince
     {
         [JsonProperty("zone")]

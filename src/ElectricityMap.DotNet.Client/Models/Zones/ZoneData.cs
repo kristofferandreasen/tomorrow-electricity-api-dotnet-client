@@ -2,6 +2,9 @@
 
 namespace ElectricityMap.DotNet.Client.Models.Zones
 {
+    /// <summary>
+    /// The zones available for an auth token.
+    /// </summary>
     public class ZoneData
     {
         [JsonProperty("countryName")]
