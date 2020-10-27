@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using ElectricityMap.DotNet.Client.Constants;
+using ElectricityMap.DotNet.Client.Interfaces;
+using ElectricityMap.DotNet.Client.Models.Live;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
@@ -22,11 +21,11 @@ namespace RazorPages.Example.Pages
             _electricityMapClient = electricityMapClient;
         }
 
-        public LiveCarbonIntensity CarbonIntensity { get; set; }
+        public LiveCarbonIntensity LiveCarbonIntensity { get; set; }
 
         public async Task OnGet()
         {
-            CarbonIntensity = await _electricityMapClient.GetLiveCarbonIntensityAsync(ZoneConstants.Denmark_East_Denmark);
+            LiveCarbonIntensity = await _electricityMapClient.GetLiveCarbonIntensityAsync(ZoneConstants.Denmark_East_Denmark);
         }
     }
 }

@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using ElectricityMap.DotNet.Client;
+using ElectricityMap.DotNet.Client.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,7 +23,8 @@ namespace RazorPages.Example
             services.AddRazorPages();
 
             // Register the electricity map client for dependency injection
-            services.AddSingleton<IElectricityMapClient, ElectricityMapClient>();
+            string electricityMapApiKey = Configuration.GetValue<string>("ElectricityMap:ApiKey");
+            services.AddSingleton<IElectricityMapClient>(s => new ElectricityMapClient(electricityMapApiKey));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
