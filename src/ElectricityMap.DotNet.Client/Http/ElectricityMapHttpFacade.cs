@@ -7,7 +7,6 @@ namespace ElectricityMap.DotNet.Client.Http
 {
     public class ElectricityMapHttpFacade
     {
-        private readonly HttpClient _httpClient;
         private readonly ElectricityMapApiRequestor _requestor;
 
         public ElectricityMapHttpFacade(string apiKey)
@@ -15,7 +14,7 @@ namespace ElectricityMap.DotNet.Client.Http
             if (string.IsNullOrEmpty(apiKey))
                 throw new ArgumentNullException(apiKey, "You must pass a valid API key to access the Electricity Map.");
 
-            _httpClient = new HttpClient
+            HttpClient _httpClient = new HttpClient
             {
                 BaseAddress = new Uri(ApiConstants.BaseUrl)
             };

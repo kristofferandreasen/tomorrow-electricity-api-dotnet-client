@@ -3,6 +3,10 @@ using System.Net;
 
 namespace ElectricityMap.DotNet.Client.Exceptions
 {
+    /// <summary>
+    /// Exception thrown when electricity map API returns non success status code.
+    /// </summary>
+    [Serializable]
     public sealed class ElectricityMapException : Exception
     {
         public ElectricityMapException(HttpStatusCode statusCode)
