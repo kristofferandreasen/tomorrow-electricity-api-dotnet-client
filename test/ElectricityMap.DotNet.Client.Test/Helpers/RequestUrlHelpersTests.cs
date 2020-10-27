@@ -150,7 +150,7 @@ namespace ElectricityMap.DotNet.Client.Helpers
                 Threshold = "P1D"
             };
 
-            Assert.Throws<Exception>(() => RequestUrlHelpers.ConstructRequest(updatedSinceRequest));
+            Assert.Throws<ArgumentNullException>(() => RequestUrlHelpers.ConstructRequest(updatedSinceRequest));
         }
     }
 }
