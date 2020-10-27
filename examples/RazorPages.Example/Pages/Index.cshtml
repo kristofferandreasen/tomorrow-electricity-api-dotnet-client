@@ -4,7 +4,9 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">@Model.LiveCarbonIntensity.CarbonIntensity</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <div class="text-center">
+        <h1 class="display-4">Zone: @Model.LiveCarbonIntensity.Zone</h1>
+        <h1 class="display-4">Carbon Intensity: @Model.LiveCarbonIntensity.CarbonIntensity</h1>
+        <h1 class="display-4">Date: @Model.LiveCarbonIntensity.Datetime</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>

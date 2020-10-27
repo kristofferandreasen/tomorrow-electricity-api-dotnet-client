@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace ElectricityMap.DotNet.Client.Models.Forecasts
 {
+    /// <summary>
+    /// The forecasted marginal carbon intensity (in gCO2eq/kWh) of an area.
+    /// </summary>
     public class ForecastedMarginalCarbonIntensity
     {
         [JsonProperty("zone")]
