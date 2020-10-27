@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Runtime.Serialization;
 
 namespace ElectricityMap.DotNet.Client.Exceptions
 {
@@ -7,7 +8,7 @@ namespace ElectricityMap.DotNet.Client.Exceptions
     /// Exception thrown when electricity map API returns non success status code.
     /// </summary>
     [Serializable]
-    public sealed class ElectricityMapException : Exception
+    public class ElectricityMapException : Exception
     {
         public ElectricityMapException(HttpStatusCode statusCode)
             => HttpStatusCode = statusCode;
@@ -17,6 +18,11 @@ namespace ElectricityMap.DotNet.Client.Exceptions
 
         public ElectricityMapException(HttpStatusCode statusCode, string message, Exception innerException) : base(message, innerException)
             => HttpStatusCode = statusCode;
+
+        protected ElectricityMapException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
+        {
+        }
 
         /// <summary>
         /// Http status code of electricity map response.
