@@ -96,7 +96,7 @@ namespace ElectricityMap.DotNet.Client.Helpers
                 return queryUrl;
             }
 
-            throw new ArgumentNullException("Zone or Latitude/Longitude must be passed as parameters.");
+            throw new ArgumentNullException(updatedSinceRequest.Zone, "Zone or Latitude/Longitude must be passed as parameters.");
         }
 
         /// <summary>
