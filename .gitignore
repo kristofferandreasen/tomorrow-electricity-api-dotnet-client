@@ -537,11 +537,12 @@ __pycache__/
 # Cake - Uncomment if you are using it
 # tools/**
 # !tools/packages.config
-/CLEVER.Integration/CLEVER.Integration/Properties/PublishProfiles/CLEVERConnect - Web Deploy.pubxml
-/CLEVER.Connect.Hubject.SF/Wsdls/RelatedSchemas
 
 # Service Fabric
 pkg/
 
 #Terraform
 **/*.terraform
+
+# Usage Metrics
+/src/ElectricityMap.DotNet.Client/vsWsUsageMetrics.txt

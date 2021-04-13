@@ -1,29 +1,36 @@
-﻿using ElectricityMap.DotNet.Client.Interfaces;
+﻿using AutoFixture.Xunit2;
+using ElectricityMap.DotNet.Client.Interfaces;
 using ElectricityMap.DotNet.Client.Models;
 using ElectricityMap.DotNet.Client.Models.Updates;
-using System;
+using FluentAssertions;
+using NSubstitute;
 using Xunit;
 
 namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests.Updates
 {
     public class UpdateInfoTests
     {
-        [Fact]
-        public async void Get_update_info_returns_data()
+        private readonly IElectricityMapClient sut;
+
+        public UpdateInfoTests()
         {
-            var testFactory = new UpdateInfoTestFactory();
-            IElectricityMapClient electricityClient = testFactory.SetupUpdateInfoMock();
+            sut = Substitute.For<IElectricityMapClient>();
+        }
 
-            var updateRequest = new UpdatedSinceRequest 
-            {
-                Zone = "DK-DK1",
-                Threshold = "PT0H0M0S",
-                Since = DateTime.Now.AddYears(-2)
-            };
+        [Theory, AutoData]
+        public async void Get_update_info_returns_data(
+            UpdatedSinceRequest updatedSinceRequest,
+            UpdatedSince updatedSince)
+        {
+            sut
+                .GetUpdateInfoAsync(Arg.Any<UpdatedSinceRequest>())
+                .Returns(updatedSince);
 
-            UpdatedSince response = await electricityClient.GetUpdateInfoAsync(updateRequest);
+            var result = await sut
+                 .GetUpdateInfoAsync(updatedSinceRequest);
 
-            Assert.NotNull(response);
+            result.Should().NotBeNull();
+            result.Should().BeEquivalentTo(updatedSince);
         }
     }
 }

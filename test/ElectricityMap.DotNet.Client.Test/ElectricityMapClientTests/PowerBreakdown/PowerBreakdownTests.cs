@@ -1,8 +1,11 @@
-﻿using ElectricityMap.DotNet.Client.Interfaces;
+﻿using AutoFixture.Xunit2;
+using ElectricityMap.DotNet.Client.Interfaces;
 using ElectricityMap.DotNet.Client.Models.Forecasts;
 using ElectricityMap.DotNet.Client.Models.History;
 using ElectricityMap.DotNet.Client.Models.Live;
 using ElectricityMap.DotNet.Client.Models.Recent;
+using FluentAssertions;
+using NSubstitute;
 using System;
 using Xunit;
 
@@ -10,141 +13,178 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
 {
     public class PowerBreakdownTests
     {
-        [Fact]
-        public async void Get_power_breakdown_live_zone()
+        private readonly IElectricityMapClient sut;
+
+        public PowerBreakdownTests()
         {
-            var testFactory = new PowerBreakdownTestFactory();
-            IElectricityMapClient electricityClient = testFactory.SetupLivePowerBreakdownMocksWithZone();
-
-            string zone = "DK-DK1";
-
-            LivePowerBreakdown response = await electricityClient.GetLivePowerBreakdownAsync(zone);
-
-            Assert.NotNull(response);
+            sut = Substitute.For<IElectricityMapClient>();
         }
 
-        [Fact]
-        public async void Get_power_breakdown_live_lat_long()
+        [Theory, AutoData]
+        public async void Get_power_breakdown_live_zone(
+            string zone,
+            LivePowerBreakdown livePowerBreakdown)
         {
-            var testFactory = new PowerBreakdownTestFactory();
-            IElectricityMapClient electricityClient = testFactory.SetupLivePowerBreakdownMocksWithLatLong();
+            sut
+                .GetLivePowerBreakdownAsync(Arg.Any<string>())
+                .Returns(livePowerBreakdown);
 
-            double latitude = 55.6590875d;
-            double longitude = 12.5492117d;
+            var result = await sut
+                 .GetLivePowerBreakdownAsync(zone);
 
-            LivePowerBreakdown response = await electricityClient.GetLivePowerBreakdownAsync(latitude, longitude);
-
-            Assert.NotNull(response);
+            result.Should().NotBeNull();
+            result.Should().Be(livePowerBreakdown);
         }
 
-        [Fact]
-        public async void Get_power_breakdown_recent_zone()
+        [Theory, AutoData]
+        public async void Get_power_breakdown_live_lat_long(
+            double latitude,
+            double longitude,
+            LivePowerBreakdown livePowerBreakdown)
         {
-            var testFactory = new PowerBreakdownTestFactory();
-            IElectricityMapClient electricityClient = testFactory.SetupRecentPowerBreakdownMocksWithZone();
+            sut
+                .GetLivePowerBreakdownAsync(Arg.Any<double>(), Arg.Any<double>())
+                .Returns(livePowerBreakdown);
 
-            string zone = "DK-DK1";
+            var result = await sut
+                 .GetLivePowerBreakdownAsync(latitude, longitude);
 
-            RecentPowerBreakdownHistory response = await electricityClient.GetRecentPowerBreakdownHistoryAsync(zone);
-
-            Assert.NotNull(response);
+            result.Should().NotBeNull();
+            result.Should().Be(livePowerBreakdown);
         }
 
-        [Fact]
-        public async void Get_power_breakdown_recent_lat_long()
+        [Theory, AutoData]
+        public async void Get_power_breakdown_recent_zone(
+            string zone,
+            RecentPowerBreakdownHistory recentPowerBreakdown)
         {
-            var testFactory = new PowerBreakdownTestFactory();
-            IElectricityMapClient electricityClient = testFactory.SetupRecentPowerBreakdownMocksWithLatLong();
+            sut
+                .GetRecentPowerBreakdownHistoryAsync(Arg.Any<string>())
+                .Returns(recentPowerBreakdown);
 
-            double latitude = 55.6590875d;
-            double longitude = 12.5492117d;
+            var result = await sut
+                 .GetRecentPowerBreakdownHistoryAsync(zone);
 
-            RecentPowerBreakdownHistory response = await electricityClient.GetRecentPowerBreakdownHistoryAsync(latitude, longitude);
-
-            Assert.NotNull(response);
+            result.Should().NotBeNull();
+            result.Should().Be(recentPowerBreakdown);
         }
 
-        [Fact]
-        public async void Get_power_breakdown_history_zone()
+        [Theory, AutoData]
+        public async void Get_power_breakdown_recent_lat_long(
+            double latitude,
+            double longitude,
+            RecentPowerBreakdownHistory recentPowerBreakdown)
         {
-            var testFactory = new PowerBreakdownTestFactory();
-            IElectricityMapClient electricityClient = testFactory.SetupPastPowerBreakdownMocksWithZone();
+            sut
+                .GetRecentPowerBreakdownHistoryAsync(Arg.Any<double>(), Arg.Any<double>())
+                .Returns(recentPowerBreakdown);
 
-            string zone = "DK-DK1";
-            DateTime datetime = DateTime.Now;
+            var result = await sut
+                 .GetRecentPowerBreakdownHistoryAsync(latitude, longitude);
 
-            PastPowerBreakdownHistory response = await electricityClient.GetPastPowerBreakdownHistoryAsync(zone, datetime);
-
-            Assert.NotNull(response);
+            result.Should().NotBeNull();
+            result.Should().Be(recentPowerBreakdown);
         }
 
-        [Fact]
-        public async void Get_power_breakdown_history_lat_long()
+        [Theory, AutoData]
+        public async void Get_power_breakdown_history_zone(
+            string zone,
+            DateTime date,
+            PastPowerBreakdownHistory pastPowerBreakdown)
         {
-            var testFactory = new PowerBreakdownTestFactory();
-            IElectricityMapClient electricityClient = testFactory.SetupPastPowerBreakdownMocksWithLatLong();
+            sut
+                .GetPastPowerBreakdownHistoryAsync(Arg.Any<string>(), Arg.Any<DateTime>())
+                .Returns(pastPowerBreakdown);
 
-            double latitude = 55.6590875d;
-            double longitude = 12.5492117d;
-            DateTime datetime = DateTime.Now;
+            var result = await sut
+                 .GetPastPowerBreakdownHistoryAsync(zone, date);
 
-            PastPowerBreakdownHistory response = await electricityClient.GetPastPowerBreakdownHistoryAsync(latitude, longitude, datetime);
-
-            Assert.NotNull(response);
+            result.Should().NotBeNull();
+            result.Should().Be(pastPowerBreakdown);
         }
 
-        [Fact]
-        public async void Get_power_breakdown_forecast_zone()
+        [Theory, AutoData]
+        public async void Get_power_breakdown_history_lat_long(
+            double latitude,
+            double longitude,
+            DateTime date,
+            PastPowerBreakdownHistory pastPowerBreakdown)
         {
-            var testFactory = new PowerBreakdownTestFactory();
-            IElectricityMapClient electricityClient = testFactory.SetupForecastPowerBreakdownMocksWithZone();
+            sut
+                .GetPastPowerBreakdownHistoryAsync(Arg.Any<double>(), Arg.Any<double>(), Arg.Any<DateTime>())
+                .Returns(pastPowerBreakdown);
 
-            string zone = "DK-DK1";
+            var result = await sut
+                 .GetPastPowerBreakdownHistoryAsync(latitude, longitude, date);
 
-            ForecastedPowerConsumptionBreakdown response = await electricityClient.GetForecastedPowerConsumptionBreakdownAsync(zone);
-
-            Assert.NotNull(response);
+            result.Should().NotBeNull();
+            result.Should().Be(pastPowerBreakdown);
         }
 
-        [Fact]
-        public async void Get_power_breakdown_forecast_lat_long()
+        [Theory, AutoData]
+        public async void Get_power_breakdown_forecast_zone(
+            string zone,
+            ForecastedPowerConsumptionBreakdown data)
         {
-            var testFactory = new PowerBreakdownTestFactory();
-            IElectricityMapClient electricityClient = testFactory.SetupForecastPowerBreakdownMocksWithLatLong();
+            sut
+                .GetForecastedPowerConsumptionBreakdownAsync(Arg.Any<string>())
+                .Returns(data);
 
-            double latitude = 55.6590875d;
-            double longitude = 12.5492117d;
+            var result = await sut
+                 .GetForecastedPowerConsumptionBreakdownAsync(zone);
 
-            ForecastedPowerConsumptionBreakdown response = await electricityClient.GetForecastedPowerConsumptionBreakdownAsync(latitude, longitude);
-
-            Assert.NotNull(response);
+            result.Should().NotBeNull();
+            result.Should().Be(data);
         }
 
-        [Fact]
-        public async void Get_power_breakdown_marginal_forecast_zone()
+        [Theory, AutoData]
+        public async void Get_power_breakdown_forecast_lat_long(
+            double latitude,
+            double longitude,
+            ForecastedPowerConsumptionBreakdown data)
         {
-            var testFactory = new PowerBreakdownTestFactory();
-            IElectricityMapClient electricityClient = testFactory.SetupMarginalForecastPowerBreakdownMocksWithZone();
+            sut
+                .GetForecastedPowerConsumptionBreakdownAsync(Arg.Any<double>(), Arg.Any<double>())
+                .Returns(data);
 
-            string zone = "DK-DK1";
+            var result = await sut
+                 .GetForecastedPowerConsumptionBreakdownAsync(latitude, longitude);
 
-            ForecastedMarginalPowerConsumptionBreakdown response = await electricityClient.GetForecastedMarginalPowerConsumptionBreakdownAsync(zone);
-
-            Assert.NotNull(response);
+            result.Should().NotBeNull();
+            result.Should().Be(data);
         }
 
-        [Fact]
-        public async void Get_power_breakdown_marginal_forecast_lat_long()
+        [Theory, AutoData]
+        public async void Get_power_breakdown_marginal_forecast_zone(
+            string zone,
+            ForecastedMarginalPowerConsumptionBreakdown data)
         {
-            var testFactory = new PowerBreakdownTestFactory();
-            IElectricityMapClient electricityClient = testFactory.SetupMarginalForecastPowerBreakdownMocksWithLatLong();
+            sut
+                .GetForecastedMarginalPowerConsumptionBreakdownAsync(Arg.Any<string>())
+                .Returns(data);
 
-            double latitude = 55.6590875d;
-            double longitude = 12.5492117d;
+            var result = await sut
+                 .GetForecastedMarginalPowerConsumptionBreakdownAsync(zone);
 
-            ForecastedMarginalPowerConsumptionBreakdown response = await electricityClient.GetForecastedMarginalPowerConsumptionBreakdownAsync(latitude, longitude);
+            result.Should().NotBeNull();
+            result.Should().Be(data);
+        }
 
-            Assert.NotNull(response);
+        [Theory, AutoData]
+        public async void Get_power_breakdown_marginal_forecast_lat_long(
+            double latitude,
+            double longitude,
+            ForecastedMarginalPowerConsumptionBreakdown data)
+        {
+            sut
+                .GetForecastedMarginalPowerConsumptionBreakdownAsync(Arg.Any<double>(), Arg.Any<double>())
+                .Returns(data);
+
+            var result = await sut
+                 .GetForecastedMarginalPowerConsumptionBreakdownAsync(latitude, longitude);
+
+            result.Should().NotBeNull();
+            result.Should().Be(data);
         }
     }
 }
