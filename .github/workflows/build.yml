@@ -55,15 +55,9 @@ jobs:
       run: dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
       working-directory: test/ElectricityMap.DotNet.Client.Test
 
-    - name: Build and analyze
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      shell: powershell
-      run: |
-        .\.sonar\scanner\dotnet-sonarscanner begin /k:"kristofferandreasen_tomorrow-electricity-api-dotnet-client" /o:"kristofferandreasen" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths='"src/ElectricityMap.DotNet.Client.Test/TestResults/coverage.info"'
-        dotnet build "src/ElectricityMap.DotNet.Client/ElectricityMap.DotNet.Client.csproj"
-        .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+    - name: Build
+      run: dotnet build
+      working-directory: src/ElectricityMap.DotNet.Client
 
     - name: publish on version change
       id: publish_nuget
