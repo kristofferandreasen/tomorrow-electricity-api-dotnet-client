@@ -51,13 +51,13 @@ jobs:
         New-Item -Path .\.sonar\scanner -ItemType Directory
         dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
 
-    - name: Test
-      run: dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
-      working-directory: test/ElectricityMap.DotNet.Client.Test
-
     - name: Build
       run: dotnet build
       working-directory: src/ElectricityMap.DotNet.Client
+
+    - name: Test
+      run: dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
+      working-directory: test/ElectricityMap.DotNet.Client.Test
 
     - name: publish on version change
       id: publish_nuget
