@@ -1,8 +1,11 @@
-﻿using ElectricityMap.DotNet.Client.Interfaces;
+﻿using AutoFixture.Xunit2;
+using ElectricityMap.DotNet.Client.Interfaces;
 using ElectricityMap.DotNet.Client.Models.Forecasts;
 using ElectricityMap.DotNet.Client.Models.History;
 using ElectricityMap.DotNet.Client.Models.Live;
 using ElectricityMap.DotNet.Client.Models.Recent;
+using FluentAssertions;
+using NSubstitute;
 using System;
 using Xunit;
 
@@ -10,132 +13,178 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
 {
     public class CarbonIntensityTests
     {
-        private IElectricityMapClient electricityClient;
-        private CarbonIntensityTestFactory testFactory = new CarbonIntensityTestFactory();
+        private readonly IElectricityMapClient sut;
 
-        [Fact]
-        public async void Get_carbon_intensity_live_zone()
+        public CarbonIntensityTests()
         {
-            electricityClient = testFactory.SetupLiveCarbonIntensityMocksWithZone();
-
-            string zone = "DK-DK1";
-
-            LiveCarbonIntensity response = await electricityClient.GetLiveCarbonIntensityAsync(zone);
-
-            Assert.NotNull(response);
+            sut = Substitute.For<IElectricityMapClient>();
         }
 
-        [Fact]
-        public async void Get_carbon_intensity_live_lat_long()
+        [Theory, AutoData]
+        public async void Get_carbon_intensity_live_zone(
+            string zone,
+            LiveCarbonIntensity data)
         {
-            electricityClient = testFactory.SetupLiveCarbonIntensityMocksWithLatitudeLongitude();
+            sut
+                .GetLiveCarbonIntensityAsync(Arg.Any<string>())
+                .Returns(data);
 
-            double latitude = 55.6590875d;
-            double longitude = 12.5492117d;
-            LiveCarbonIntensity response = await electricityClient.GetLiveCarbonIntensityAsync(latitude, longitude);
+            var result = await sut
+                 .GetLiveCarbonIntensityAsync(zone);
 
-            Assert.NotNull(response);
+            result.Should().NotBeNull();
+            result.Should().Be(data);
         }
 
-        [Fact]
-        public async void Get_carbon_intensity_recent_zone()
+        [Theory, AutoData]
+        public async void Get_carbon_intensity_live_lat_long(
+            double latitude,
+            double longitude,
+            LiveCarbonIntensity data)
         {
-            electricityClient = testFactory.SetupRecentCarbonIntensityMocksWithZone();
+            sut
+                .GetLiveCarbonIntensityAsync(Arg.Any<double>(), Arg.Any<double>())
+                .Returns(data);
 
-            string zone = "DK-DK1";
+            var result = await sut
+                 .GetLiveCarbonIntensityAsync(latitude, longitude);
 
-            RecentCarbonIntensityHistory response = await electricityClient.GetRecentCarbonIntensityHistoryAsync(zone);
-
-            Assert.NotNull(response);
+            result.Should().NotBeNull();
+            result.Should().Be(data);
         }
 
-        [Fact]
-        public async void Get_carbon_intensity_recent_lat_long()
+        [Theory, AutoData]
+        public async void Get_carbon_intensity_recent_zone(
+            string zone,
+            RecentCarbonIntensityHistory data)
         {
-            electricityClient = testFactory.SetupRecentCarbonIntensityMocksWithLatitudeLongitude();
+            sut
+                .GetRecentCarbonIntensityHistoryAsync(Arg.Any<string>())
+                .Returns(data);
 
-            double latitude = 55.6590875d;
-            double longitude = 12.5492117d;
-            RecentCarbonIntensityHistory response = await electricityClient.GetRecentCarbonIntensityHistoryAsync(latitude, longitude);
+            var result = await sut
+                 .GetRecentCarbonIntensityHistoryAsync(zone);
 
-            Assert.NotNull(response);
+            result.Should().NotBeNull();
+            result.Should().Be(data);
         }
 
-        [Fact]
-        public async void Get_carbon_intensity_past_zone()
+        [Theory, AutoData]
+        public async void Get_carbon_intensity_recent_lat_long(
+            double latitude,
+            double longitude,
+            RecentCarbonIntensityHistory data)
         {
-            electricityClient = testFactory.SetupPastCarbonIntensityMocksWithZone();
+            sut
+                .GetRecentCarbonIntensityHistoryAsync(Arg.Any<double>(), Arg.Any<double>())
+                .Returns(data);
 
-            string zone = "DK-DK1";
-            DateTime datetime = DateTime.Now;
+            var result = await sut
+                 .GetRecentCarbonIntensityHistoryAsync(latitude, longitude);
 
-            PastCarbonIntensityHistory response = await electricityClient.GetPastCarbonIntensityHistoryAsync(zone, datetime);
-
-            Assert.NotNull(response);
+            result.Should().NotBeNull();
+            result.Should().Be(data);
         }
 
-        [Fact]
-        public async void Get_carbon_intensity_past_lat_long()
+        [Theory, AutoData]
+        public async void Get_carbon_intensity_past_zone(
+            string zone,
+            DateTime date,
+            PastCarbonIntensityHistory data)
         {
-            electricityClient = testFactory.SetupPastCarbonIntensityMocksWithLatitudeLongitude();
+            sut
+                .GetPastCarbonIntensityHistoryAsync(Arg.Any<string>(), Arg.Any<DateTime>())
+                .Returns(data);
 
-            double latitude = 55.6590875d;
-            double longitude = 12.5492117d;
-            DateTime datetime = DateTime.Now;
+            var result = await sut
+                 .GetPastCarbonIntensityHistoryAsync(zone, date);
 
-            PastCarbonIntensityHistory response = await electricityClient.GetPastCarbonIntensityHistoryAsync(latitude, longitude, datetime);
-
-            Assert.NotNull(response);
+            result.Should().NotBeNull();
+            result.Should().Be(data);
         }
 
-        [Fact]
-        public async void Get_carbon_intensity_forecast_zone()
+        [Theory, AutoData]
+        public async void Get_carbon_intensity_past_lat_long(
+            double latitude,
+            double longitude,
+            DateTime date,
+            PastCarbonIntensityHistory data)
         {
-            electricityClient = testFactory.SetupForecastedCarbonIntensityMocksWithZone();
+            sut
+                .GetPastCarbonIntensityHistoryAsync(Arg.Any<double>(), Arg.Any<double>(), Arg.Any<DateTime>())
+                .Returns(data);
 
-            string zone = "DK-DK1";
+            var result = await sut
+                 .GetPastCarbonIntensityHistoryAsync(latitude, longitude, date);
 
-            ForecastedCarbonIntensity response = await electricityClient.GetForecastedCarbonIntensityAsync(zone);
-
-            Assert.NotNull(response);
+            result.Should().NotBeNull();
+            result.Should().Be(data);
         }
 
-        [Fact]
-        public async void Get_carbon_intensity_forecast_lat_long()
+        [Theory, AutoData]
+        public async void Get_carbon_intensity_forecast_zone(
+            string zone,
+            ForecastedCarbonIntensity data)
         {
-            electricityClient = testFactory.SetupForecastedCarbonIntensityMocksWithLatitudeLongitude();
+            sut
+                .GetForecastedCarbonIntensityAsync(Arg.Any<string>())
+                .Returns(data);
 
-            double latitude = 55.6590875d;
-            double longitude = 12.5492117d;
+            var result = await sut
+                 .GetForecastedCarbonIntensityAsync(zone);
 
-            ForecastedCarbonIntensity response = await electricityClient.GetForecastedCarbonIntensityAsync(latitude, longitude);
-
-            Assert.NotNull(response);
+            result.Should().NotBeNull();
+            result.Should().Be(data);
         }
 
-        [Fact]
-        public async void Get_carbon_intensity_marginal_forecast_zone()
+        [Theory, AutoData]
+        public async void Get_carbon_intensity_forecast_lat_long(
+            double latitude,
+            double longitude,
+            ForecastedCarbonIntensity data)
         {
-            electricityClient = testFactory.SetupForecastedMarginalCarbonIntensityMocksWithZone();
+            sut
+                .GetForecastedCarbonIntensityAsync(Arg.Any<double>(), Arg.Any<double>())
+                .Returns(data);
 
-            string zone = "DK-DK1";
+            var result = await sut
+                 .GetForecastedCarbonIntensityAsync(latitude, longitude);
 
-            ForecastedMarginalCarbonIntensity response = await electricityClient.GetForecastedMarginalCarbonIntensityAsync(zone);
-
-            Assert.NotNull(response);
+            result.Should().NotBeNull();
+            result.Should().Be(data);
         }
 
-        [Fact]
-        public async void Get_carbon_intensity_marginal_forecast_lat_long()
+        [Theory, AutoData]
+        public async void Get_carbon_intensity_marginal_forecast_zone(
+           string zone,
+           ForecastedMarginalCarbonIntensity data)
         {
-            electricityClient = testFactory.SetupForecastedMarginalCarbonIntensityMocksWithLatitudeLongitude();
+            sut
+                .GetForecastedMarginalCarbonIntensityAsync(Arg.Any<string>())
+                .Returns(data);
 
-            double latitude = 55.6590875d;
-            double longitude = 12.5492117d;
+            var result = await sut
+                 .GetForecastedMarginalCarbonIntensityAsync(zone);
 
-            ForecastedMarginalCarbonIntensity response = await electricityClient.GetForecastedMarginalCarbonIntensityAsync(latitude, longitude);
+            result.Should().NotBeNull();
+            result.Should().Be(data);
+        }
 
-            Assert.NotNull(response);
+        [Theory, AutoData]
+        public async void Get_carbon_intensity_marginal_forecast_lat_long(
+            double latitude,
+            double longitude,
+            ForecastedMarginalCarbonIntensity data)
+        {
+            sut
+                .GetForecastedMarginalCarbonIntensityAsync(Arg.Any<double>(), Arg.Any<double>())
+                .Returns(data);
+
+            var result = await sut
+                 .GetForecastedMarginalCarbonIntensityAsync(latitude, longitude);
+
+            result.Should().NotBeNull();
+            result.Should().Be(data);
         }
     }
 }
