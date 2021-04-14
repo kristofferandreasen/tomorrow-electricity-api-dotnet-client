@@ -1,8 +1,10 @@
 ﻿using AutoFixture.Xunit2;
+using ElectricityMap.DotNet.Client.Exceptions;
 using ElectricityMap.DotNet.Client.Interfaces;
 using ElectricityMap.DotNet.Client.Models.Zones;
 using FluentAssertions;
 using NSubstitute;
+using NSubstitute.ExceptionExtensions;
 using System.Collections.Generic;
 using Xunit;
 
@@ -25,7 +27,7 @@ namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests.Zones
                 .GetAvailableZonesAsync()
                 .Returns(zones);
 
-           var result = await sut
+            var result = await sut
                 .GetAvailableZonesAsync();
 
             result.Should().NotBeNull();
