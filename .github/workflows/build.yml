@@ -52,12 +52,16 @@ jobs:
         dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
 
     - name: Build
-      run: dotnet build
+      run: dotnet build --configuration Release --no-restore
       working-directory: src/ElectricityMap.DotNet.Client
 
     - name: Test
       run: dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
       working-directory: test/ElectricityMap.DotNet.Client.Test
+
+    - name: Pack
+      run: dotnet pack -c Release -o out
+      working-directory: src/ElectricityMap.DotNet.Client
 
     - name: publish on version change
       id: publish_nuget
