@@ -10,13 +10,29 @@ namespace ElectricityMap.DotNet.Client.Exceptions
     [Serializable]
     public class ElectricityMapException : Exception
     {
+        public ElectricityMapException()
+        {
+        }
+
+        public ElectricityMapException(string message)
+            : base(message)
+        {
+        }
+
+        public ElectricityMapException(string message, Exception innerException)
+            : base(message, innerException)
+        {
+        }
+
         public ElectricityMapException(HttpStatusCode statusCode)
             => HttpStatusCode = statusCode;
 
-        public ElectricityMapException(HttpStatusCode statusCode, string message) : base(message)
+        public ElectricityMapException(HttpStatusCode statusCode, string message)
+            : base(message)
             => HttpStatusCode = statusCode;
 
-        public ElectricityMapException(HttpStatusCode statusCode, string message, Exception innerException) : base(message, innerException)
+        public ElectricityMapException(HttpStatusCode statusCode, string message, Exception innerException)
+            : base(message, innerException)
             => HttpStatusCode = statusCode;
 
         protected ElectricityMapException(SerializationInfo info, StreamingContext context)

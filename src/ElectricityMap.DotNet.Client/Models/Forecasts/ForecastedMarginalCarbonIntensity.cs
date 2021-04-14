@@ -10,21 +10,12 @@ namespace ElectricityMap.DotNet.Client.Models.Forecasts
     public class ForecastedMarginalCarbonIntensity
     {
         [JsonProperty("zone")]
-        public string Zone { get; set; }
+        public string Zone { get; set; } = default!;
 
         [JsonProperty("forecast")]
-        public IEnumerable<MarginalForecast> Forecast { get; set; }
+        public IEnumerable<MarginalForecast> Forecast { get; set; } = default!;
 
         [JsonProperty("updatedAt")]
         public DateTime UpdatedAt { get; set; }
-    }
-
-    public class MarginalForecast
-    {
-        [JsonProperty("marginalCarbonIntensity")]
-        public int MarginalCarbonIntensity { get; set; }
-
-        [JsonProperty("datetime")]
-        public DateTime Datetime { get; set; }
     }
 }

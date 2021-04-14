@@ -12,36 +12,48 @@ namespace ElectricityMap.DotNet.Client.Http
     /// </summary>
     internal sealed class ElectricityMapApiRequestor
     {
-        private readonly HttpClient _client;
+        private readonly HttpClient client;
 
         public ElectricityMapApiRequestor(HttpClient client)
         {
-            _client = client;
+            this.client = client;
         }
 
-        public async Task<T> Get<T>(string url)
+        public async Task<T> GetAsync<T>(string url)
         {
-            HttpResponseMessage responseMessage = await _client.GetAsync(url);
-            await EnsureSuccessStatusCode(responseMessage);
+            HttpResponseMessage responseMessage = await client
+                .GetAsync(url).ConfigureAwait(false);
 
-            return await ReadResponse<T>(responseMessage);
+            await EnsureSuccessStatusCodeAsync(responseMessage)
+                .ConfigureAwait(false);
+
+            return await ReadResponseAsync<T>(responseMessage)
+                .ConfigureAwait(false);
         }
 
-        private async Task<T> ReadResponse<T>(HttpResponseMessage responseMessage)
+        private static async Task<T> ReadResponseAsync<T>(HttpResponseMessage responseMessage)
         {
-            string response = await responseMessage.Content.ReadAsStringAsync();
+            string response = await responseMessage.Content
+                .ReadAsStringAsync()
+                .ConfigureAwait(false);
+
             var result = JsonConvert.DeserializeObject<T>(response);
 
             return result;
         }
 
-        private static async Task EnsureSuccessStatusCode(HttpResponseMessage responseMessage)
+        private static async Task EnsureSuccessStatusCodeAsync(HttpResponseMessage responseMessage)
         {
             if (responseMessage.IsSuccessStatusCode)
+            {
                 return;
+            }
 
-            string errorResponse = await responseMessage.Content.ReadAsStringAsync();
-            throw new ElectricityMapException(responseMessage.StatusCode, errorResponse ?? "");
+            string errorResponse = await responseMessage.Content
+                .ReadAsStringAsync()
+                .ConfigureAwait(false);
+
+            throw new ElectricityMapException(responseMessage.StatusCode, errorResponse ?? string.Empty);
         }
     }
 }

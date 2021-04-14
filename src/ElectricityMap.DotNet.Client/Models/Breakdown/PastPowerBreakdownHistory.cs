@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ElectricityMap.DotNet.Client.Models.History
+namespace ElectricityMap.DotNet.Client.Models.Breakdown
 {
     /// <summary>
     /// Past power breakdown of an area.
@@ -10,7 +10,7 @@ namespace ElectricityMap.DotNet.Client.Models.History
     public class PastPowerBreakdownHistory
     {
         [JsonProperty("zone")]
-        public string Zone { get; set; }
+        public string Zone { get; set; } = default!;
 
         [JsonProperty("datetime")]
         public DateTime Datetime { get; set; }
@@ -22,16 +22,16 @@ namespace ElectricityMap.DotNet.Client.Models.History
         public DateTime CreatedAt { get; set; }
 
         [JsonProperty("powerConsumptionBreakdown")]
-        public Dictionary<string, int?> PowerConsumptionBreakdown { get; set; }
+        public Dictionary<string, int?> PowerConsumptionBreakdown { get; set; } = default!;
 
         [JsonProperty("powerProductionBreakdown")]
-        public Dictionary<string, int?> PowerProductionBreakdown { get; set; }
+        public Dictionary<string, int?> PowerProductionBreakdown { get; set; } = default!;
 
         [JsonProperty("powerImportBreakdown")]
-        public Dictionary<string, double?> PowerImportBreakdown { get; set; }
+        public Dictionary<string, double?> PowerImportBreakdown { get; set; } = default!;
 
         [JsonProperty("powerExportBreakdown")]
-        public Dictionary<string, double?> PowerExportBreakdown { get; set; }
+        public Dictionary<string, double?> PowerExportBreakdown { get; set; } = default!;
 
         [JsonProperty("fossilFreePercentage")]
         public int FossilFreePercentage { get; set; }

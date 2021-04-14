@@ -9,7 +9,7 @@ namespace ElectricityMap.DotNet.Client.Models.History
     public class PastCarbonIntensityHistory
     {
         [JsonProperty("zone")]
-        public string Zone { get; set; }
+        public string Zone { get; set; } = default!;
 
         [JsonProperty("carbonIntensity")]
         public int CarbonIntensity { get; set; }

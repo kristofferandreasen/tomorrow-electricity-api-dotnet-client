@@ -1,7 +1,7 @@
 ﻿using AutoFixture.Xunit2;
 using ElectricityMap.DotNet.Client.Interfaces;
+using ElectricityMap.DotNet.Client.Models.Breakdown;
 using ElectricityMap.DotNet.Client.Models.Forecasts;
-using ElectricityMap.DotNet.Client.Models.History;
 using ElectricityMap.DotNet.Client.Models.Live;
 using ElectricityMap.DotNet.Client.Models.Recent;
 using FluentAssertions;

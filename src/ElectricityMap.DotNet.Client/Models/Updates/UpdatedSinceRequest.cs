@@ -1,6 +1,4 @@
-﻿#nullable enable
-
-using System;
+﻿using System;
 
 namespace ElectricityMap.DotNet.Client.Models
 {
@@ -12,21 +10,21 @@ namespace ElectricityMap.DotNet.Client.Models
         public string? Zone { get; set; } = default!;
 
         /// <summary>
-        /// Longitude (if querying with a geolocation)
+        /// Longitude (if querying with a geolocation).
         /// </summary>
         public double? Longitude { get; set; }
 
         /// <summary>
-        /// Latitude (if querying with a geolocation)
+        /// Latitude (if querying with a geolocation).
         /// </summary>
         public double? Latitude { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public DateTime Since { get; set; }
+
         public DateTime? Start { get; set; }
+
         public DateTime? End { get; set; }
+
         public int? Limit { get; set; }
 
         /// <summary>

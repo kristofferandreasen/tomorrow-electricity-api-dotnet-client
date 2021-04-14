@@ -1,11 +1,12 @@
 ﻿using ElectricityMap.DotNet.Client.Constants;
 using ElectricityMap.DotNet.Client.Models;
 using System;
+using System.Globalization;
 
 namespace ElectricityMap.DotNet.Client.Helpers
 {
     /// <summary>
-    /// Helpers used to construct 
+    /// Helpers used to construct
     /// request paths for the API.
     /// </summary>
     public static class RequestUrlHelpers
@@ -15,10 +16,9 @@ namespace ElectricityMap.DotNet.Client.Helpers
         /// the needed parameter for the API.
         /// </summary>
         /// <param name="area"></param>
-        /// <param name="action"></param>
         /// <returns></returns>
         public static string ConstructRequest(string area)
-        => string.Concat(ApiConstants.BaseUrl, ApiConstants.Version3, area);
+            => string.Concat(ApiConstants.BaseUrl, ApiConstants.Version3, area);
 
         /// <summary>
         /// Construct the request needed to
@@ -28,8 +28,17 @@ namespace ElectricityMap.DotNet.Client.Helpers
         /// <param name="action"></param>
         /// <param name="zone"></param>
         /// <returns></returns>
-        public static string ConstructRequest(string area, string action, string zone)
-        => string.Concat(ApiConstants.BaseUrl, ApiConstants.Version3, area, action, ApiConstants.ZoneParameter, zone);
+        public static string ConstructRequest(
+            string area,
+            string action,
+            string zone)
+            => string.Concat(
+                ApiConstants.BaseUrl,
+                ApiConstants.Version3,
+                area,
+                action,
+                ApiConstants.ZoneParameter,
+                zone);
 
         /// <summary>
         /// Construct the request with added
@@ -40,8 +49,20 @@ namespace ElectricityMap.DotNet.Client.Helpers
         /// <param name="zone"></param>
         /// <param name="dateTime"></param>
         /// <returns></returns>
-        public static string ConstructRequest(string area, string action, string zone, DateTime dateTime)
-        => string.Concat(ApiConstants.BaseUrl, ApiConstants.Version3, area, action, ApiConstants.ZoneParameter, zone, ApiConstants.DateParameter, dateTime.ToString("o"));
+        public static string ConstructRequest(
+            string area,
+            string action,
+            string zone,
+            DateTime dateTime)
+            => string.Concat(
+                ApiConstants.BaseUrl,
+                ApiConstants.Version3,
+                area,
+                action,
+                ApiConstants.ZoneParameter,
+                zone,
+                ApiConstants.DateParameter,
+                dateTime.ToString("o"));
 
         /// <summary>
         /// Construct the request url with latitude
@@ -52,8 +73,20 @@ namespace ElectricityMap.DotNet.Client.Helpers
         /// <param name="latitude"></param>
         /// <param name="longitude"></param>
         /// <returns></returns>
-        public static string ConstructRequest(string area, string action, double latitude, double longitude)
-        => string.Concat(ApiConstants.BaseUrl, ApiConstants.Version3, area, action, ApiConstants.LatitudeParameter, latitude, ApiConstants.LongitudeParameter, longitude);
+        public static string ConstructRequest(
+            string area,
+            string action,
+            double latitude,
+            double longitude)
+            => string.Concat(
+                ApiConstants.BaseUrl,
+                ApiConstants.Version3,
+                area,
+                action,
+                ApiConstants.LatitudeParameter,
+                latitude,
+                ApiConstants.LongitudeParameter,
+                longitude);
 
         /// <summary>
         /// Construct the request with
@@ -66,8 +99,23 @@ namespace ElectricityMap.DotNet.Client.Helpers
         /// <param name="longitude"></param>
         /// <param name="dateTime"></param>
         /// <returns></returns>
-        public static string ConstructRequest(string area, string action, double latitude, double longitude, DateTime dateTime)
-        => string.Concat(ApiConstants.BaseUrl, ApiConstants.Version3, area, action, ApiConstants.LatitudeParameter, latitude, ApiConstants.LongitudeParameter, longitude, ApiConstants.DateParameter, dateTime.ToString("o"));
+        public static string ConstructRequest(
+            string area,
+            string action,
+            double latitude,
+            double longitude,
+            DateTime dateTime)
+            => string.Concat(
+                ApiConstants.BaseUrl,
+                ApiConstants.Version3,
+                area,
+                action,
+                ApiConstants.LatitudeParameter,
+                latitude,
+                ApiConstants.LongitudeParameter,
+                longitude,
+                ApiConstants.DateParameter,
+                dateTime.ToString("o"));
 
         /// <summary>
         /// Construct the request to retrieve
@@ -77,20 +125,40 @@ namespace ElectricityMap.DotNet.Client.Helpers
         /// <returns></returns>
         public static string ConstructRequest(UpdatedSinceRequest updatedSinceRequest)
         {
-            string initialUrl = string.Concat(ApiConstants.BaseUrl, ApiConstants.Version3, ApiAreas.UpdatedSince);
+            if (updatedSinceRequest is null)
+            {
+                throw new ArgumentNullException(nameof(updatedSinceRequest));
+            }
+
+            string initialUrl = string.Concat(
+                ApiConstants.BaseUrl,
+                ApiConstants.Version3,
+                ApiAreas.UpdatedSince);
+
             string queryUrl;
 
             if (!string.IsNullOrEmpty(updatedSinceRequest.Zone))
             {
-                queryUrl = string.Concat(initialUrl, ApiConstants.ZoneParameter, updatedSinceRequest.Zone);
+                queryUrl = string.Concat(
+                    initialUrl,
+                    ApiConstants.ZoneParameter,
+                    updatedSinceRequest.Zone);
+
                 queryUrl = BuildQueryString(updatedSinceRequest, queryUrl);
 
                 return queryUrl;
             }
 
-            if (updatedSinceRequest.Latitude != null && updatedSinceRequest.Longitude != null)
+            if (updatedSinceRequest.Latitude != null
+                && updatedSinceRequest.Longitude != null)
             {
-                queryUrl = string.Concat(initialUrl, ApiConstants.LatitudeParameter, updatedSinceRequest.Latitude, ApiConstants.LongitudeParameter, updatedSinceRequest.Longitude);
+                queryUrl = string.Concat(
+                    initialUrl,
+                    ApiConstants.LatitudeParameter,
+                    updatedSinceRequest.Latitude,
+                    ApiConstants.LongitudeParameter,
+                    updatedSinceRequest.Longitude);
+
                 queryUrl = BuildQueryString(updatedSinceRequest, queryUrl);
 
                 return queryUrl;
@@ -106,22 +174,45 @@ namespace ElectricityMap.DotNet.Client.Helpers
         /// <param name="updatedSinceRequest"></param>
         /// <param name="queryUrl"></param>
         /// <returns></returns>
-        private static string BuildQueryString(UpdatedSinceRequest updatedSinceRequest, string queryUrl) 
+        private static string BuildQueryString(UpdatedSinceRequest updatedSinceRequest, string queryUrl)
         {
             if (updatedSinceRequest.Start != null)
-                queryUrl = queryUrl + "&since=" + updatedSinceRequest.Since.ToString(DateFormatConstants.StandardDateFormat);
+            {
+                queryUrl = queryUrl
+                    + "&since="
+                    + updatedSinceRequest.Since
+                        .ToString(DateFormatConstants.StandardDateFormat);
+            }
 
             if (updatedSinceRequest.Start != null)
-                queryUrl = queryUrl + "&start=" + updatedSinceRequest.Start?.ToString(DateFormatConstants.StandardDateFormat);
+            {
+                queryUrl = queryUrl
+                    + "&start="
+                    + updatedSinceRequest.Start.Value
+                        .ToString(DateFormatConstants.StandardDateFormat, CultureInfo.InvariantCulture);
+            }
 
             if (updatedSinceRequest.End != null)
-                queryUrl = queryUrl + "&end=" + updatedSinceRequest.End?.ToString(DateFormatConstants.StandardDateFormat);
+            {
+                queryUrl = queryUrl
+                    + "&end="
+                    + updatedSinceRequest.End.Value
+                        .ToString(DateFormatConstants.StandardDateFormat, CultureInfo.InvariantCulture);
+            }
 
             if (updatedSinceRequest.Limit != null)
-                queryUrl = queryUrl + "&limit=" + updatedSinceRequest.Limit;
+            {
+                queryUrl = queryUrl
+                    + "&limit="
+                    + updatedSinceRequest.Limit;
+            }
 
             if (updatedSinceRequest.Threshold != null)
-                queryUrl = queryUrl + "&threshold=" + updatedSinceRequest.Threshold;
+            {
+                queryUrl = queryUrl
+                    + "&threshold="
+                    + updatedSinceRequest.Threshold;
+            }
 
             return queryUrl;
         }

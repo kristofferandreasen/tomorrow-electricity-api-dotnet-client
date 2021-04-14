@@ -12,8 +12,9 @@
 	</Description>
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	<ProjectGuid>{7496CD11-D6EE-449C-A447-FCEC65E84E5D}</ProjectGuid>
+	<Nullable>enable</Nullable>
   </PropertyGroup>
-
+	
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="System.Collections" Version="4.3.0" />

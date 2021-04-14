@@ -7,23 +7,25 @@ namespace ElectricityMap.DotNet.Client.Http
 {
     public class ElectricityMapHttpFacade
     {
-        private readonly ElectricityMapApiRequestor _requestor;
+        private readonly ElectricityMapApiRequestor requestor;
 
         public ElectricityMapHttpFacade(string apiKey)
         {
             if (string.IsNullOrEmpty(apiKey))
+            {
                 throw new ArgumentNullException(apiKey, "You must pass a valid API key to access the Electricity Map.");
+            }
 
-            HttpClient _httpClient = new HttpClient
+            HttpClient httpClient = new HttpClient
             {
                 BaseAddress = new Uri(ApiConstants.BaseUrl)
             };
-            _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
-            _httpClient.DefaultRequestHeaders.Add(ApiConstants.AuthHeader, apiKey);
-            _requestor = new ElectricityMapApiRequestor(_httpClient);
+            httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
+            httpClient.DefaultRequestHeaders.Add(ApiConstants.AuthHeader, apiKey);
+            requestor = new ElectricityMapApiRequestor(httpClient);
         }
 
-        public Task<T> Get<T>(string uri) =>
-            _requestor.Get<T>(uri);
+        public Task<T> GetAsync<T>(string url)
+            => requestor.GetAsync<T>(url);
     }
 }

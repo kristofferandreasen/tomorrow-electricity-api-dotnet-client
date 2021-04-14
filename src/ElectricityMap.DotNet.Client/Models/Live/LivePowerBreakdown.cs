@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using ElectricityMap.DotNet.Client.Models.Breakdown;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -14,31 +15,31 @@ namespace ElectricityMap.DotNet.Client.Models.Live
     public class LivePowerBreakdown
     {
         [JsonProperty("zone")]
-        public string Zone { get; set; }
+        public string Zone { get; set; } = default!;
 
         [JsonProperty("datetime")]
         public DateTime Datetime { get; set; }
 
         [JsonProperty("powerProductionBreakdown")]
-        public Dictionary<string, int?> PowerProductionBreakdown { get; set; }
+        public Dictionary<string, int?> PowerProductionBreakdown { get; set; } = default!;
 
         [JsonProperty("powerProductionTotal")]
         public int PowerProductionTotal { get; set; }
 
         [JsonProperty("powerConsumptionBreakdown")]
-        public Dictionary<string, int?> PowerConsumptionBreakdown { get; set; }
+        public Dictionary<string, int?> PowerConsumptionBreakdown { get; set; } = default!;
 
         [JsonProperty("powerConsumptionTotal")]
         public int PowerConsumptionTotal { get; set; }
 
         [JsonProperty("powerImportBreakdown")]
-        public PowerZoneBreakdown PowerImportBreakdown { get; set; }
+        public PowerZoneBreakdown PowerImportBreakdown { get; set; } = default!;
 
         [JsonProperty("powerImportTotal")]
         public int PowerImportTotal { get; set; }
 
         [JsonProperty("powerExportBreakdown")]
-        public PowerZoneBreakdown PowerExportBreakdown { get; set; }
+        public PowerZoneBreakdown PowerExportBreakdown { get; set; } = default!;
 
         [JsonProperty("powerExportTotal")]
         public int PowerExportTotal { get; set; }
@@ -51,10 +52,5 @@ namespace ElectricityMap.DotNet.Client.Models.Live
 
         [JsonProperty("updatedAt")]
         public DateTime UpdatedAt { get; set; }
-    }
-
-    public class PowerZoneBreakdown
-    {
-        public Dictionary<string, int?> Zones { get; set; }
     }
 }

@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using ElectricityMap.DotNet.Client.Models.History;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace ElectricityMap.DotNet.Client.Models.Recent
@@ -10,18 +10,9 @@ namespace ElectricityMap.DotNet.Client.Models.Recent
     public class RecentCarbonIntensityHistory
     {
         [JsonProperty("zone")]
-        public string Zone { get; set; }
+        public string Zone { get; set; } = default!;
 
         [JsonProperty("history")]
-        public IEnumerable<History> History { get; set; }
-    }
-
-    public class History
-    {
-        [JsonProperty("carbonIntensity")]
-        public int CarbonIntensity { get; set; }
-
-        [JsonProperty("datetime")]
-        public DateTime Datetime { get; set; }
+        public IEnumerable<CarbonIntensityHistory> CarbonIntensityHistory { get; set; } = default!;
     }
 }
