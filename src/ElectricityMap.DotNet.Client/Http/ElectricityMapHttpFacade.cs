@@ -29,7 +29,8 @@ namespace ElectricityMap.DotNet.Client.Http
         public async Task<T> GetAsync<T>(string url)
         {
             HttpResponseMessage responseMessage = await httpClient
-                .GetAsync(url).ConfigureAwait(false);
+                .GetAsync(url)
+                .ConfigureAwait(false);
 
             await EnsureSuccessStatusCodeAsync(responseMessage)
                 .ConfigureAwait(false);

@@ -1,5 +1,7 @@
 ﻿using AutoFixture.Xunit2;
+using ElectricityMap.DotNet.Client.Exceptions;
 using ElectricityMap.DotNet.Client.Http;
+using ElectricityMap.DotNet.Client.Models.Zones;
 using FluentAssertions;
 using System;
 using Xunit;
@@ -20,6 +22,24 @@ namespace ElectricityMap.DotNet.Client.Test.Http
             var sut = new ElectricityMapHttpFacade(apiKey);
 
             sut.Should().NotBeNull();
+        }
+
+        [Fact]
+        public void No_url_throws_exception()
+        {
+            Assert
+               .ThrowsAsync<ElectricityMapException>(() => 
+               new ElectricityMapHttpFacade("ApiKey")
+               .GetAsync<ZoneData>(string.Empty));
+        }
+
+        [Fact]
+        public void Random_url_throws_exception()
+        {
+            Assert
+               .ThrowsAsync<ElectricityMapException>(() =>
+               new ElectricityMapHttpFacade("ApiKey")
+               .GetAsync<ZoneData>("www.test.com"));
         }
     }
 }
