@@ -3,14 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectricityMap.DotNet.Client", "ElectricityMap.DotNet.Client.csproj", "{7496CD11-D6EE-449C-A447-FCEC65E84E5D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectricityMap.DotNet.Client.Test", "..\..\test\ElectricityMap.DotNet.Client.Test\ElectricityMap.DotNet.Client.Test.csproj", "{1BA4BFC5-89E0-42CF-903D-BF362A4205D5}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureFunction.Example", "..\..\examples\AzureFunction.Example\AzureFunction.Example.csproj", "{6012FA8C-98C1-43F6-82A0-AC41B46D39F6}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorPages.Example", "..\..\examples\RazorPages.Example\RazorPages.Example.csproj", "{E94732D2-846D-4B30-9ACC-6F7A547661BC}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{383CF268-3616-49D0-AC6F-78CD892FDB7D}"
 	ProjectSection(SolutionItems) = preProject
 		..\.editorconfig = ..\.editorconfig
@@ -24,31 +16,51 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{24D6DD45
 		..\..\build\code-analysis.props = ..\..\build\code-analysis.props
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B9442106-7387-44F5-BB66-D1687023C854}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{C136ACCB-E7E1-44FA-81F9-7097926A8A12}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{927D411F-47B4-4329-98B9-3C078231F7BA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectricityMap.DotNet.Client.Test", "..\..\test\ElectricityMap.DotNet.Client.Test\ElectricityMap.DotNet.Client.Test.csproj", "{712B83CE-7B5F-4716-8AA7-42466CD78954}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectricityMap.DotNet.Client", "ElectricityMap.DotNet.Client.csproj", "{7496CD11-D6EE-449C-A447-FCEC65E84E5D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureFunction.Example", "..\..\examples\AzureFunction.Example\AzureFunction.Example.csproj", "{CC47BA35-6935-41D0-8857-5CF8D6DE7724}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorPages.Example", "..\..\examples\RazorPages.Example\RazorPages.Example.csproj", "{B09A5A9F-3780-428C-8553-CAB8EBBBEFBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{712B83CE-7B5F-4716-8AA7-42466CD78954}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{712B83CE-7B5F-4716-8AA7-42466CD78954}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{712B83CE-7B5F-4716-8AA7-42466CD78954}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{712B83CE-7B5F-4716-8AA7-42466CD78954}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7496CD11-D6EE-449C-A447-FCEC65E84E5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7496CD11-D6EE-449C-A447-FCEC65E84E5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7496CD11-D6EE-449C-A447-FCEC65E84E5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7496CD11-D6EE-449C-A447-FCEC65E84E5D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1BA4BFC5-89E0-42CF-903D-BF362A4205D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1BA4BFC5-89E0-42CF-903D-BF362A4205D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1BA4BFC5-89E0-42CF-903D-BF362A4205D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1BA4BFC5-89E0-42CF-903D-BF362A4205D5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6012FA8C-98C1-43F6-82A0-AC41B46D39F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6012FA8C-98C1-43F6-82A0-AC41B46D39F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6012FA8C-98C1-43F6-82A0-AC41B46D39F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6012FA8C-98C1-43F6-82A0-AC41B46D39F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E94732D2-846D-4B30-9ACC-6F7A547661BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E94732D2-846D-4B30-9ACC-6F7A547661BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E94732D2-846D-4B30-9ACC-6F7A547661BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E94732D2-846D-4B30-9ACC-6F7A547661BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC47BA35-6935-41D0-8857-5CF8D6DE7724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC47BA35-6935-41D0-8857-5CF8D6DE7724}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC47BA35-6935-41D0-8857-5CF8D6DE7724}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC47BA35-6935-41D0-8857-5CF8D6DE7724}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B09A5A9F-3780-428C-8553-CAB8EBBBEFBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B09A5A9F-3780-428C-8553-CAB8EBBBEFBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B09A5A9F-3780-428C-8553-CAB8EBBBEFBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B09A5A9F-3780-428C-8553-CAB8EBBBEFBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{712B83CE-7B5F-4716-8AA7-42466CD78954} = {C136ACCB-E7E1-44FA-81F9-7097926A8A12}
+		{7496CD11-D6EE-449C-A447-FCEC65E84E5D} = {B9442106-7387-44F5-BB66-D1687023C854}
+		{CC47BA35-6935-41D0-8857-5CF8D6DE7724} = {927D411F-47B4-4329-98B9-3C078231F7BA}
+		{B09A5A9F-3780-428C-8553-CAB8EBBBEFBB} = {927D411F-47B4-4329-98B9-3C078231F7BA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {50B9D10B-4F03-442A-8A46-755774787606}
