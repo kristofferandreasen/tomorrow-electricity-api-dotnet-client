@@ -1,5 +1,5 @@
 ﻿using AutoFixture.Xunit2;
-using ElectricityMap.DotNet.Client.Interfaces;
+using ElectricityMap.DotNet.Client.Http;
 using ElectricityMap.DotNet.Client.Models.Breakdown;
 using ElectricityMap.DotNet.Client.Models.Forecasts;
 using ElectricityMap.DotNet.Client.Models.Live;
@@ -13,11 +13,13 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
 {
     public class PowerBreakdownTests
     {
-        private readonly IElectricityMapClient sut;
+        private readonly IElectricityMapHttpFacade httpFacade;
+        private readonly ElectricityMapClient sut;
 
         public PowerBreakdownTests()
         {
-            sut = Substitute.For<IElectricityMapClient>();
+            httpFacade = Substitute.For<IElectricityMapHttpFacade>();
+            sut = new ElectricityMapClient(httpFacade);
         }
 
         [Theory, AutoData]
@@ -25,8 +27,8 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
             string zone,
             LivePowerBreakdown livePowerBreakdown)
         {
-            sut
-                .GetLivePowerBreakdownAsync(Arg.Any<string>())
+            httpFacade
+                .GetAsync<LivePowerBreakdown>(Arg.Any<string>())
                 .Returns(livePowerBreakdown);
 
             var result = await sut
@@ -42,8 +44,8 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
             double longitude,
             LivePowerBreakdown livePowerBreakdown)
         {
-            sut
-                .GetLivePowerBreakdownAsync(Arg.Any<double>(), Arg.Any<double>())
+            httpFacade
+                .GetAsync<LivePowerBreakdown>(Arg.Any<string>())
                 .Returns(livePowerBreakdown);
 
             var result = await sut
@@ -58,8 +60,8 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
             string zone,
             RecentPowerBreakdownHistory recentPowerBreakdown)
         {
-            sut
-                .GetRecentPowerBreakdownHistoryAsync(Arg.Any<string>())
+            httpFacade
+                .GetAsync<RecentPowerBreakdownHistory>(Arg.Any<string>())
                 .Returns(recentPowerBreakdown);
 
             var result = await sut
@@ -75,8 +77,8 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
             double longitude,
             RecentPowerBreakdownHistory recentPowerBreakdown)
         {
-            sut
-                .GetRecentPowerBreakdownHistoryAsync(Arg.Any<double>(), Arg.Any<double>())
+            httpFacade
+                .GetAsync<RecentPowerBreakdownHistory>(Arg.Any<string>())
                 .Returns(recentPowerBreakdown);
 
             var result = await sut
@@ -92,8 +94,8 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
             DateTime date,
             PastPowerBreakdownHistory pastPowerBreakdown)
         {
-            sut
-                .GetPastPowerBreakdownHistoryAsync(Arg.Any<string>(), Arg.Any<DateTime>())
+            httpFacade
+                .GetAsync<PastPowerBreakdownHistory>(Arg.Any<string>())
                 .Returns(pastPowerBreakdown);
 
             var result = await sut
@@ -110,8 +112,8 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
             DateTime date,
             PastPowerBreakdownHistory pastPowerBreakdown)
         {
-            sut
-                .GetPastPowerBreakdownHistoryAsync(Arg.Any<double>(), Arg.Any<double>(), Arg.Any<DateTime>())
+            httpFacade
+                .GetAsync<PastPowerBreakdownHistory>(Arg.Any<string>())
                 .Returns(pastPowerBreakdown);
 
             var result = await sut
@@ -126,8 +128,8 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
             string zone,
             ForecastedPowerConsumptionBreakdown data)
         {
-            sut
-                .GetForecastedPowerConsumptionBreakdownAsync(Arg.Any<string>())
+            httpFacade
+                .GetAsync<ForecastedPowerConsumptionBreakdown>(Arg.Any<string>())
                 .Returns(data);
 
             var result = await sut
@@ -143,8 +145,8 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
             double longitude,
             ForecastedPowerConsumptionBreakdown data)
         {
-            sut
-                .GetForecastedPowerConsumptionBreakdownAsync(Arg.Any<double>(), Arg.Any<double>())
+            httpFacade
+                .GetAsync<ForecastedPowerConsumptionBreakdown>(Arg.Any<string>())
                 .Returns(data);
 
             var result = await sut
@@ -159,8 +161,8 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
             string zone,
             ForecastedMarginalPowerConsumptionBreakdown data)
         {
-            sut
-                .GetForecastedMarginalPowerConsumptionBreakdownAsync(Arg.Any<string>())
+            httpFacade
+                .GetAsync<ForecastedMarginalPowerConsumptionBreakdown>(Arg.Any<string>())
                 .Returns(data);
 
             var result = await sut
@@ -176,8 +178,8 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
             double longitude,
             ForecastedMarginalPowerConsumptionBreakdown data)
         {
-            sut
-                .GetForecastedMarginalPowerConsumptionBreakdownAsync(Arg.Any<double>(), Arg.Any<double>())
+            httpFacade
+                .GetAsync<ForecastedMarginalPowerConsumptionBreakdown>(Arg.Any<string>())
                 .Returns(data);
 
             var result = await sut

@@ -1,4 +1,5 @@
 ﻿using AutoFixture.Xunit2;
+using ElectricityMap.DotNet.Client.Http;
 using ElectricityMap.DotNet.Client.Interfaces;
 using ElectricityMap.DotNet.Client.Models.Forecasts;
 using ElectricityMap.DotNet.Client.Models.History;
@@ -13,11 +14,13 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
 {
     public class CarbonIntensityTests
     {
-        private readonly IElectricityMapClient sut;
+        private readonly IElectricityMapHttpFacade httpFacade;
+        private readonly ElectricityMapClient sut;
 
         public CarbonIntensityTests()
         {
-            sut = Substitute.For<IElectricityMapClient>();
+            httpFacade = Substitute.For<IElectricityMapHttpFacade>();
+            sut = new ElectricityMapClient(httpFacade);
         }
 
         [Theory, AutoData]
@@ -25,8 +28,8 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
             string zone,
             LiveCarbonIntensity data)
         {
-            sut
-                .GetLiveCarbonIntensityAsync(Arg.Any<string>())
+            httpFacade
+                .GetAsync<LiveCarbonIntensity>(Arg.Any<string>())
                 .Returns(data);
 
             var result = await sut
@@ -42,8 +45,8 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
             double longitude,
             LiveCarbonIntensity data)
         {
-            sut
-                .GetLiveCarbonIntensityAsync(Arg.Any<double>(), Arg.Any<double>())
+            httpFacade
+                .GetAsync<LiveCarbonIntensity>(Arg.Any<string>())
                 .Returns(data);
 
             var result = await sut
@@ -58,8 +61,8 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
             string zone,
             RecentCarbonIntensityHistory data)
         {
-            sut
-                .GetRecentCarbonIntensityHistoryAsync(Arg.Any<string>())
+            httpFacade
+                .GetAsync<RecentCarbonIntensityHistory>(Arg.Any<string>())
                 .Returns(data);
 
             var result = await sut
@@ -75,8 +78,8 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
             double longitude,
             RecentCarbonIntensityHistory data)
         {
-            sut
-                .GetRecentCarbonIntensityHistoryAsync(Arg.Any<double>(), Arg.Any<double>())
+            httpFacade
+                .GetAsync<RecentCarbonIntensityHistory>(Arg.Any<string>())
                 .Returns(data);
 
             var result = await sut
@@ -92,8 +95,8 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
             DateTime date,
             PastCarbonIntensityHistory data)
         {
-            sut
-                .GetPastCarbonIntensityHistoryAsync(Arg.Any<string>(), Arg.Any<DateTime>())
+            httpFacade
+                .GetAsync<PastCarbonIntensityHistory>(Arg.Any<string>())
                 .Returns(data);
 
             var result = await sut
@@ -110,8 +113,8 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
             DateTime date,
             PastCarbonIntensityHistory data)
         {
-            sut
-                .GetPastCarbonIntensityHistoryAsync(Arg.Any<double>(), Arg.Any<double>(), Arg.Any<DateTime>())
+            httpFacade
+                .GetAsync<PastCarbonIntensityHistory>(Arg.Any<string>())
                 .Returns(data);
 
             var result = await sut
@@ -126,8 +129,8 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
             string zone,
             ForecastedCarbonIntensity data)
         {
-            sut
-                .GetForecastedCarbonIntensityAsync(Arg.Any<string>())
+            httpFacade
+                .GetAsync<ForecastedCarbonIntensity>(Arg.Any<string>())
                 .Returns(data);
 
             var result = await sut
@@ -143,8 +146,8 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
             double longitude,
             ForecastedCarbonIntensity data)
         {
-            sut
-                .GetForecastedCarbonIntensityAsync(Arg.Any<double>(), Arg.Any<double>())
+            httpFacade
+                .GetAsync<ForecastedCarbonIntensity>(Arg.Any<string>())
                 .Returns(data);
 
             var result = await sut
@@ -159,8 +162,8 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
            string zone,
            ForecastedMarginalCarbonIntensity data)
         {
-            sut
-                .GetForecastedMarginalCarbonIntensityAsync(Arg.Any<string>())
+            httpFacade
+                .GetAsync<ForecastedMarginalCarbonIntensity>(Arg.Any<string>())
                 .Returns(data);
 
             var result = await sut
@@ -176,8 +179,8 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
             double longitude,
             ForecastedMarginalCarbonIntensity data)
         {
-            sut
-                .GetForecastedMarginalCarbonIntensityAsync(Arg.Any<double>(), Arg.Any<double>())
+            httpFacade
+                .GetAsync<ForecastedMarginalCarbonIntensity>(Arg.Any<string>())
                 .Returns(data);
 
             var result = await sut

@@ -1,5 +1,5 @@
 ﻿using AutoFixture.Xunit2;
-using ElectricityMap.DotNet.Client.Interfaces;
+using ElectricityMap.DotNet.Client.Http;
 using ElectricityMap.DotNet.Client.Models;
 using ElectricityMap.DotNet.Client.Models.Updates;
 using FluentAssertions;
@@ -10,11 +10,13 @@ namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests.Updates
 {
     public class UpdateInfoTests
     {
-        private readonly IElectricityMapClient sut;
+        private readonly IElectricityMapHttpFacade httpFacade;
+        private readonly ElectricityMapClient sut;
 
         public UpdateInfoTests()
         {
-            sut = Substitute.For<IElectricityMapClient>();
+            httpFacade = Substitute.For<IElectricityMapHttpFacade>();
+            sut = new ElectricityMapClient(httpFacade);
         }
 
         [Theory, AutoData]
@@ -22,8 +24,8 @@ namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests.Updates
             UpdatedSinceRequest updatedSinceRequest,
             UpdatedSince updatedSince)
         {
-            sut
-                .GetUpdateInfoAsync(Arg.Any<UpdatedSinceRequest>())
+            httpFacade
+                .GetAsync<UpdatedSince>(Arg.Any<string>())
                 .Returns(updatedSince);
 
             var result = await sut

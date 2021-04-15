@@ -18,11 +18,11 @@ namespace ElectricityMap.DotNet.Client
 {
     public class ElectricityMapClient : IElectricityMapClient
     {
-        private readonly ElectricityMapHttpFacade httpFacade;
+        private readonly IElectricityMapHttpFacade httpFacade;
 
-        public ElectricityMapClient(string apiKey)
+        public ElectricityMapClient(IElectricityMapHttpFacade httpFacade)
         {
-            httpFacade = new ElectricityMapHttpFacade(apiKey);
+            this.httpFacade = httpFacade;
         }
 
         /// <summary>
