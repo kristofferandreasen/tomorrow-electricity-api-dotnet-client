@@ -108,7 +108,7 @@ public void ConfigureServices(IServiceCollection services)
 
     // Register the electricity map client for dependency injection
     string electricityMapApiKey = Configuration.GetValue<string>("ElectricityMap:ApiKey");
-    services.AddSingleton<IElectricityMapClient>(s => new ElectricityMapClient(electricityMapApiKey));
+    services.AddElectricityMapClient(electricityMapApiKey);
 }
 ```
 
@@ -163,7 +163,7 @@ namespace Azure.Function.Example
 
             // Register the electricity map client with your api key
             string electricityMapApiKey = Environment.GetEnvironmentVariable("ElectricityMapApiKey");
-            builder.Services.AddSingleton<IElectricityMapClient>(s => new ElectricityMapClient(electricityMapApiKey));
+            builder.Services.AddElectricityMapClient(electricityMapApiKey);
         }
     }
 }

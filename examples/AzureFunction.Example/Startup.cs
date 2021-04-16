@@ -1,8 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Azure.Functions.Extensions.DependencyInjection;
-using ElectricityMap.DotNet.Client.Interfaces;
-using ElectricityMap.DotNet.Client;
 using System;
+using ElectricityMap.DotNet.Client.Infrastructure;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 
 [assembly: FunctionsStartup(typeof(AzureFunction.Example.Startup))]
 
@@ -16,7 +15,7 @@ namespace AzureFunction.Example
 
             // Register the electricity map client with your api key
             string electricityMapApiKey = Environment.GetEnvironmentVariable("ElectricityMapApiKey");
-            builder.Services.AddSingleton<IElectricityMapClient>(s => new ElectricityMapClient(electricityMapApiKey));
+            builder.Services.AddElectricityMapClient(electricityMapApiKey);
         }
     }
 }
