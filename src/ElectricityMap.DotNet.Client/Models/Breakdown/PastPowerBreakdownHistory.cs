@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using ElectricityMap.DotNet.Client.Models.Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -7,20 +8,8 @@ namespace ElectricityMap.DotNet.Client.Models.Breakdown
     /// <summary>
     /// Past power breakdown of an area.
     /// </summary>
-    public class PastPowerBreakdownHistory
+    public class PastPowerBreakdownHistory : BaseBreakdown
     {
-        [JsonProperty("zone")]
-        public string Zone { get; set; } = default!;
-
-        [JsonProperty("datetime")]
-        public DateTime Datetime { get; set; }
-
-        [JsonProperty("updatedAt")]
-        public DateTime UpdatedAt { get; set; }
-
-        [JsonProperty("createdAt")]
-        public DateTime CreatedAt { get; set; }
-
         [JsonProperty("powerConsumptionBreakdown")]
         public Dictionary<string, int?> PowerConsumptionBreakdown { get; set; } = default!;
 

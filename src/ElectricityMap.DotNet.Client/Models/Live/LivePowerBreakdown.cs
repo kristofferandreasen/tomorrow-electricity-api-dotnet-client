@@ -1,6 +1,6 @@
 ﻿using ElectricityMap.DotNet.Client.Models.Breakdown;
+using ElectricityMap.DotNet.Client.Models.Common;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 
 namespace ElectricityMap.DotNet.Client.Models.Live
@@ -8,18 +8,14 @@ namespace ElectricityMap.DotNet.Client.Models.Live
     /// <summary>
     /// The last known data about the origin of electricity in an area.
     /// "powerProduction" (in MW) represents the electricity produced in the zone, broken down by production type.
-    /// "powerConsumption" (in MW) represents the electricity consumed in the zone, after taking into account imports and exports, and broken down by production type.
+    /// "powerConsumption" (in MW) represents the electricity consumed in the zone,
+    /// after taking into account imports and exports, and broken down by production type.
     /// "powerExport" and "Power import" (in MW) represent the physical electricity flows at the zone border.
-    /// "renewablePercentage" and "fossilFreePercentage" refers to the % of the power consumption breakdown coming from renewables or fossil-free power plants (renewables and nuclear).
+    /// "renewablePercentage" and "fossilFreePercentage" refers to the % of the power consumption breakdown
+    /// coming from renewables or fossil-free power plants (renewables and nuclear).
     /// </summary>
-    public class LivePowerBreakdown
+    public class LivePowerBreakdown : BaseEntity
     {
-        [JsonProperty("zone")]
-        public string Zone { get; set; } = default!;
-
-        [JsonProperty("datetime")]
-        public DateTime Datetime { get; set; }
-
         [JsonProperty("powerProductionBreakdown")]
         public Dictionary<string, int?> PowerProductionBreakdown { get; set; } = default!;
 
@@ -49,8 +45,5 @@ namespace ElectricityMap.DotNet.Client.Models.Live
 
         [JsonProperty("renewablePercentage")]
         public int RenewablePercentage { get; set; }
-
-        [JsonProperty("updatedAt")]
-        public DateTime UpdatedAt { get; set; }
     }
 }

@@ -1,14 +1,11 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using ElectricityMap.DotNet.Client.Models.Common;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace ElectricityMap.DotNet.Client.Models.Breakdown
 {
-    public class PowerBreakdownHistory
+    public class PowerBreakdownHistory : BaseDatetime
     {
-        [JsonProperty("datetime")]
-        public DateTime Datetime { get; set; }
-
         [JsonProperty("fossilFreePercentage")]
         public int FossilFreePercentage { get; set; }
 

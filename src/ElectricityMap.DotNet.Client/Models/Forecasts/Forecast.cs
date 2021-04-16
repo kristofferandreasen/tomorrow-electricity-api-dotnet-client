@@ -1,14 +1,11 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using ElectricityMap.DotNet.Client.Models.Common;
+using Newtonsoft.Json;
 
 namespace ElectricityMap.DotNet.Client.Models.Forecasts
 {
-    public class Forecast
+    public class Forecast : BaseDatetime
     {
         [JsonProperty("carbonIntensity")]
         public int CarbonIntensity { get; set; }
-
-        [JsonProperty("datetime")]
-        public DateTime Datetime { get; set; }
     }
 }

@@ -1,14 +1,11 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using ElectricityMap.DotNet.Client.Models.Common;
+using Newtonsoft.Json;
 
 namespace ElectricityMap.DotNet.Client.Models.History
 {
-    public class CarbonIntensityHistory
+    public class CarbonIntensityHistory : BaseDatetime
     {
         [JsonProperty("carbonIntensity")]
         public int CarbonIntensity { get; set; }
-
-        [JsonProperty("datetime")]
-        public DateTime Datetime { get; set; }
     }
 }

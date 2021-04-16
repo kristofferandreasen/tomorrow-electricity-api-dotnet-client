@@ -1,14 +1,11 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using ElectricityMap.DotNet.Client.Models.Common;
+using Newtonsoft.Json;
 
 namespace ElectricityMap.DotNet.Client.Models.Forecasts
 {
-    public class MarginalForecast
+    public class MarginalForecast : BaseDatetime
     {
         [JsonProperty("marginalCarbonIntensity")]
         public int MarginalCarbonIntensity { get; set; }
-
-        [JsonProperty("datetime")]
-        public DateTime Datetime { get; set; }
     }
 }

@@ -1,23 +1,12 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using ElectricityMap.DotNet.Client.Models.Common;
+using Newtonsoft.Json;
 
 namespace ElectricityMap.DotNet.Client.Models.History
 {
     /// <summary>
     /// Past carbon intensity (in gCO2eq/kWh) of an area.
     /// </summary>
-    public class PastCarbonIntensityHistory
+    public class PastCarbonIntensityHistory : BaseCarbonIntensity
     {
-        [JsonProperty("zone")]
-        public string Zone { get; set; } = default!;
-
-        [JsonProperty("carbonIntensity")]
-        public int CarbonIntensity { get; set; }
-
-        [JsonProperty("datetime")]
-        public DateTime Datetime { get; set; }
-
-        [JsonProperty("updatedAt")]
-        public DateTime UpdatedAt { get; set; }
     }
 }
