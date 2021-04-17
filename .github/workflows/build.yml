@@ -45,7 +45,7 @@ jobs:
         restore-keys: ${{ runner.os }}-sonar-scanner
 
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build --project ElectricityMap.DotNet.Client.csproj --configuration Release --no-restore
       working-directory: src/ElectricityMap.DotNet.Client
 
     - name: Test
