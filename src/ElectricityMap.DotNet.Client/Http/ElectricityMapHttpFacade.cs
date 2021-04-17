@@ -46,6 +46,11 @@ namespace ElectricityMap.DotNet.Client.Http
                 .ConfigureAwait(false);
 
             var result = JsonConvert.DeserializeObject<T>(response);
+            
+            if (result is null)
+            {
+                throw new ElectricityMapException("Deserialized content is null");
+            }
 
             return result;
         }
