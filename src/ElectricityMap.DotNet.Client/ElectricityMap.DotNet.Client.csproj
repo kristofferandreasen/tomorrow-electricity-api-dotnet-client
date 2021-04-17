@@ -13,7 +13,6 @@
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	<ProjectGuid>{7496CD11-D6EE-449C-A447-FCEC65E84E5D}</ProjectGuid>
 	<Nullable>enable</Nullable>
-	<DisabledWarnings>NU5048</DisabledWarnings>
   </PropertyGroup>
 	
   <ItemGroup>
