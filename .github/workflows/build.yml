@@ -56,13 +56,19 @@ jobs:
       working-directory: src/ElectricityMap.DotNet.Client
 
     - name: Test
-      run: dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
+      run: dotnet test --blame --no-restore --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=opencover.xml
       working-directory: test/ElectricityMap.DotNet.Client.Test
+      
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-    - name: publish on version change
+    - name: Publish NuGet Package
       id: publish_nuget
       uses: rohith/publish-nuget@v2
       with:
         PROJECT_FILE_PATH: src/ElectricityMap.DotNet.Client/ElectricityMap.DotNet.Client.csproj
         PACKAGE_NAME: ElectricityMap.DotNet.Client
-        NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+        NUGET_KEY: ${{ secrets.NUGET_API_KEY }}
