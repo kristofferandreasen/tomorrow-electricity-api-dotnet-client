@@ -1,5 +1,6 @@
 using AutoFixture.Xunit2;
 using ElectricityMap.DotNet.Client.Constants;
+using ElectricityMap.DotNet.Client.Extensions;
 using ElectricityMap.DotNet.Client.Models;
 using FluentAssertions;
 using System;
@@ -25,7 +26,9 @@ namespace ElectricityMap.DotNet.Client.Helpers
             var requestUrl = RequestUrlHelpers
                 .ConstructRequest(area);
 
-            expectedUrl.Should().Be(requestUrl);
+            expectedUrl
+                .ToUri()
+                .Should().Be(requestUrl);
         }
 
         [Theory]
@@ -36,8 +39,8 @@ namespace ElectricityMap.DotNet.Client.Helpers
         [InlineData(ApiAreas.MarginalCarbonIntensity, ApiActions.History, ZoneConstants.Ukraine)]
         [InlineData(ApiAreas.MarginalPowerConsumptionBreakdown, ApiActions.Latest, ZoneConstants.United_States_Alabama)]
         public void Constructed_url_is_correct(
-            string area, 
-            string action, 
+            string area,
+            string action,
             string zone)
         {
             var expectedUrl = $"https://api.electricitymap.org/v3/" +
@@ -47,7 +50,9 @@ namespace ElectricityMap.DotNet.Client.Helpers
             var requestUrl = RequestUrlHelpers
                 .ConstructRequest(area, action, zone);
 
-            expectedUrl.Should().Be(requestUrl);
+            expectedUrl
+                .ToUri()
+                .Should().Be(requestUrl);
         }
 
         [Theory]
@@ -58,8 +63,8 @@ namespace ElectricityMap.DotNet.Client.Helpers
         [InlineData(ApiAreas.MarginalCarbonIntensity, ApiActions.History, ZoneConstants.Ukraine)]
         [InlineData(ApiAreas.MarginalPowerConsumptionBreakdown, ApiActions.Latest, ZoneConstants.United_States_Alabama)]
         public void Constructed_url_with_datetime_is_correct(
-            string area, 
-            string action, 
+            string area,
+            string action,
             string zone)
         {
             var dateTime = DateTime.Now;
@@ -71,7 +76,9 @@ namespace ElectricityMap.DotNet.Client.Helpers
             var requestUrl = RequestUrlHelpers
                 .ConstructRequest(area, action, zone, dateTime);
 
-            expectedUrl.Should().Be(requestUrl);
+            expectedUrl
+                .ToUri()
+                .Should().Be(requestUrl);
         }
 
         [Theory]
@@ -79,9 +86,9 @@ namespace ElectricityMap.DotNet.Client.Helpers
         [InlineData(ApiAreas.CarbonIntensity, ApiActions.History, 51.4413768, 12.1409151)]
         [InlineData(ApiAreas.PowerConsumptionBreakdown, ApiActions.Latest, 40.5787524, -3.1685326)]
         public void Constructed_url_with_latitude_and_longitude_is_correct(
-            string area, 
-            string action, 
-            double latitude, 
+            string area,
+            string action,
+            double latitude,
             double longitude)
         {
             var expectedUrl = $"https://api.electricitymap.org/v3/" +
@@ -92,7 +99,9 @@ namespace ElectricityMap.DotNet.Client.Helpers
             var requestUrl = RequestUrlHelpers
                 .ConstructRequest(area, action, latitude, longitude);
 
-            expectedUrl.Should().Be(requestUrl);
+            expectedUrl
+                .ToUri()
+                .Should().Be(requestUrl);
         }
 
         [Theory]
@@ -100,9 +109,9 @@ namespace ElectricityMap.DotNet.Client.Helpers
         [InlineData(ApiAreas.CarbonIntensity, ApiActions.History, 51.4413768, 12.1409151)]
         [InlineData(ApiAreas.PowerConsumptionBreakdown, ApiActions.Latest, 40.5787524, -3.1685326)]
         public void Constructed_url_with_latitude_and_longitude_and_datetime_is_correct(
-            string area, 
+            string area,
             string action,
-            double latitude, 
+            double latitude,
             double longitude)
         {
             var dateTime = DateTime.Now;
@@ -116,7 +125,9 @@ namespace ElectricityMap.DotNet.Client.Helpers
             var requestUrl = RequestUrlHelpers
                 .ConstructRequest(area, action, latitude, longitude, dateTime);
 
-            expectedUrl.Should().Be(requestUrl);
+            expectedUrl
+                .ToUri()
+                .Should().Be(requestUrl);
         }
 
         [Theory, AutoData]
@@ -134,7 +145,9 @@ namespace ElectricityMap.DotNet.Client.Helpers
             var requestUrl = RequestUrlHelpers
                 .ConstructRequest(updatedSinceRequest);
 
-            expectedUrl.Should().Be(requestUrl);
+            expectedUrl
+                .ToUri()
+                .Should().Be(requestUrl);
         }
 
         [Fact]
@@ -160,7 +173,9 @@ namespace ElectricityMap.DotNet.Client.Helpers
             var requestUrl = RequestUrlHelpers
                 .ConstructRequest(updatedSinceRequest);
 
-            expectedUrl.Should().Be(requestUrl);
+            expectedUrl
+                .ToUri()
+                .Should().Be(requestUrl);
         }
 
         [Fact]
@@ -188,7 +203,9 @@ namespace ElectricityMap.DotNet.Client.Helpers
 
             var requestUrl = RequestUrlHelpers.ConstructRequest(updatedSinceRequest);
 
-            expectedUrl.Should().Be(requestUrl);
+            expectedUrl
+                .ToUri()
+                .Should().Be(requestUrl);
         }
 
         [Fact]
@@ -203,7 +220,8 @@ namespace ElectricityMap.DotNet.Client.Helpers
                 Threshold = "P1D"
             };
 
-            Assert.Throws<ArgumentNullException>(() => RequestUrlHelpers.ConstructRequest(updatedSinceRequest));
+            Assert.Throws<ArgumentNullException>(()
+                => RequestUrlHelpers.ConstructRequest(updatedSinceRequest));
         }
     }
 }

@@ -1,9 +1,9 @@
-﻿using ElectricityMap.DotNet.Client.Constants;
-using ElectricityMap.DotNet.Client.Exceptions;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using ElectricityMap.DotNet.Client.Constants;
+using ElectricityMap.DotNet.Client.Exceptions;
+using Newtonsoft.Json;
 
 namespace ElectricityMap.DotNet.Client.Http
 {
@@ -20,15 +20,15 @@ namespace ElectricityMap.DotNet.Client.Http
 
             httpClient = new HttpClient
             {
-                BaseAddress = new Uri(ApiConstants.BaseUrl)
+                BaseAddress = new Uri(ApiConstants.BaseUrl),
             };
             httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
             httpClient.DefaultRequestHeaders.Add(ApiConstants.AuthHeader, apiKey);
         }
 
-        public async Task<T> GetAsync<T>(string url)
+        public async Task<T> GetAsync<T>(Uri url)
         {
-            HttpResponseMessage responseMessage = await httpClient
+            var responseMessage = await httpClient
                 .GetAsync(url)
                 .ConfigureAwait(false);
 
@@ -41,12 +41,12 @@ namespace ElectricityMap.DotNet.Client.Http
 
         private static async Task<T> ReadResponseAsync<T>(HttpResponseMessage responseMessage)
         {
-            string response = await responseMessage.Content
+            var response = await responseMessage.Content
                 .ReadAsStringAsync()
                 .ConfigureAwait(false);
 
             var result = JsonConvert.DeserializeObject<T>(response);
-            
+
             if (result is null)
             {
                 throw new ElectricityMapException("Deserialized content is null");
@@ -62,7 +62,7 @@ namespace ElectricityMap.DotNet.Client.Http
                 return;
             }
 
-            string errorResponse = await responseMessage.Content
+            var errorResponse = await responseMessage.Content
                 .ReadAsStringAsync()
                 .ConfigureAwait(false);
 

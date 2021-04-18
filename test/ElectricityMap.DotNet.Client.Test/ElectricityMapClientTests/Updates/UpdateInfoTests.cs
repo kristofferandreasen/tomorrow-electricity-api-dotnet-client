@@ -1,4 +1,5 @@
-﻿using AutoFixture.Xunit2;
+﻿using System;
+using AutoFixture.Xunit2;
 using ElectricityMap.DotNet.Client.Http;
 using ElectricityMap.DotNet.Client.Models;
 using ElectricityMap.DotNet.Client.Models.Updates;
@@ -25,7 +26,7 @@ namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests.Updates
             UpdatedSince updatedSince)
         {
             httpFacade
-                .GetAsync<UpdatedSince>(Arg.Any<string>())
+                .GetAsync<UpdatedSince>(Arg.Any<Uri>())
                 .Returns(updatedSince);
 
             var result = await sut

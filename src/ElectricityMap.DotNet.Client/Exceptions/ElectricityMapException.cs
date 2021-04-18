@@ -41,7 +41,7 @@ namespace ElectricityMap.DotNet.Client.Exceptions
         }
 
         /// <summary>
-        /// Http status code of electricity map response.
+        /// Gets http status code of electricity map response.
         /// </summary>
         public HttpStatusCode HttpStatusCode { get; }
     }

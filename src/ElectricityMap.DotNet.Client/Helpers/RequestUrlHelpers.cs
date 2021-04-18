@@ -1,7 +1,8 @@
-﻿using ElectricityMap.DotNet.Client.Constants;
-using ElectricityMap.DotNet.Client.Models;
-using System;
+﻿using System;
 using System.Globalization;
+using ElectricityMap.DotNet.Client.Constants;
+using ElectricityMap.DotNet.Client.Extensions;
+using ElectricityMap.DotNet.Client.Models;
 
 namespace ElectricityMap.DotNet.Client.Helpers
 {
@@ -17,8 +18,10 @@ namespace ElectricityMap.DotNet.Client.Helpers
         /// </summary>
         /// <param name="area"></param>
         /// <returns></returns>
-        public static string ConstructRequest(string area)
-            => string.Concat(ApiConstants.BaseUrl, ApiConstants.Version3, area);
+        public static Uri ConstructRequest(string area)
+            => string
+               .Concat(ApiConstants.BaseUrl, ApiConstants.Version3, area)
+               .ToUri();
 
         /// <summary>
         /// Construct the request needed to
@@ -28,7 +31,7 @@ namespace ElectricityMap.DotNet.Client.Helpers
         /// <param name="action"></param>
         /// <param name="zone"></param>
         /// <returns></returns>
-        public static string ConstructRequest(
+        public static Uri ConstructRequest(
             string area,
             string action,
             string zone)
@@ -38,7 +41,8 @@ namespace ElectricityMap.DotNet.Client.Helpers
                 area,
                 action,
                 ApiConstants.ZoneParameter,
-                zone);
+                zone)
+                .ToUri();
 
         /// <summary>
         /// Construct the request with added
@@ -49,7 +53,7 @@ namespace ElectricityMap.DotNet.Client.Helpers
         /// <param name="zone"></param>
         /// <param name="dateTime"></param>
         /// <returns></returns>
-        public static string ConstructRequest(
+        public static Uri ConstructRequest(
             string area,
             string action,
             string zone,
@@ -62,7 +66,8 @@ namespace ElectricityMap.DotNet.Client.Helpers
                 ApiConstants.ZoneParameter,
                 zone,
                 ApiConstants.DateParameter,
-                dateTime.ToString("o"));
+                dateTime.ToString("o"))
+                .ToUri();
 
         /// <summary>
         /// Construct the request url with latitude
@@ -73,7 +78,7 @@ namespace ElectricityMap.DotNet.Client.Helpers
         /// <param name="latitude"></param>
         /// <param name="longitude"></param>
         /// <returns></returns>
-        public static string ConstructRequest(
+        public static Uri ConstructRequest(
             string area,
             string action,
             double latitude,
@@ -86,7 +91,8 @@ namespace ElectricityMap.DotNet.Client.Helpers
                 ApiConstants.LatitudeParameter,
                 latitude,
                 ApiConstants.LongitudeParameter,
-                longitude);
+                longitude)
+                .ToUri();
 
         /// <summary>
         /// Construct the request with
@@ -99,7 +105,7 @@ namespace ElectricityMap.DotNet.Client.Helpers
         /// <param name="longitude"></param>
         /// <param name="dateTime"></param>
         /// <returns></returns>
-        public static string ConstructRequest(
+        public static Uri ConstructRequest(
             string area,
             string action,
             double latitude,
@@ -115,7 +121,8 @@ namespace ElectricityMap.DotNet.Client.Helpers
                 ApiConstants.LongitudeParameter,
                 longitude,
                 ApiConstants.DateParameter,
-                dateTime.ToString("o"));
+                dateTime.ToString("o"))
+                .ToUri();
 
         /// <summary>
         /// Construct the request to retrieve
@@ -123,14 +130,14 @@ namespace ElectricityMap.DotNet.Client.Helpers
         /// </summary>
         /// <param name="updatedSinceRequest"></param>
         /// <returns></returns>
-        public static string ConstructRequest(UpdatedSinceRequest updatedSinceRequest)
+        public static Uri ConstructRequest(UpdatedSinceRequest updatedSinceRequest)
         {
             if (updatedSinceRequest is null)
             {
                 throw new ArgumentNullException(nameof(updatedSinceRequest));
             }
 
-            string initialUrl = string.Concat(
+            var initialUrl = string.Concat(
                 ApiConstants.BaseUrl,
                 ApiConstants.Version3,
                 ApiAreas.UpdatedSince);
@@ -146,7 +153,7 @@ namespace ElectricityMap.DotNet.Client.Helpers
 
                 queryUrl = BuildQueryString(updatedSinceRequest, queryUrl);
 
-                return queryUrl;
+                return queryUrl.ToUri();
             }
 
             if (updatedSinceRequest.Latitude != null
@@ -161,7 +168,7 @@ namespace ElectricityMap.DotNet.Client.Helpers
 
                 queryUrl = BuildQueryString(updatedSinceRequest, queryUrl);
 
-                return queryUrl;
+                return queryUrl.ToUri();
             }
 
             throw new ArgumentNullException(updatedSinceRequest.Zone, "Zone or Latitude/Longitude must be passed as parameters.");

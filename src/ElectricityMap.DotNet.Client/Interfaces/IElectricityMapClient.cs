@@ -1,4 +1,7 @@
-﻿using ElectricityMap.DotNet.Client.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using ElectricityMap.DotNet.Client.Models;
 using ElectricityMap.DotNet.Client.Models.Breakdown;
 using ElectricityMap.DotNet.Client.Models.Forecasts;
 using ElectricityMap.DotNet.Client.Models.History;
@@ -6,9 +9,6 @@ using ElectricityMap.DotNet.Client.Models.Live;
 using ElectricityMap.DotNet.Client.Models.Recent;
 using ElectricityMap.DotNet.Client.Models.Updates;
 using ElectricityMap.DotNet.Client.Models.Zones;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace ElectricityMap.DotNet.Client.Interfaces
 {

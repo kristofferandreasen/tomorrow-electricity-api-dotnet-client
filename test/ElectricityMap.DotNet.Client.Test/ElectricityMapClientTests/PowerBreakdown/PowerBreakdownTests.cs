@@ -28,7 +28,7 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
             LivePowerBreakdown livePowerBreakdown)
         {
             httpFacade
-                .GetAsync<LivePowerBreakdown>(Arg.Any<string>())
+                .GetAsync<LivePowerBreakdown>(Arg.Any<Uri>())
                 .Returns(livePowerBreakdown);
 
             var result = await sut
@@ -45,7 +45,7 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
             LivePowerBreakdown livePowerBreakdown)
         {
             httpFacade
-                .GetAsync<LivePowerBreakdown>(Arg.Any<string>())
+                .GetAsync<LivePowerBreakdown>(Arg.Any<Uri>())
                 .Returns(livePowerBreakdown);
 
             var result = await sut
@@ -61,7 +61,7 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
             RecentPowerBreakdownHistory recentPowerBreakdown)
         {
             httpFacade
-                .GetAsync<RecentPowerBreakdownHistory>(Arg.Any<string>())
+                .GetAsync<RecentPowerBreakdownHistory>(Arg.Any<Uri>())
                 .Returns(recentPowerBreakdown);
 
             var result = await sut
@@ -78,7 +78,7 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
             RecentPowerBreakdownHistory recentPowerBreakdown)
         {
             httpFacade
-                .GetAsync<RecentPowerBreakdownHistory>(Arg.Any<string>())
+                .GetAsync<RecentPowerBreakdownHistory>(Arg.Any<Uri>())
                 .Returns(recentPowerBreakdown);
 
             var result = await sut
@@ -95,7 +95,7 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
             PastPowerBreakdownHistory pastPowerBreakdown)
         {
             httpFacade
-                .GetAsync<PastPowerBreakdownHistory>(Arg.Any<string>())
+                .GetAsync<PastPowerBreakdownHistory>(Arg.Any<Uri>())
                 .Returns(pastPowerBreakdown);
 
             var result = await sut
@@ -113,7 +113,7 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
             PastPowerBreakdownHistory pastPowerBreakdown)
         {
             httpFacade
-                .GetAsync<PastPowerBreakdownHistory>(Arg.Any<string>())
+                .GetAsync<PastPowerBreakdownHistory>(Arg.Any<Uri>())
                 .Returns(pastPowerBreakdown);
 
             var result = await sut
@@ -129,7 +129,7 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
             ForecastedPowerConsumptionBreakdown data)
         {
             httpFacade
-                .GetAsync<ForecastedPowerConsumptionBreakdown>(Arg.Any<string>())
+                .GetAsync<ForecastedPowerConsumptionBreakdown>(Arg.Any<Uri>())
                 .Returns(data);
 
             var result = await sut
@@ -146,7 +146,7 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
             ForecastedPowerConsumptionBreakdown data)
         {
             httpFacade
-                .GetAsync<ForecastedPowerConsumptionBreakdown>(Arg.Any<string>())
+                .GetAsync<ForecastedPowerConsumptionBreakdown>(Arg.Any<Uri>())
                 .Returns(data);
 
             var result = await sut
@@ -162,7 +162,7 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
             ForecastedMarginalPowerConsumptionBreakdown data)
         {
             httpFacade
-                .GetAsync<ForecastedMarginalPowerConsumptionBreakdown>(Arg.Any<string>())
+                .GetAsync<ForecastedMarginalPowerConsumptionBreakdown>(Arg.Any<Uri>())
                 .Returns(data);
 
             var result = await sut
@@ -179,7 +179,7 @@ namespace ElectricityMap.DotNet.Client.Test.PowerBreakdown
             ForecastedMarginalPowerConsumptionBreakdown data)
         {
             httpFacade
-                .GetAsync<ForecastedMarginalPowerConsumptionBreakdown>(Arg.Any<string>())
+                .GetAsync<ForecastedMarginalPowerConsumptionBreakdown>(Arg.Any<Uri>())
                 .Returns(data);
 
             var result = await sut

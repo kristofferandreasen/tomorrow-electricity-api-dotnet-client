@@ -5,17 +5,17 @@ namespace ElectricityMap.DotNet.Client.Models
     public class UpdatedSinceRequest
     {
         /// <summary>
-        /// A string representing the zone identifier.
+        /// Gets or sets the zone identifier.
         /// </summary>
         public string? Zone { get; set; } = default!;
 
         /// <summary>
-        /// Longitude (if querying with a geolocation).
+        /// Gets or sets longitude (if querying with a geolocation).
         /// </summary>
         public double? Longitude { get; set; }
 
         /// <summary>
-        /// Latitude (if querying with a geolocation).
+        /// Gets or sets latitude (if querying with a geolocation).
         /// </summary>
         public double? Latitude { get; set; }
 
@@ -28,7 +28,7 @@ namespace ElectricityMap.DotNet.Client.Models
         public int? Limit { get; set; }
 
         /// <summary>
-        /// Duration in ISO 8601 format.
+        /// Gets or sets duration in ISO 8601 format.
         /// Example: PT0H0M0S.
         /// </summary>
         public string? Threshold { get; set; }

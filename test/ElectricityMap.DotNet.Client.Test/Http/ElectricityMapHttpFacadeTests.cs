@@ -28,9 +28,9 @@ namespace ElectricityMap.DotNet.Client.Test.Http
         public void No_url_throws_exception()
         {
             Assert
-               .ThrowsAsync<ElectricityMapException>(() => 
+               .ThrowsAsync<ElectricityMapException>(() =>
                new ElectricityMapHttpFacade("ApiKey")
-               .GetAsync<ZoneData>(string.Empty));
+               .GetAsync<ZoneData>(new Uri("")));
         }
 
         [Fact]
@@ -39,7 +39,7 @@ namespace ElectricityMap.DotNet.Client.Test.Http
             Assert
                .ThrowsAsync<ElectricityMapException>(() =>
                new ElectricityMapHttpFacade("ApiKey")
-               .GetAsync<ZoneData>("www.test.com"));
+               .GetAsync<ZoneData>(new Uri("www.test.com")));
         }
     }
 }

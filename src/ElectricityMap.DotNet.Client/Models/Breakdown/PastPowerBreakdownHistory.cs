@@ -1,7 +1,6 @@
-﻿using ElectricityMap.DotNet.Client.Models.Common;
+﻿using System.Collections.Generic;
+using ElectricityMap.DotNet.Client.Models.Common;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 
 namespace ElectricityMap.DotNet.Client.Models.Breakdown
 {

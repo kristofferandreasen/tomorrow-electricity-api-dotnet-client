@@ -1,4 +1,7 @@
-﻿using ElectricityMap.DotNet.Client.Constants;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using ElectricityMap.DotNet.Client.Constants;
 using ElectricityMap.DotNet.Client.Helpers;
 using ElectricityMap.DotNet.Client.Http;
 using ElectricityMap.DotNet.Client.Interfaces;
@@ -10,9 +13,6 @@ using ElectricityMap.DotNet.Client.Models.Live;
 using ElectricityMap.DotNet.Client.Models.Recent;
 using ElectricityMap.DotNet.Client.Models.Updates;
 using ElectricityMap.DotNet.Client.Models.Zones;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace ElectricityMap.DotNet.Client
 {
@@ -20,6 +20,10 @@ namespace ElectricityMap.DotNet.Client
     {
         private readonly IElectricityMapHttpFacade httpFacade;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ElectricityMapClient"/> class.
+        /// </summary>
+        /// <param name="httpFacade"></param>
         public ElectricityMapClient(IElectricityMapHttpFacade httpFacade)
         {
             this.httpFacade = httpFacade;
@@ -27,7 +31,7 @@ namespace ElectricityMap.DotNet.Client
 
         public Task<Dictionary<string, ZoneData>> GetAvailableZonesAsync()
         {
-            string requestUrl = RequestUrlHelpers
+            var requestUrl = RequestUrlHelpers
                 .ConstructRequest(ApiAreas.Zones);
 
             return httpFacade
@@ -36,7 +40,7 @@ namespace ElectricityMap.DotNet.Client
 
         public Task<LiveCarbonIntensity> GetLiveCarbonIntensityAsync(string zone)
         {
-            string requestUrl = RequestUrlHelpers
+            var requestUrl = RequestUrlHelpers
                 .ConstructRequest(ApiAreas.CarbonIntensity, ApiActions.Latest, zone);
 
             return httpFacade
@@ -45,7 +49,7 @@ namespace ElectricityMap.DotNet.Client
 
         public Task<LiveCarbonIntensity> GetLiveCarbonIntensityAsync(double latitude, double longitude)
         {
-            string requestUrl = RequestUrlHelpers
+            var requestUrl = RequestUrlHelpers
                 .ConstructRequest(ApiAreas.CarbonIntensity, ApiActions.Latest, latitude, longitude);
 
             return httpFacade
@@ -54,7 +58,7 @@ namespace ElectricityMap.DotNet.Client
 
         public Task<LivePowerBreakdown> GetLivePowerBreakdownAsync(string zone)
         {
-            string requestUrl = RequestUrlHelpers
+            var requestUrl = RequestUrlHelpers
                 .ConstructRequest(ApiAreas.PowerConsumptionBreakdown, ApiActions.Latest, zone);
 
             return httpFacade
@@ -63,7 +67,7 @@ namespace ElectricityMap.DotNet.Client
 
         public Task<LivePowerBreakdown> GetLivePowerBreakdownAsync(double latitude, double longitude)
         {
-            string requestUrl = RequestUrlHelpers
+            var requestUrl = RequestUrlHelpers
                 .ConstructRequest(ApiAreas.PowerConsumptionBreakdown, ApiActions.Latest, latitude, longitude);
 
             return httpFacade
@@ -72,7 +76,7 @@ namespace ElectricityMap.DotNet.Client
 
         public Task<RecentCarbonIntensityHistory> GetRecentCarbonIntensityHistoryAsync(string zone)
         {
-            string requestUrl = RequestUrlHelpers
+            var requestUrl = RequestUrlHelpers
                 .ConstructRequest(ApiAreas.CarbonIntensity, ApiActions.History, zone);
 
             return httpFacade
@@ -81,7 +85,7 @@ namespace ElectricityMap.DotNet.Client
 
         public Task<RecentCarbonIntensityHistory> GetRecentCarbonIntensityHistoryAsync(double latitude, double longitude)
         {
-            string requestUrl = RequestUrlHelpers
+            var requestUrl = RequestUrlHelpers
                 .ConstructRequest(ApiAreas.CarbonIntensity, ApiActions.History, latitude, longitude);
 
             return httpFacade
@@ -90,7 +94,7 @@ namespace ElectricityMap.DotNet.Client
 
         public Task<RecentPowerBreakdownHistory> GetRecentPowerBreakdownHistoryAsync(string zone)
         {
-            string requestUrl = RequestUrlHelpers
+            var requestUrl = RequestUrlHelpers
                 .ConstructRequest(ApiAreas.PowerConsumptionBreakdown, ApiActions.History, zone);
 
             return httpFacade
@@ -99,7 +103,7 @@ namespace ElectricityMap.DotNet.Client
 
         public Task<RecentPowerBreakdownHistory> GetRecentPowerBreakdownHistoryAsync(double latitude, double longitude)
         {
-            string requestUrl = RequestUrlHelpers
+            var requestUrl = RequestUrlHelpers
                 .ConstructRequest(ApiAreas.PowerConsumptionBreakdown, ApiActions.History, latitude, longitude);
 
             return httpFacade
@@ -108,7 +112,7 @@ namespace ElectricityMap.DotNet.Client
 
         public Task<PastCarbonIntensityHistory> GetPastCarbonIntensityHistoryAsync(string zone, DateTime datetime)
         {
-            string requestUrl = RequestUrlHelpers
+            var requestUrl = RequestUrlHelpers
                 .ConstructRequest(ApiAreas.CarbonIntensity, ApiActions.Past, zone, datetime);
 
             return httpFacade
@@ -117,7 +121,7 @@ namespace ElectricityMap.DotNet.Client
 
         public Task<PastCarbonIntensityHistory> GetPastCarbonIntensityHistoryAsync(double latitude, double longitude, DateTime datetime)
         {
-            string requestUrl = RequestUrlHelpers
+            var requestUrl = RequestUrlHelpers
                 .ConstructRequest(ApiAreas.CarbonIntensity, ApiActions.Past, latitude, longitude, datetime);
 
             return httpFacade
@@ -126,7 +130,7 @@ namespace ElectricityMap.DotNet.Client
 
         public Task<PastPowerBreakdownHistory> GetPastPowerBreakdownHistoryAsync(string zone, DateTime datetime)
         {
-            string requestUrl = RequestUrlHelpers
+            var requestUrl = RequestUrlHelpers
                 .ConstructRequest(ApiAreas.PowerConsumptionBreakdown, ApiActions.Past, zone, datetime);
 
             return httpFacade
@@ -138,7 +142,7 @@ namespace ElectricityMap.DotNet.Client
             double longitude,
             DateTime datetime)
         {
-            string requestUrl = RequestUrlHelpers
+            var requestUrl = RequestUrlHelpers
                 .ConstructRequest(ApiAreas.PowerConsumptionBreakdown, ApiActions.Past, latitude, longitude, datetime);
 
             return httpFacade.GetAsync<PastPowerBreakdownHistory>(requestUrl);
@@ -146,7 +150,7 @@ namespace ElectricityMap.DotNet.Client
 
         public Task<ForecastedCarbonIntensity> GetForecastedCarbonIntensityAsync(string zone)
         {
-            string requestUrl = RequestUrlHelpers
+            var requestUrl = RequestUrlHelpers
                 .ConstructRequest(ApiAreas.CarbonIntensity, ApiActions.Forecast, zone);
 
             return httpFacade
@@ -157,7 +161,7 @@ namespace ElectricityMap.DotNet.Client
             double latitude,
             double longitude)
         {
-            string requestUrl = RequestUrlHelpers
+            var requestUrl = RequestUrlHelpers
                 .ConstructRequest(ApiAreas.CarbonIntensity, ApiActions.Forecast, latitude, longitude);
 
             return httpFacade
@@ -166,7 +170,7 @@ namespace ElectricityMap.DotNet.Client
 
         public Task<ForecastedPowerConsumptionBreakdown> GetForecastedPowerConsumptionBreakdownAsync(string zone)
         {
-            string requestUrl = RequestUrlHelpers
+            var requestUrl = RequestUrlHelpers
                 .ConstructRequest(ApiAreas.PowerConsumptionBreakdown, ApiActions.Forecast, zone);
 
             return httpFacade
@@ -177,7 +181,7 @@ namespace ElectricityMap.DotNet.Client
             double latitude,
             double longitude)
         {
-            string requestUrl = RequestUrlHelpers
+            var requestUrl = RequestUrlHelpers
                 .ConstructRequest(ApiAreas.PowerConsumptionBreakdown, ApiActions.Forecast, latitude, longitude);
 
             return httpFacade
@@ -186,7 +190,7 @@ namespace ElectricityMap.DotNet.Client
 
         public Task<ForecastedMarginalCarbonIntensity> GetForecastedMarginalCarbonIntensityAsync(string zone)
         {
-            string requestUrl = RequestUrlHelpers
+            var requestUrl = RequestUrlHelpers
                 .ConstructRequest(ApiAreas.MarginalCarbonIntensity, ApiActions.Forecast, zone);
 
             return httpFacade
@@ -197,7 +201,7 @@ namespace ElectricityMap.DotNet.Client
             double latitude,
             double longitude)
         {
-            string requestUrl = RequestUrlHelpers
+            var requestUrl = RequestUrlHelpers
                 .ConstructRequest(ApiAreas.MarginalCarbonIntensity, ApiActions.Forecast, latitude, longitude);
 
             return httpFacade
@@ -206,7 +210,7 @@ namespace ElectricityMap.DotNet.Client
 
         public Task<ForecastedMarginalPowerConsumptionBreakdown> GetForecastedMarginalPowerConsumptionBreakdownAsync(string zone)
         {
-            string requestUrl = RequestUrlHelpers
+            var requestUrl = RequestUrlHelpers
                 .ConstructRequest(ApiAreas.MarginalPowerConsumptionBreakdown, ApiActions.Forecast, zone);
 
             return httpFacade
@@ -215,7 +219,7 @@ namespace ElectricityMap.DotNet.Client
 
         public Task<ForecastedMarginalPowerConsumptionBreakdown> GetForecastedMarginalPowerConsumptionBreakdownAsync(double latitude, double longitude)
         {
-            string requestUrl = RequestUrlHelpers
+            var requestUrl = RequestUrlHelpers
                 .ConstructRequest(ApiAreas.MarginalPowerConsumptionBreakdown, ApiActions.Forecast, latitude, longitude);
 
             return httpFacade
@@ -224,7 +228,7 @@ namespace ElectricityMap.DotNet.Client
 
         public Task<UpdatedSince> GetUpdateInfoAsync(UpdatedSinceRequest updatedSinceRequest)
         {
-            string requestUrl = RequestUrlHelpers
+            var requestUrl = RequestUrlHelpers
                 .ConstructRequest(updatedSinceRequest);
 
             return httpFacade

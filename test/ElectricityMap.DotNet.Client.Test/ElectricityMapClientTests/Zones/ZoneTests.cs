@@ -3,6 +3,7 @@ using ElectricityMap.DotNet.Client.Http;
 using ElectricityMap.DotNet.Client.Models.Zones;
 using FluentAssertions;
 using NSubstitute;
+using System;
 using System.Collections.Generic;
 using Xunit;
 
@@ -24,7 +25,7 @@ namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests.Zones
             Dictionary<string, ZoneData> zones)
         {
             httpFacade
-                .GetAsync<Dictionary<string, ZoneData>>(Arg.Any<string>())
+                .GetAsync<Dictionary<string, ZoneData>>(Arg.Any<Uri>())
                 .Returns(zones);
 
             var result = await sut
