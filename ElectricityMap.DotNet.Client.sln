@@ -17,7 +17,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{24D6DD45-EC18-4844-889A-03C0DB9C0BB6}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\build.yml = .github\workflows\build.yml
-		..\..\build\code-analysis.props = ..\..\build\code-analysis.props
+		build\code-analysis.props = build\code-analysis.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B9442106-7387-44F5-BB66-D1687023C854}"
