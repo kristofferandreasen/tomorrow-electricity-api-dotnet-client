@@ -27,6 +27,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B9442106-738
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{C136ACCB-E7E1-44FA-81F9-7097926A8A12}"
+	ProjectSection(SolutionItems) = preProject
+		test\directory.build.props = test\directory.build.props
+		test\directory.build.targets = test\directory.build.targets
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{927D411F-47B4-4329-98B9-3C078231F7BA}"
 EndProject
