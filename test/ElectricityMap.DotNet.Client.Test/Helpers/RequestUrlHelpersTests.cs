@@ -1,9 +1,9 @@
+﻿using System;
 using AutoFixture.Xunit2;
 using ElectricityMap.DotNet.Client.Constants;
 using ElectricityMap.DotNet.Client.Extensions;
 using ElectricityMap.DotNet.Client.Models;
 using FluentAssertions;
-using System;
 using Xunit;
 
 namespace ElectricityMap.DotNet.Client.Helpers
@@ -130,10 +130,16 @@ namespace ElectricityMap.DotNet.Client.Helpers
                 .Should().Be(requestUrl);
         }
 
-        [Theory, AutoData]
+        [Theory]
+        [AutoData]
         public void Constructed_url_with_updated_since_data_is_correct(
             UpdatedSinceRequest updatedSinceRequest)
         {
+            if (updatedSinceRequest is null)
+            {
+                throw new ArgumentNullException(nameof(updatedSinceRequest));
+            }
+
             var expectedUrl = $"https://api.electricitymap.org/v3/updated-since/" +
                 $"?zone={updatedSinceRequest.Zone}" +
                 $"&since={updatedSinceRequest.Since:o}" +
@@ -160,7 +166,7 @@ namespace ElectricityMap.DotNet.Client.Helpers
                 Start = DateTime.Now.AddDays(-2),
                 End = DateTime.Now.AddDays(-1),
                 Limit = 100,
-                Threshold = "P1D"
+                Threshold = "P1D",
             };
 
             var expectedUrl = $"https://api.electricitymap.org/v3/updated-since/" +
@@ -189,7 +195,7 @@ namespace ElectricityMap.DotNet.Client.Helpers
                 Start = DateTime.Now.AddDays(-2),
                 End = DateTime.Now.AddDays(-1),
                 Limit = 100,
-                Threshold = "P1D"
+                Threshold = "P1D",
             };
 
             var expectedUrl = $"https://api.electricitymap.org/v3/updated-since/" +
@@ -217,7 +223,7 @@ namespace ElectricityMap.DotNet.Client.Helpers
                 Start = DateTime.Now.AddDays(-2),
                 End = DateTime.Now.AddDays(-1),
                 Limit = 100,
-                Threshold = "P1D"
+                Threshold = "P1D",
             };
 
             Assert.Throws<ArgumentNullException>(()

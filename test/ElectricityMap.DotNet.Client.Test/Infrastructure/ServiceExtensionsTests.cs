@@ -1,10 +1,10 @@
-﻿using ElectricityMap.DotNet.Client.Interfaces;
+﻿using System;
+using ElectricityMap.DotNet.Client.Http;
 using ElectricityMap.DotNet.Client.Infrastructure;
+using ElectricityMap.DotNet.Client.Interfaces;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using Xunit;
-using ElectricityMap.DotNet.Client.Http;
 
 namespace ElectricityMap.DotNet.Client.Test.Infrastructure
 {

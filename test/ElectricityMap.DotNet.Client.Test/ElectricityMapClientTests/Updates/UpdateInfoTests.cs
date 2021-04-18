@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using AutoFixture.Xunit2;
 using ElectricityMap.DotNet.Client.Http;
 using ElectricityMap.DotNet.Client.Models;
@@ -20,8 +21,9 @@ namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests.Updates
             sut = new ElectricityMapClient(httpFacade);
         }
 
-        [Theory, AutoData]
-        public async void Get_update_info_returns_data(
+        [Theory]
+        [AutoData]
+        public async Task Get_update_info_returns_data_Async(
             UpdatedSinceRequest updatedSinceRequest,
             UpdatedSince updatedSince)
         {
@@ -30,7 +32,8 @@ namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests.Updates
                 .Returns(updatedSince);
 
             var result = await sut
-                 .GetUpdateInfoAsync(updatedSinceRequest);
+                 .GetUpdateInfoAsync(updatedSinceRequest)
+                 .ConfigureAwait(false);
 
             result.Should().NotBeNull();
             result.Should().BeEquivalentTo(updatedSince);

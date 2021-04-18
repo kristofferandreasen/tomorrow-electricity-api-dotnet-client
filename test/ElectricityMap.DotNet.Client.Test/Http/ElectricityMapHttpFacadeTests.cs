@@ -1,9 +1,9 @@
-﻿using AutoFixture.Xunit2;
+﻿using System;
+using AutoFixture.Xunit2;
 using ElectricityMap.DotNet.Client.Exceptions;
 using ElectricityMap.DotNet.Client.Http;
 using ElectricityMap.DotNet.Client.Models.Zones;
 using FluentAssertions;
-using System;
 using Xunit;
 
 namespace ElectricityMap.DotNet.Client.Test.Http
@@ -15,7 +15,8 @@ namespace ElectricityMap.DotNet.Client.Test.Http
             => Assert
             .Throws<ArgumentNullException>(() => new ElectricityMapHttpFacade(null));
 
-        [Theory, AutoData]
+        [Theory]
+        [AutoData]
         public void Http_facade_is_created(
             string apiKey)
         {
@@ -27,16 +28,16 @@ namespace ElectricityMap.DotNet.Client.Test.Http
         [Fact]
         public void No_url_throws_exception()
         {
-            Assert
+            _ = Assert
                .ThrowsAsync<ElectricityMapException>(() =>
                new ElectricityMapHttpFacade("ApiKey")
-               .GetAsync<ZoneData>(new Uri("")));
+               .GetAsync<ZoneData>(new Uri(string.Empty)));
         }
 
         [Fact]
         public void Random_url_throws_exception()
         {
-            Assert
+            _ = Assert
                .ThrowsAsync<ElectricityMapException>(() =>
                new ElectricityMapHttpFacade("ApiKey")
                .GetAsync<ZoneData>(new Uri("www.test.com")));

@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-
     <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NoWarn>SA0001;CA1014;SCS9999</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

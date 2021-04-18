@@ -1,10 +1,11 @@
-﻿using AutoFixture.Xunit2;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoFixture.Xunit2;
 using ElectricityMap.DotNet.Client.Http;
 using ElectricityMap.DotNet.Client.Models.Zones;
 using FluentAssertions;
 using NSubstitute;
-using System;
-using System.Collections.Generic;
 using Xunit;
 
 namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests.Zones
@@ -20,8 +21,9 @@ namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests.Zones
             sut = new ElectricityMapClient(httpFacade);
         }
 
-        [Theory, AutoData]
-        public async void Zones_are_available(
+        [Theory]
+        [AutoData]
+        public async Task Zones_are_available_Async(
             Dictionary<string, ZoneData> zones)
         {
             httpFacade
@@ -29,7 +31,8 @@ namespace ElectricityMap.DotNet.Client.Test.ElectricityMapClientTests.Zones
                 .Returns(zones);
 
             var result = await sut
-                .GetAvailableZonesAsync();
+                .GetAvailableZonesAsync()
+                .ConfigureAwait(false);
 
             result.Should().NotBeNull();
             result.Should().BeEquivalentTo(zones);

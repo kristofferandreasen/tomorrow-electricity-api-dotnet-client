@@ -2,7 +2,7 @@
 
   <PropertyGroup>
 	  <TargetFramework>netstandard2.1</TargetFramework>
-	  <Version>1.0.4</Version>
+	  <Version>1.0.5</Version>
 	  <authors>Kristoffer Andreasen</authors>
 	  <PackageId>ElectricityMap.DotNet.Client</PackageId>
 	  <PackageTags>ElectricityMap;C#;Client;DotNet;Core;Rest;API;SDK;Tomorrow</PackageTags>
@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <NoWarn>NU5048;CA1014</NoWarn>
+    <NoWarn>NU5048;CA1014;SCS9999</NoWarn>
   </PropertyGroup>
 	
   <ItemGroup>

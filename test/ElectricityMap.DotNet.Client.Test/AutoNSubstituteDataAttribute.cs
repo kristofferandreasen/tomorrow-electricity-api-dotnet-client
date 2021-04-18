@@ -4,11 +4,12 @@ using AutoFixture.Xunit2;
 
 namespace ElectricityMap.DotNet.Client.Test
 {
-    public class AutoNSubstituteDataAttribute : AutoDataAttribute
+    public sealed class AutoNSubstituteDataAttribute : AutoDataAttribute
     {
         public AutoNSubstituteDataAttribute()
             : base(CreateCustomizedFixture)
-        { }
+        {
+        }
 
         private static IFixture CreateCustomizedFixture()
         {

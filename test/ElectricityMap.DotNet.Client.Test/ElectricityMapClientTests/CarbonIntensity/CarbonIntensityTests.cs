@@ -1,13 +1,13 @@
-﻿using AutoFixture.Xunit2;
+﻿using System;
+using System.Threading.Tasks;
+using AutoFixture.Xunit2;
 using ElectricityMap.DotNet.Client.Http;
-using ElectricityMap.DotNet.Client.Interfaces;
 using ElectricityMap.DotNet.Client.Models.Forecasts;
 using ElectricityMap.DotNet.Client.Models.History;
 using ElectricityMap.DotNet.Client.Models.Live;
 using ElectricityMap.DotNet.Client.Models.Recent;
 using FluentAssertions;
 using NSubstitute;
-using System;
 using Xunit;
 
 namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
@@ -23,8 +23,9 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
             sut = new ElectricityMapClient(httpFacade);
         }
 
-        [Theory, AutoData]
-        public async void Get_carbon_intensity_live_zone(
+        [Theory]
+        [AutoData]
+        public async Task Get_carbon_intensity_live_zone_Async(
             string zone,
             LiveCarbonIntensity data)
         {
@@ -33,14 +34,16 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
                 .Returns(data);
 
             var result = await sut
-                 .GetLiveCarbonIntensityAsync(zone);
+                 .GetLiveCarbonIntensityAsync(zone)
+                 .ConfigureAwait(false);
 
             result.Should().NotBeNull();
             result.Should().Be(data);
         }
 
-        [Theory, AutoData]
-        public async void Get_carbon_intensity_live_lat_long(
+        [Theory]
+        [AutoData]
+        public async Task Get_carbon_intensity_live_lat_long_Async(
             double latitude,
             double longitude,
             LiveCarbonIntensity data)
@@ -50,14 +53,16 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
                 .Returns(data);
 
             var result = await sut
-                 .GetLiveCarbonIntensityAsync(latitude, longitude);
+                 .GetLiveCarbonIntensityAsync(latitude, longitude)
+                 .ConfigureAwait(false);
 
             result.Should().NotBeNull();
             result.Should().Be(data);
         }
 
-        [Theory, AutoData]
-        public async void Get_carbon_intensity_recent_zone(
+        [Theory]
+        [AutoData]
+        public async Task Get_carbon_intensity_recent_zone_Async(
             string zone,
             RecentCarbonIntensityHistory data)
         {
@@ -66,14 +71,16 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
                 .Returns(data);
 
             var result = await sut
-                 .GetRecentCarbonIntensityHistoryAsync(zone);
+                 .GetRecentCarbonIntensityHistoryAsync(zone)
+                 .ConfigureAwait(false);
 
             result.Should().NotBeNull();
             result.Should().Be(data);
         }
 
-        [Theory, AutoData]
-        public async void Get_carbon_intensity_recent_lat_long(
+        [Theory]
+        [AutoData]
+        public async Task Get_carbon_intensity_recent_lat_long_Async(
             double latitude,
             double longitude,
             RecentCarbonIntensityHistory data)
@@ -83,14 +90,16 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
                 .Returns(data);
 
             var result = await sut
-                 .GetRecentCarbonIntensityHistoryAsync(latitude, longitude);
+                 .GetRecentCarbonIntensityHistoryAsync(latitude, longitude)
+                 .ConfigureAwait(false);
 
             result.Should().NotBeNull();
             result.Should().Be(data);
         }
 
-        [Theory, AutoData]
-        public async void Get_carbon_intensity_past_zone(
+        [Theory]
+        [AutoData]
+        public async Task Get_carbon_intensity_past_zone_Async(
             string zone,
             DateTime date,
             PastCarbonIntensityHistory data)
@@ -100,14 +109,16 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
                 .Returns(data);
 
             var result = await sut
-                 .GetPastCarbonIntensityHistoryAsync(zone, date);
+                 .GetPastCarbonIntensityHistoryAsync(zone, date)
+                 .ConfigureAwait(false);
 
             result.Should().NotBeNull();
             result.Should().Be(data);
         }
 
-        [Theory, AutoData]
-        public async void Get_carbon_intensity_past_lat_long(
+        [Theory]
+        [AutoData]
+        public async Task Get_carbon_intensity_past_lat_long_Async(
             double latitude,
             double longitude,
             DateTime date,
@@ -118,14 +129,16 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
                 .Returns(data);
 
             var result = await sut
-                 .GetPastCarbonIntensityHistoryAsync(latitude, longitude, date);
+                 .GetPastCarbonIntensityHistoryAsync(latitude, longitude, date)
+                 .ConfigureAwait(false);
 
             result.Should().NotBeNull();
             result.Should().Be(data);
         }
 
-        [Theory, AutoData]
-        public async void Get_carbon_intensity_forecast_zone(
+        [Theory]
+        [AutoData]
+        public async Task Get_carbon_intensity_forecast_zoneAsync_Async(
             string zone,
             ForecastedCarbonIntensity data)
         {
@@ -134,14 +147,16 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
                 .Returns(data);
 
             var result = await sut
-                 .GetForecastedCarbonIntensityAsync(zone);
+                 .GetForecastedCarbonIntensityAsync(zone)
+                 .ConfigureAwait(false);
 
             result.Should().NotBeNull();
             result.Should().Be(data);
         }
 
-        [Theory, AutoData]
-        public async void Get_carbon_intensity_forecast_lat_long(
+        [Theory]
+        [AutoData]
+        public async Task Get_carbon_intensity_forecast_lat_long_Async(
             double latitude,
             double longitude,
             ForecastedCarbonIntensity data)
@@ -151,14 +166,16 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
                 .Returns(data);
 
             var result = await sut
-                 .GetForecastedCarbonIntensityAsync(latitude, longitude);
+                 .GetForecastedCarbonIntensityAsync(latitude, longitude)
+                 .ConfigureAwait(false);
 
             result.Should().NotBeNull();
             result.Should().Be(data);
         }
 
-        [Theory, AutoData]
-        public async void Get_carbon_intensity_marginal_forecast_zone(
+        [Theory]
+        [AutoData]
+        public async Task Get_carbon_intensity_marginal_forecast_zone_Async(
            string zone,
            ForecastedMarginalCarbonIntensity data)
         {
@@ -167,14 +184,16 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
                 .Returns(data);
 
             var result = await sut
-                 .GetForecastedMarginalCarbonIntensityAsync(zone);
+                 .GetForecastedMarginalCarbonIntensityAsync(zone)
+                 .ConfigureAwait(false);
 
             result.Should().NotBeNull();
             result.Should().Be(data);
         }
 
-        [Theory, AutoData]
-        public async void Get_carbon_intensity_marginal_forecast_lat_long(
+        [Theory]
+        [AutoData]
+        public async Task Get_carbon_intensity_marginal_forecast_lat_long_Async(
             double latitude,
             double longitude,
             ForecastedMarginalCarbonIntensity data)
@@ -184,7 +203,8 @@ namespace ElectricityMap.DotNet.Client.Test.CarbonIntensity
                 .Returns(data);
 
             var result = await sut
-                 .GetForecastedMarginalCarbonIntensityAsync(latitude, longitude);
+                 .GetForecastedMarginalCarbonIntensityAsync(latitude, longitude)
+                 .ConfigureAwait(false);
 
             result.Should().NotBeNull();
             result.Should().Be(data);
